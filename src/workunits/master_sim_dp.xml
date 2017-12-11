@@ -1,0 +1,59 @@
+<workunit>
+        
+    <invokers>
+         <invoker type="sim-dp:open" caption="DPCR" action="open"/>
+         <invoker type="sim-dp:create" caption="DPCR" action="create"/>
+   </invokers>
+   
+   <code>
+       <![CDATA[
+        import com.rameses.osiris2.common.*;
+        import com.rameses.rcp.common.*;
+        import com.rameses.rcp.annotations.*;
+        import com.rameses.osiris2.client.*;
+        import java.rmi.server.*;
+        
+        class TagabukidSIMDPCRController extends CRUDController {
+        
+            @Caller
+            def caller;
+            
+            @Service("TagabukidSIMService")
+            def simsvc
+            
+            String entityName = "sim";
+            def node;
+            
+            public String getServiceName() {
+                return caller.getServiceName();
+            }
+            
+            public String getTitle() {
+                return caller.getTitle();
+            }  
+            
+            public String getPrefixId() {
+                return caller.getPrefixId();
+            }
+            
+            public def getAccountService() {
+                return caller.simService;
+            }
+            
+            Map createEntity() {
+                def m = [parentid:node.objid, type:'dp'];
+                m.parent = [code:node.code, title: node.title];
+              
+                caller.refresh();
+                return m;
+            }
+            
+        }      
+       ]]>
+   </code>
+   
+   <pages>
+       <page template="tagabukid.hrmis.pmis.views.SIPage"/>
+   </pages>
+   
+</workunit>

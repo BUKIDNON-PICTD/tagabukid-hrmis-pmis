@@ -43,11 +43,11 @@ public class MasterSPMSPeriodSettingPage extends javax.swing.JPanel {
         xIntegerField1.setText("xIntegerField1");
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder1.setTitle("Performance Category");
+        xTitledBorder1.setTitle("SPMS Period Setting");
         xFormPanel1.setBorder(xTitledBorder1);
 
         xIntegerField2.setCaption("Year");
-        xIntegerField2.setName("entity.year"); // NOI18N
+        xIntegerField2.setName("entity.code"); // NOI18N
         xFormPanel1.add(xIntegerField2);
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(300, 63));
