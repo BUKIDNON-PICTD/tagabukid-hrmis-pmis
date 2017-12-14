@@ -1,0 +1,97 @@
+<workunit>
+        
+    <invokers>
+         <invoker type="sim-op:open" caption="OPCR" action="open"/>
+         <invoker type="sim-op:create" caption="OPCR" action="create"/>
+   </invokers>
+   
+   <code>
+       <![CDATA[
+        import com.rameses.osiris2.common.*;
+        import com.rameses.rcp.common.*;
+        import com.rameses.rcp.annotations.*;
+        import com.rameses.osiris2.client.*;
+        import java.rmi.server.*;
+        
+        class TagabukidSIMOPCRController extends CRUDController {
+        
+            @Caller
+            def caller;
+            
+            @Service("TagabukidSIMService")
+            def simsvc
+            
+            String entityName = "sim";
+            def node;
+            
+            def selectedItem;
+           
+            public String getServiceName() {
+                return caller.getServiceName();
+            }
+            
+            public String getTitle() {
+                return caller.getTitle();
+            }  
+            
+            public String getPrefixId() {
+                return caller.getPrefixId();
+            }
+            
+            public def getAccountService() {
+                return caller.simService;
+            }
+            
+            Map createEntity() {
+                def m = [parentid:node.objid, type:'op',orgs:[]];
+                m.parent = [code:node.code, title: node.title];
+                
+                caller.refresh();
+                return m;
+            }
+            
+            def getLookupOrg(){
+                return Inv.lookupOpener('pmisorg:lookup',[
+                        orgparentid:'ac299664-82c7-45a1-a096-194844656ea3',
+                        onselect :{
+                            selectedItem.objid = it.OrgUnitId;
+                            selectedItem.name = it.Entity.Name;
+                            selectedItem.code = it.Entity.AcronymAbbreviation;
+                        },
+                ])
+            }
+            def listHandler = [
+                getRows : { entity.orgs.size() + 1 },
+                fetchList: { entity.orgs },
+                onRemoveItem : {
+                    if (MsgBox.confirm('Delete item?')){                
+                        entity.orgs.remove(it)
+                        listHandler?.load();
+                        return true;
+                    }
+                    return false;
+                },
+                onAddItem : {
+                  
+                    entity.orgs << it;
+                },
+                validate:{li->
+                    def item=li.item;
+                    checkDuplicate(entity.orgs,item);
+                }
+            ] as EditorListModel
+            
+            void checkDuplicate(listtofilter,item){
+                def data = listtofilter.find{it.objid == item.objid }
+                if (data)
+                throw new Exception("Duplicate item is not allowed.")
+            }   
+        }      
+       ]]>
+   </code>
+   
+   <pages>
+       <page template="tagabukid.hrmis.pmis.views.OPCRPage"/>
+   </pages>
+   
+</workunit>
