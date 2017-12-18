@@ -49,21 +49,12 @@
                 def m = [parentid:node.objid, type:'ip'];
                 m.parent = [code:node.code, title: node.title];
                 qualitys:[];
-<<<<<<< HEAD
                 timelinesss:[];
-=======
-                timlinesss:[];
->>>>>>> 2afbf4ecdaa4ff25ab04f92e838447ee49dfae81
                 efficiencys: [];
                 caller.refresh();
                 return m;
             }
             
-<<<<<<< HEAD
-            
-=======
->>>>>>> 2afbf4ecdaa4ff25ab04f92e838447ee49dfae81
-          
             
             def qualityHandler = [
                 createItem : {
