@@ -56,5 +56,4 @@
    <pages>
        <page template="tagabukid.hrmis.pmis.views.MasterSPMSPeriodSettingPage"/>
    </pages>
-   
 </workunit>
