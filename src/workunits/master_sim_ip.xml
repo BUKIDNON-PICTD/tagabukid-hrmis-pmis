@@ -17,6 +17,10 @@
         
             @Caller
             def caller;
+            def qualityitem;
+            def successindicatorquality
+            def selectedQuality
+            def rate
             
             @Service("TagabukidSIMService")
             def simsvc
@@ -44,17 +48,63 @@
             Map createEntity() {
                 def m = [parentid:node.objid, type:'ip'];
                 m.parent = [code:node.code, title: node.title];
-                
+                qualitys:[];
+                timelinesss:[];
+                efficiencys: [];
                 caller.refresh();
                 return m;
             }
             
-        }      
+            
+            def qualityHandler = [
+                createItem : {
+                    return [
+                        objid   : "T" + new java.rmi.server.UID(),
+                         ]
+                         },
+                  onAddItem : {
+                  
+                    entity.orgs << it;
+                },
+              
+                
+            ] as EditorListModel   
+            
+            
+            def timelinessHandler = [
+                createItem : {
+                    return [
+                        objid   : "T" + new java.rmi.server.UID(),
+                         ]
+                         },
+                  onAddItem : {
+                  
+                    entity.orgs << it;
+                },
+              
+                
+            ] as EditorListModel   
+            
+            
+            def efficiencyHandler = [
+                createItem : {
+                    return [
+                        objid   : "T" + new java.rmi.server.UID(),
+                         ]
+                         },
+                  onAddItem : {
+                  
+                    entity.orgs << it;
+                },
+              
+                
+            ] as EditorListModel   
+            
+            }  
        ]]>
    </code>
    
    <pages>
-       <page template="tagabukid.hrmis.pmis.views.SIPage"/>
+       <page template="tagabukid.hrmis.pmis.views.IPCRPage"/>
    </pages>
-   
 </workunit>

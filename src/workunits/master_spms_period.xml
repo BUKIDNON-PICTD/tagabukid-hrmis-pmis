@@ -1,9 +1,0 @@
-<workunit extends="com/rameses/seti2/templates/CrudForm.xml" schemaName="pmis_spms_periods">
-    <invokers>
-        <invoker type="pmis_spms_periods:create" caption="SPMS Period Setting" action="create" target="popup" />
-        <invoker type="pmis_spms_periods:open" caption="SPMS Period Setting" action="open" target="popup"/>
-    </invokers>
-    <pages>
-        <page template="tagabukid.hrmis.pmis.views.MasterSPMSPeriodSettingPage"/>
-    </pages>
-</workunit>
