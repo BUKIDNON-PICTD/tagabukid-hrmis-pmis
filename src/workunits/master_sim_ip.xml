@@ -59,12 +59,14 @@
             def qualityHandler = [
                 createItem : {
                     return [
-                        objid   : "T" + new java.rmi.server.UID(),
-                         ]
+                       
+                      rate : [rate:1,rate:2,rate:3,rate:4,rate:5],
+                      qualitys:[],
+]
                          },
                   onAddItem : {
-                  
-                    entity.orgs << it;
+                    entity.qualitys << it;
+                   
                 },
               
                 
