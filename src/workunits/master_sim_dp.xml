@@ -59,7 +59,7 @@
                         },
                 ])
             }
-<!--            def listHandler = [
+                  def listHandler = [
                 getRows : { entity.orgs.size() + 1 },
                 fetchList: { entity.orgs },
                 onRemoveItem : {
@@ -84,7 +84,7 @@
                 def data = listtofilter.find{it.objid == item.objid }
                 if (data)
                 throw new Exception("Duplicate item is not allowed.")
-            }   -->
+            }  
         }      
        ]]>
    </code>
