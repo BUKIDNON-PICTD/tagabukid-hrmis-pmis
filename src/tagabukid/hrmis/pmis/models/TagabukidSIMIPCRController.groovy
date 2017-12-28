@@ -42,7 +42,7 @@
                 m.parent = [code:node.code, title: node.title];
                 m.qualities = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
                 m.timeliness = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
-                m.efficiency = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]] 
+                m.efficiency = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
                 caller.refresh();
                 return m;
             }
@@ -55,12 +55,17 @@
                   },
                   //createItem : { return [objid:'PPI' + new java.rmi.server.UID(), parentid:entity.objid] },
                   onAddItem : {
-                    //it.objid = 'SIQ' + new java.rmi.server.UID();
-                    //it.siid = entity.objid;
-                    //it.type = 'Q';
-                    entity.qualities << it;
+
+                    },
+                    
+               onColumnUpdate: {item,column-> 
+                if (!item.rating) { 
+               // def o = entity.members.find{ it.member.objid == item.member.objid } 
+                throw new Exception('Cannot add anymore.'); 
+            } 
+            },
                    
-                },
+              
               
                 
             ] as EditorListModel   
@@ -71,12 +76,18 @@
                     return entity.timeliness
                     },
                   onAddItem : {
-                    it.objid = 'SIT' + new java.rmi.server.UID();
-                    it.siid = entity.objid;
-                    it.type = 'T';
+                    //it.objid = 'SIT' + new java.rmi.server.UID();
+                    //it.siid = entity.objid;
+                    //it.type = 'T';
                     entity.timeliness << it;
                     
                 },
+                     onColumnUpdate: {item,column-> 
+                if (!item.rating) { 
+               // def o = entity.members.find{ it.member.objid == item.member.objid } 
+                throw new Exception('Cannot add anymore.'); 
+            } 
+            },
               
                 
             ] as EditorListModel   
@@ -87,12 +98,18 @@
                     return entity.efficiency
                     },
                   onAddItem : {
-                    it.objid = 'SIE' + new java.rmi.server.UID();
-                    it.siid = entity.objid;
-                    it.type = 'E';
+                   // it.objid = 'SIE' + new java.rmi.server.UID();
+                   // it.siid = entity.objid;
+                   // it.type = 'E';
                     entity.efficiency << it;
                     
                 },
+                 onColumnUpdate: {item,column-> 
+                if (!item.rating) { 
+               // def o = entity.members.find{ it.member.objid == item.member.objid } 
+                throw new Exception('Cannot add anymore.'); 
+            } 
+            },
                 
             ] as EditorListModel   
             

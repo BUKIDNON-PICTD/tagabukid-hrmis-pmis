@@ -47,6 +47,8 @@ public class IPCRPage extends javax.swing.JPanel {
         xDataTable3 = new com.rameses.rcp.control.XDataTable();
         xDataTable5 = new com.rameses.rcp.control.XDataTable();
 
+        setPreferredSize(new java.awt.Dimension(480, 400));
+
         xTextField1.setCaption("Success Indicator Code");
         xTextField1.setCaptionWidth(150);
         xTextField1.setName("entity.code"); // NOI18N
@@ -115,6 +117,7 @@ public class IPCRPage extends javax.swing.JPanel {
         });
         xDataTable1.setHandler("qualityHandler");
         xDataTable1.setName("selectedQuality"); // NOI18N
+        xDataTable1.setRowHeaderHeight(50);
         jTabbedPane2.addTab("Quality", xDataTable1);
 
         xDataTable3.setColumns(new com.rameses.rcp.common.Column[]{
@@ -200,9 +203,9 @@ public class IPCRPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
     }// </editor-fold>//GEN-END:initComponents
 
