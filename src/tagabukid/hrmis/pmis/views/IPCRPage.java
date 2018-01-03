@@ -73,6 +73,7 @@ public class IPCRPage extends javax.swing.JPanel {
 
         xTextArea1.setCaption("Actual Accomplishment");
         xTextArea1.setCaptionWidth(150);
+        xTextArea1.setName("entity.actualaccomplishment"); // NOI18N
         jScrollPane1.setViewportView(xTextArea1);
 
         xFormPanel1.add(jScrollPane1);
@@ -81,6 +82,7 @@ public class IPCRPage extends javax.swing.JPanel {
 
         xTextArea2.setCaption("Remarks");
         xTextArea2.setCaptionWidth(150);
+        xTextArea2.setName("entity.remarks"); // NOI18N
         jScrollPane2.setViewportView(xTextArea2);
 
         xFormPanel1.add(jScrollPane2);

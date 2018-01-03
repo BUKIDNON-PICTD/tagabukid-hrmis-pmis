@@ -50,7 +50,7 @@
             
             def qualityHandler = [
                   fetchList  : { 
-                   //println entity.qualities
+                   println entity.qualities
                     return entity.qualities
                   },
                   //createItem : { return [objid:'PPI' + new java.rmi.server.UID(), parentid:entity.objid] },
@@ -74,6 +74,7 @@
             def timelinessHandler = [
                 fetchList :{
                     return entity.timeliness
+                  
                     },
                   onAddItem : {
                     //it.objid = 'SIT' + new java.rmi.server.UID();

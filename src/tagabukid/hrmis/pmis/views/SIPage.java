@@ -45,6 +45,7 @@ public class SIPage extends javax.swing.JPanel {
         xTextField1.setName("entity.code"); // NOI18N
         xTextField1.setPreferredSize(new java.awt.Dimension(150, 19));
         xTextField1.setRequired(true);
+        xTextField1.setSpaceChar('_');
         xFormPanel1.add(xTextField1);
 
         xTextField2.setCaption("Success Indicator Title");
@@ -63,6 +64,7 @@ public class SIPage extends javax.swing.JPanel {
 
         xTextArea1.setCaption("Actual Accomplishment");
         xTextArea1.setCaptionWidth(150);
+        xTextArea1.setName("entity.actualaccomplishment"); // NOI18N
         jScrollPane1.setViewportView(xTextArea1);
 
         xFormPanel1.add(jScrollPane1);
@@ -71,6 +73,7 @@ public class SIPage extends javax.swing.JPanel {
 
         xTextArea2.setCaption("Remarks");
         xTextArea2.setCaptionWidth(150);
+        xTextArea2.setName("entity.remarks"); // NOI18N
         jScrollPane2.setViewportView(xTextArea2);
 
         xFormPanel1.add(jScrollPane2);
