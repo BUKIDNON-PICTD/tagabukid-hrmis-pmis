@@ -43,15 +43,16 @@
             }
             
             Map createEntity() {
-                def m = [parentid:node.objid, type:'ip',orgs:[]];
+                def m = [parentid:node.objid, type:'dp',orgs:[]];
                 m.parent = [code:node.code, title: node.title];
                 
                 caller.refresh();
                 return m;
             }
             
-            def getLookupOrg(){
+          def getLookupOrg(){
                 return Inv.lookupOpener('pmisorg:lookup',[
+                        orgparentid:'ac299664-82c7-45a1-a096-194844656ea3',
                         onselect :{
                             selectedItem.objid = it.OrgUnitId;
                             selectedItem.name = it.Entity.Name;
@@ -59,7 +60,7 @@
                         },
                 ])
             }
-<!--            def listHandler = [
+            def listHandler = [
                 getRows : { entity.orgs.size() + 1 },
                 fetchList: { entity.orgs },
                 onRemoveItem : {
@@ -84,7 +85,7 @@
                 def data = listtofilter.find{it.objid == item.objid }
                 if (data)
                 throw new Exception("Duplicate item is not allowed.")
-            }   -->
+            }   
         }      
        ]]>
    </code>
