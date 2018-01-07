@@ -40,7 +40,7 @@
             Map createEntity() {
                 def m = [parentid:node.objid, type:'ip',qualities:[],timeliness:[],efficiency:[],];
                 m.parent = [code:node.code, title: node.title];
-                m.qualities = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
+                m.qualities  = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
                 m.timeliness = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
                 m.efficiency = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
                 caller.refresh();

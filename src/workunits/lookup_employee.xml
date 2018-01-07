@@ -1,0 +1,35 @@
+<workunit extends="wtemplates/LookupController.xml">
+    
+    <invokers>
+        
+        <invoker type="pmisemployee:lookupPostgreHrmis" caption="Employee Lookup" target="popup" > </invoker>
+        
+    </invokers>
+     <code>
+
+        import com.rameses.rcp.common.*
+        import com.rameses.rcp.annotations.*
+        import com.rameses.osiris2.client.*
+        import com.rameses.osiris2.common.*
+
+        class HrisEmployeeLookupController extends LookupController
+        {
+            @Service("TagabukidPMISLookupService")
+            def svc
+         
+            def state;
+            Column[] getColumns() {
+                return [
+                    new Column(name:"Name.LastName", caption:"Last Name", width:250),
+                    new Column(name:"Name.FirstName", caption:"First Name", width:250),
+                    new Column(name:"name.MiddleName", caption:"Middle Name", width:250),
+                ]
+            }
+
+            List fetchList( Map params ) { 
+                return svc.lookupProfile(params)
+            }
+        }  
+    }
+    </code>
+</workunit>

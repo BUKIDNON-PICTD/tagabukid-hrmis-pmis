@@ -50,16 +50,18 @@
                 return m;
             }
             
-          def getLookupOrg(){
+              def getLookupOrg(){
                 return Inv.lookupOpener('pmisorg:lookup',[
-                        orgparentid:'ac299664-82c7-45a1-a096-194844656ea3',
-                        onselect :{
+                       orgparentid:'ac299664-82c7-45a1-a096-194844656ea3',
+                       
+                            onselect :{
                             selectedItem.objid = it.OrgUnitId;
                             selectedItem.name = it.Entity.Name;
                             selectedItem.code = it.Entity.AcronymAbbreviation;
                         },
                 ])
             }
+            
             def listHandler = [
                 getRows : { entity.orgs.size() + 1 },
                 fetchList: { entity.orgs },
