@@ -1,0 +1,11 @@
+<workunit>
+    <invokers>
+       <invoker folderid="/home/hrmis/hrmismaster" caption="Hrmis Transactions" index="10" action="init" />
+    </invokers>
+    <code class="tagabukid.hrmis.pmis.models.TransactionController"/>
+    
+    <pages>
+        <page template="tagabukid.hrmis.pmis.views.TransactionFrom"/>
+    </pages>
+    
+</workunit>
