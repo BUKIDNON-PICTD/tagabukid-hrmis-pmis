@@ -13,12 +13,12 @@ import com.rameses.rcp.ui.annotations.Template;
  * @author rufino
  */
 @Template({FormPage.class})
-public class SIPage extends javax.swing.JPanel {
+public class MFOPage extends javax.swing.JPanel {
 
     /**
      * Creates new form CabinetPage
      */
-    public SIPage() {
+    public MFOPage() {
         initComponents();
     }
 
@@ -45,7 +45,6 @@ public class SIPage extends javax.swing.JPanel {
         xTextField1.setName("entity.code"); // NOI18N
         xTextField1.setPreferredSize(new java.awt.Dimension(150, 19));
         xTextField1.setRequired(true);
-        xTextField1.setSpaceChar('_');
         xFormPanel1.add(xTextField1);
 
         xTextField2.setCaption("Success Indicator Title");

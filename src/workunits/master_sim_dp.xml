@@ -13,7 +13,7 @@
         import com.rameses.osiris2.client.*;
         import java.rmi.server.*;
         
-        class TagabukidSIMOPCRController extends CRUDController {
+        class TagabukidSIMDPCRController extends CRUDController {
         
             @Caller
             def caller;
@@ -45,14 +45,15 @@
             Map createEntity() {
                 def m = [parentid:node.objid, type:'dp',orgs:[]];
                 m.parent = [code:node.code, title: node.title];
-                
+               
                 caller.refresh();
                 return m;
             }
             
-              def getLookupOrg(){
-                return Inv.lookupOpener('pmisorg:lookup',[
-                       orgparentid:'ac299664-82c7-45a1-a096-194844656ea3',
+            def getLookupOrg(){
+               
+                return Inv.lookupOpener('pmisorgs:lookup',[
+                       orgs:node.orgs,
                        
                             onselect :{
                             selectedItem.objid = it.OrgUnitId;
