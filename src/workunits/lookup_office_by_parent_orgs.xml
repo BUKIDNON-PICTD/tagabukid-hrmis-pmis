@@ -2,7 +2,7 @@
     
     <invokers>
         
-        <invoker type="pmisorg:lookup" caption="Organization Lookup" target="popup" > </invoker>
+        <invoker type="pmisorgs:lookup" caption="Organization Lookup" target="popup" > </invoker>
         
     </invokers>
      <code>
@@ -18,7 +18,7 @@
             def svc
 
             def state;
-            def orgparentid;
+            def orgs;
             Column[] getColumns() {
                 return [
                     new Column(name:"Entity.Name", caption:"Name", width:250),
@@ -27,12 +27,8 @@
             }
 
             List fetchList( Map params ) { 
-                params.orgparentid = orgparentid
-                //if(orgparentid.size() > 0){
-                //    params.orgparentid = "('" + orgparentid.orgid.join("','") + "')"
-                //    return svc.lookupOrgUnitByParents(params)
-                //}
-                return svc.lookupOrgUnitByParent(params)
+                params.filter = "AND ParentOrgUnitId IN ('" + orgs.orgid.join("','") + "')"
+                return svc.lookupOrgUnitByParents(params)
             }
         }  
 
