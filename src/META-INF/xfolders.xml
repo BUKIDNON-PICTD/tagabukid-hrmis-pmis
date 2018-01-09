@@ -14,6 +14,7 @@
     <folder id="home">
         <folder id="hrmis" caption="HRMIS">
             <folder id="hrmismaster" caption="Master File" index="5"/>
+        
         </folder>
     </folder>
 </folders>

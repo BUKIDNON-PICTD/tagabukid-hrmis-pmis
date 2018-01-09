@@ -1,11 +1,13 @@
-<workunit>
+<workunit extends="com/rameses/seti2/templates/CrudForm.xml"  schemaName="pmis_transaction">
     <invokers>
-       <invoker folderid="/home/hrmis/hrmismaster" caption="Hrmis Transactions" index="10" action="init" />
+      
+        <invoker type="pmis_transaction:open" caption="Hrmis Transactions" action="create"/>
+        <invoker type="pmis_transaction:create" caption="Hrmis Transactions" action="open"/>
+         
     </invokers>
     <code class="tagabukid.hrmis.pmis.models.TransactionController"/>
-    
     <pages>
-        <page template="tagabukid.hrmis.pmis.views.TransactionFrom"/>
+        <page template="tagabukid.hrmis.pmis.views.TransactionForm"/>
     </pages>
     
 </workunit>
