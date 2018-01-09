@@ -16,20 +16,25 @@
         {
             @Service("TagabukidPMISLookupService")
             def svc
+            
+            def selectedItem;
          
             def state;
-            Column[] getColumns() {
+           
+         Column[] getColumns() {
                 return [
-                    new Column(name:"Name.LastName", caption:"Last Name", width:250),
+                   new Column(name:"Name.LastName", caption:"Last Name", width:250),
                     new Column(name:"Name.FirstName", caption:"First Name", width:250),
-                    new Column(name:"name.MiddleName", caption:"Middle Name", width:250),
+                    new Column(name:"Name.MiddleName", caption:"Middle Name", width:250),
                 ]
             }
 
             List fetchList( Map params ) { 
-                return svc.lookupProfile(params)
+            println lookupProfile    
+            return svc.lookupProfile(params)
+                
             }
         }  
-    }
+    
     </code>
 </workunit>
