@@ -2,7 +2,7 @@
     
     <invokers>
         
-        <invoker type="pmisemployee:lookupPostgreHrmis" caption="Employee Lookup" target="popup" > </invoker>
+        <invoker type="pmis:lookupPostgreHrmis" caption="Employee Lookup" target="popup" > </invoker>
         
     </invokers>
      <code>
@@ -17,22 +17,17 @@
             @Service("TagabukidPMISLookupService")
             def svc
             
-            def selectedItem;
-         
-            def state;
-           
-         Column[] getColumns() {
+            Column[] getColumns() {
                 return [
-                   new Column(name:"Name.LastName", caption:"Last Name", width:250),
+                    new Column(name:"Name.LastName", caption:"Last Name", width:250),
                     new Column(name:"Name.FirstName", caption:"First Name", width:250),
                     new Column(name:"Name.MiddleName", caption:"Middle Name", width:250),
+                    new Column(name:"Entity.Name", caption:"Office Name", width:250),
                 ]
             }
 
             List fetchList( Map params ) { 
-            println lookupProfile    
-            return svc.lookupProfile(params)
-                
+                return svc.lookupProfile(params)
             }
         }  
     
