@@ -1,0 +1,6 @@
+<workunit extends="com/rameses/seti2/templates/CrudList.xml" schemaName="pmis_ipcr">
+    <invokers>
+       <invoker folderid="/home/hrmis" caption="IPCR No Rating" action="init" index="10" />
+       <invoker folderid="/explorer/txn/hrmistransaction" action="init" caption="IPCR No Rating" index="20"/>   
+    </invokers> 
+</workunit>

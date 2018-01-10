@@ -2,7 +2,7 @@
     
     <invokers>
         
-        <invoker type="pmis:lookuporg" caption="Organization Lookup" target="popup" > </invoker>
+        <invoker type="pmisorg:lookup" caption="Organization Lookup" target="popup" > </invoker>
         
     </invokers>
      <code>
@@ -27,7 +27,12 @@
             }
 
             List fetchList( Map params ) { 
-                return svc.lookupOrgUnit(params)
+                params.orgparentid = orgparentid
+                //if(orgparentid.size() > 0){
+                //    params.orgparentid = "('" + orgparentid.orgid.join("','") + "')"
+                //    return svc.lookupOrgUnitByParents(params)
+                //}
+                return svc.lookupOrgUnitByParent(params)
             }
         }  
 

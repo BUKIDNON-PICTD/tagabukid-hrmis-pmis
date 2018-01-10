@@ -1,6 +1,0 @@
-<workunit extends="com/rameses/seti2/templates/CrudList.xml" schemaName="pmis_transaction">
-    <invokers>
-       <invoker folderid="/home/hrmis" caption="Hrmis Transactions" action="init" index="10" />
-       <invoker folderid="/explorer/txn/hrmistransaction" action="init" caption="HRMIS transaction" index="20"/>   
-    </invokers> 
-</workunit>
