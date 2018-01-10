@@ -16,6 +16,78 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`tagabukid_hrmis` /*!40100 DEFAULT CHARA
 
 USE `tagabukid_hrmis`;
 
+/*Table structure for table `pmis_ipcr` */
+
+DROP TABLE IF EXISTS `pmis_ipcr`;
+
+CREATE TABLE `pmis_ipcr` (
+  `objid` varchar(50) NOT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `period` int(11) DEFAULT NULL,
+  `ipcrno` varchar(100) DEFAULT NULL,
+  `employeeid` varchar(100) NOT NULL,
+  `Name_LastName` varchar(200) NOT NULL,
+  `Name_FirstName` varchar(200) NOT NULL,
+  `Name_MiddleName` varchar(200) NOT NULL,
+  `Name_NameExtension` varchar(50) DEFAULT NULL,
+  `Name_PreName` varchar(50) DEFAULT NULL,
+  `orgid` varchar(100) NOT NULL,
+  `org_name` varchar(200) NOT NULL,
+  `org_code` varchar(50) DEFAULT NULL,
+  `dtfiled` date NOT NULL,
+  `reviewerid` varchar(100) DEFAULT NULL,
+  `reviewer_Name_LastName` varchar(200) DEFAULT NULL,
+  `reviewer_Name_FirstName` varchar(200) DEFAULT NULL,
+  `reviewer_Name_MiddleName` varchar(50) DEFAULT NULL,
+  `reviewer_Name_NameExtension` varchar(200) NOT NULL,
+  `reviewer_Name_PreNameTitle` varchar(50) DEFAULT NULL,
+  `reviewer_Name_PostNameTitle` varchar(50) DEFAULT NULL,
+  `supervisorid` varchar(100) DEFAULT NULL,
+  `supervisor_Name_LastName` varchar(200) NOT NULL,
+  `supervisor_Name_FirstName` varchar(200) NOT NULL,
+  `supervisor_Name_MiddleName` varchar(200) NOT NULL,
+  `supervisor_Name_NameExtension` varchar(200) NOT NULL,
+  `supervisor_Name_PreNameTitle` varchar(50) DEFAULT NULL,
+  `supervisor_Name_PostNameTitle` varchar(50) DEFAULT NULL,
+  `approverid` varchar(100) DEFAULT NULL,
+  `approver_Name_LastName` varchar(200) NOT NULL,
+  `approver_Name_FirstName` varchar(200) NOT NULL,
+  `approver_Name_MiddleName` varchar(200) NOT NULL,
+  `approver_Name_NameExtension` varchar(200) NOT NULL,
+  `approver_Name_PreNameTitle` varchar(50) DEFAULT NULL,
+  `approver_Name_PostNameTitle` varchar(50) DEFAULT NULL,
+  `recordlog_datecreated` datetime NOT NULL,
+  `recordlog_createdbyuserid` varchar(50) NOT NULL,
+  `recordlog_createdbyuser` varchar(100) NOT NULL,
+  `recordlog_dateoflastupdate` datetime NOT NULL,
+  `recordlog_lastupdatedbyuserid` varchar(50) NOT NULL,
+  `recordlog_lastupdatedbyuser` varchar(100) NOT NULL,
+  PRIMARY KEY (`objid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `pmis_ipcr` */
+
+/*Table structure for table `pmis_ipcr_details` */
+
+DROP TABLE IF EXISTS `pmis_ipcr_details`;
+
+CREATE TABLE `pmis_ipcr_details` (
+  `objid` varchar(50) NOT NULL,
+  `ipcrid` varchar(50) NOT NULL,
+  `successindicatorid` varchar(50) NOT NULL,
+  `q` int(11) DEFAULT NULL,
+  `e` int(11) DEFAULT NULL,
+  `t` int(11) DEFAULT NULL,
+  `remarks` text,
+  PRIMARY KEY (`objid`),
+  KEY `ipcrid` (`ipcrid`),
+  KEY `successindicatorid` (`successindicatorid`),
+  CONSTRAINT `pmis_ipcr_details_ibfk_1` FOREIGN KEY (`ipcrid`) REFERENCES `pmis_ipcr` (`objid`),
+  CONSTRAINT `pmis_ipcr_details_ibfk_2` FOREIGN KEY (`successindicatorid`) REFERENCES `pmis_successindicators` (`objid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `pmis_ipcr_details` */
+
 /*Table structure for table `pmis_majorfinaloutputs` */
 
 DROP TABLE IF EXISTS `pmis_majorfinaloutputs`;
@@ -95,111 +167,21 @@ CREATE TABLE `pmis_ratings` (
 /*Data for the table `pmis_ratings` */
 
 insert  into `pmis_ratings`(`objid`,`type`,`state`,`siid`,`title`,`rating`) values 
-('ESI-32127dff:1607145d263:-7a88','E','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,1),
-('ESI-32127dff:1607145d263:-7a89','E','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,2),
-('ESI-32127dff:1607145d263:-7a8a','E','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,3),
-('ESI-32127dff:1607145d263:-7a8b','E','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,4),
-('ESI-32127dff:1607145d263:-7a8c','E','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,5),
-('ESI-32127dff:1607145d263:-7d81','E','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TET',1),
-('ESI-32127dff:1607145d263:-7d82','E','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TEST',2),
-('ESI-32127dff:1607145d263:-7d83','E','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TET',3),
-('ESI-32127dff:1607145d263:-7d84','E','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TEST',4),
-('ESI-32127dff:1607145d263:-7d85','E','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TEST',5),
-('ESI-32127dff:1607145d263:-7fce','E','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TEST',1),
-('ESI-32127dff:1607145d263:-7fcf','E','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TEST',2),
-('ESI-32127dff:1607145d263:-7fd0','E','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TEST',3),
-('ESI-32127dff:1607145d263:-7fd1','E','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TEST',4),
-('ESI-32127dff:1607145d263:-7fd2','E','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TEST',5),
-('ESI-553f27e2:160be8caa7e:-7fd3','E','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,1),
-('ESI-553f27e2:160be8caa7e:-7fd4','E','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,2),
-('ESI-553f27e2:160be8caa7e:-7fd5','E','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,3),
-('ESI-553f27e2:160be8caa7e:-7fd6','E','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,4),
-('ESI-553f27e2:160be8caa7e:-7fd7','E','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,5),
-('ESI-7a96f3f7:160b961bda9:-7e59','E','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,1),
-('ESI-7a96f3f7:160b961bda9:-7e5a','E','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,2),
-('ESI-7a96f3f7:160b961bda9:-7e5b','E','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,3),
-('ESI-7a96f3f7:160b961bda9:-7e5c','E','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,4),
-('ESI-7a96f3f7:160b961bda9:-7e5d','E','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,5),
-('ESI-7a96f3f7:160b961bda9:-7ec8','E','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,1),
-('ESI-7a96f3f7:160b961bda9:-7ec9','E','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,2),
-('ESI-7a96f3f7:160b961bda9:-7eca','E','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,3),
-('ESI-7a96f3f7:160b961bda9:-7ecb','E','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,4),
-('ESI-7a96f3f7:160b961bda9:-7ecc','E','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,5),
-('ESI-7a96f3f7:160b961bda9:-7eee','E','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,1),
-('ESI-7a96f3f7:160b961bda9:-7eef','E','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,2),
-('ESI-7a96f3f7:160b961bda9:-7ef0','E','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,3),
-('ESI-7a96f3f7:160b961bda9:-7ef1','E','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,4),
-('ESI-7a96f3f7:160b961bda9:-7ef2','E','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,5),
-('QSI-32127dff:1607145d263:-7a92','Q','DRAFT','SI2200dba1:1607273eab4:-7d7e','TSET',1),
-('QSI-32127dff:1607145d263:-7a93','Q','DRAFT','SI2200dba1:1607273eab4:-7d7e','TSET',2),
-('QSI-32127dff:1607145d263:-7a94','Q','DRAFT','SI2200dba1:1607273eab4:-7d7e','TSET',3),
-('QSI-32127dff:1607145d263:-7a95','Q','DRAFT','SI2200dba1:1607273eab4:-7d7e','TEST',4),
-('QSI-32127dff:1607145d263:-7a96','Q','DRAFT','SI2200dba1:1607273eab4:-7d7e','TSET',5),
-('QSI-32127dff:1607145d263:-7d8b','Q','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TEST',1),
-('QSI-32127dff:1607145d263:-7d8c','Q','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TEST',2),
-('QSI-32127dff:1607145d263:-7d8d','Q','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TSET',3),
-('QSI-32127dff:1607145d263:-7d8e','Q','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TEST',4),
-('QSI-32127dff:1607145d263:-7d8f','Q','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TEST',5),
-('QSI-32127dff:1607145d263:-7fd8','Q','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TESTS',1),
-('QSI-32127dff:1607145d263:-7fd9','Q','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TEST',2),
-('QSI-32127dff:1607145d263:-7fda','Q','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TEST',3),
-('QSI-32127dff:1607145d263:-7fdb','Q','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TEST',4),
-('QSI-32127dff:1607145d263:-7fdc','Q','DRAFT','SI7ce7cfb7:16071462859:-7b7e','TEST',5),
-('QSI-553f27e2:160be8caa7e:-7fdd','Q','DRAFT','SI-4658a457:160be8ceae5:-7c6f','TEST',1),
-('QSI-553f27e2:160be8caa7e:-7fde','Q','DRAFT','SI-4658a457:160be8ceae5:-7c6f','TET',2),
-('QSI-553f27e2:160be8caa7e:-7fdf','Q','DRAFT','SI-4658a457:160be8ceae5:-7c6f','TEST',3),
-('QSI-553f27e2:160be8caa7e:-7fe0','Q','DRAFT','SI-4658a457:160be8ceae5:-7c6f','TEST',4),
-('QSI-553f27e2:160be8caa7e:-7fe1','Q','DRAFT','SI-4658a457:160be8ceae5:-7c6f','TEST',5),
-('QSI-7a96f3f7:160b961bda9:-7e63','Q','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,1),
-('QSI-7a96f3f7:160b961bda9:-7e64','Q','DRAFT','SI861c0b6:160b9a90d8e:-7be8','1',2),
-('QSI-7a96f3f7:160b961bda9:-7e65','Q','DRAFT','SI861c0b6:160b9a90d8e:-7be8','1',3),
-('QSI-7a96f3f7:160b961bda9:-7e66','Q','DRAFT','SI861c0b6:160b9a90d8e:-7be8','1',4),
-('QSI-7a96f3f7:160b961bda9:-7e67','Q','DRAFT','SI861c0b6:160b9a90d8e:-7be8','1',5),
-('QSI-7a96f3f7:160b961bda9:-7ed2','Q','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,1),
-('QSI-7a96f3f7:160b961bda9:-7ed3','Q','DRAFT','SI2b2d0c91:160b98ef364:-768c','SET',2),
-('QSI-7a96f3f7:160b961bda9:-7ed4','Q','DRAFT','SI2b2d0c91:160b98ef364:-768c','TET',3),
-('QSI-7a96f3f7:160b961bda9:-7ed5','Q','DRAFT','SI2b2d0c91:160b98ef364:-768c','TEST',4),
-('QSI-7a96f3f7:160b961bda9:-7ed6','Q','DRAFT','SI2b2d0c91:160b98ef364:-768c','TEST',5),
-('QSI-7a96f3f7:160b961bda9:-7ef8','Q','DRAFT','SI2b2d0c91:160b98ef364:-7bb3','1',1),
-('QSI-7a96f3f7:160b961bda9:-7ef9','Q','DRAFT','SI2b2d0c91:160b98ef364:-7bb3','TESTS',2),
-('QSI-7a96f3f7:160b961bda9:-7efa','Q','DRAFT','SI2b2d0c91:160b98ef364:-7bb3','SETES',3),
-('QSI-7a96f3f7:160b961bda9:-7efb','Q','DRAFT','SI2b2d0c91:160b98ef364:-7bb3','TEST',4),
-('QSI-7a96f3f7:160b961bda9:-7efc','Q','DRAFT','SI2b2d0c91:160b98ef364:-7bb3','TEST',5),
-('TSI-32127dff:1607145d263:-7a8d','T','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,1),
-('TSI-32127dff:1607145d263:-7a8e','T','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,2),
-('TSI-32127dff:1607145d263:-7a8f','T','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,3),
-('TSI-32127dff:1607145d263:-7a90','T','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,4),
-('TSI-32127dff:1607145d263:-7a91','T','DRAFT','SI2200dba1:1607273eab4:-7d7e',NULL,5),
-('TSI-32127dff:1607145d263:-7d86','T','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TSET',1),
-('TSI-32127dff:1607145d263:-7d87','T','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TEST',2),
-('TSI-32127dff:1607145d263:-7d88','T','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TEST',3),
-('TSI-32127dff:1607145d263:-7d89','T','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TSET',4),
-('TSI-32127dff:1607145d263:-7d8a','T','DRAFT','SI-7ac1b0ff:16071c5415b:-7d7e','TES',5),
-('TSI-32127dff:1607145d263:-7fd3','T','DRAFT','SI7ce7cfb7:16071462859:-7b7e',NULL,1),
-('TSI-32127dff:1607145d263:-7fd4','T','DRAFT','SI7ce7cfb7:16071462859:-7b7e',NULL,2),
-('TSI-32127dff:1607145d263:-7fd5','T','DRAFT','SI7ce7cfb7:16071462859:-7b7e',NULL,3),
-('TSI-32127dff:1607145d263:-7fd6','T','DRAFT','SI7ce7cfb7:16071462859:-7b7e',NULL,4),
-('TSI-32127dff:1607145d263:-7fd7','T','DRAFT','SI7ce7cfb7:16071462859:-7b7e',NULL,5),
-('TSI-553f27e2:160be8caa7e:-7fd8','T','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,1),
-('TSI-553f27e2:160be8caa7e:-7fd9','T','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,2),
-('TSI-553f27e2:160be8caa7e:-7fda','T','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,3),
-('TSI-553f27e2:160be8caa7e:-7fdb','T','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,4),
-('TSI-553f27e2:160be8caa7e:-7fdc','T','DRAFT','SI-4658a457:160be8ceae5:-7c6f',NULL,5),
-('TSI-7a96f3f7:160b961bda9:-7e5e','T','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,1),
-('TSI-7a96f3f7:160b961bda9:-7e5f','T','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,2),
-('TSI-7a96f3f7:160b961bda9:-7e60','T','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,3),
-('TSI-7a96f3f7:160b961bda9:-7e61','T','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,4),
-('TSI-7a96f3f7:160b961bda9:-7e62','T','DRAFT','SI861c0b6:160b9a90d8e:-7be8',NULL,5),
-('TSI-7a96f3f7:160b961bda9:-7ecd','T','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,1),
-('TSI-7a96f3f7:160b961bda9:-7ece','T','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,2),
-('TSI-7a96f3f7:160b961bda9:-7ecf','T','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,3),
-('TSI-7a96f3f7:160b961bda9:-7ed0','T','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,4),
-('TSI-7a96f3f7:160b961bda9:-7ed1','T','DRAFT','SI2b2d0c91:160b98ef364:-768c',NULL,5),
-('TSI-7a96f3f7:160b961bda9:-7ef3','T','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,1),
-('TSI-7a96f3f7:160b961bda9:-7ef4','T','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,2),
-('TSI-7a96f3f7:160b961bda9:-7ef5','T','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,3),
-('TSI-7a96f3f7:160b961bda9:-7ef6','T','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,4),
-('TSI-7a96f3f7:160b961bda9:-7ef7','T','DRAFT','SI2b2d0c91:160b98ef364:-7bb3',NULL,5);
+('ESI-1269f605:160d981c711:-7fd3','E','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,1),
+('ESI-1269f605:160d981c711:-7fd4','E','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,2),
+('ESI-1269f605:160d981c711:-7fd5','E','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,3),
+('ESI-1269f605:160d981c711:-7fd6','E','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,4),
+('ESI-1269f605:160d981c711:-7fd7','E','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,5),
+('QSI-1269f605:160d981c711:-7fdd','Q','DRAFT','SI44e8b2ca:160d9827951:-7c2f','TEST',1),
+('QSI-1269f605:160d981c711:-7fde','Q','DRAFT','SI44e8b2ca:160d9827951:-7c2f','TEST',2),
+('QSI-1269f605:160d981c711:-7fdf','Q','DRAFT','SI44e8b2ca:160d9827951:-7c2f','TEST',3),
+('QSI-1269f605:160d981c711:-7fe0','Q','DRAFT','SI44e8b2ca:160d9827951:-7c2f','TEST',4),
+('QSI-1269f605:160d981c711:-7fe1','Q','DRAFT','SI44e8b2ca:160d9827951:-7c2f','TEST',5),
+('TSI-1269f605:160d981c711:-7fd8','T','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,1),
+('TSI-1269f605:160d981c711:-7fd9','T','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,2),
+('TSI-1269f605:160d981c711:-7fda','T','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,3),
+('TSI-1269f605:160d981c711:-7fdb','T','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,4),
+('TSI-1269f605:160d981c711:-7fdc','T','DRAFT','SI44e8b2ca:160d9827951:-7c2f',NULL,5);
 
 /*Table structure for table `pmis_spms_periods` */
 
@@ -239,16 +221,8 @@ CREATE TABLE `pmis_successindicators` (
 /*Data for the table `pmis_successindicators` */
 
 insert  into `pmis_successindicators`(`objid`,`state`,`title`,`code`,`allotedbudget`,`actualaccomplishment`,`remarks`,`parentid`,`type`,`lft`,`rgt`) values 
-('2017','SYSTEM','PMIS 2017','2017',NULL,NULL,NULL,NULL,'pmis',1,232),
-('SI-4658a457:160be8ceae5:-7c6f','DRAFT','TEST','TEST',NULL,'test	','test	','SI2b2d0c91:160b98ef364:-76ce','ip',13,14),
-('SI2b2d0c91:160b98ef364:-768c','DRAFT','IP','IP',1.00,'test','test','SI2b2d0c91:160b98ef364:-76ce','ip',15,16),
-('SI2b2d0c91:160b98ef364:-76ce','DRAFT','DP','DP',10.00,'test','test','SI2b2d0c91:160b98ef364:-771e','dp',12,17),
-('SI2b2d0c91:160b98ef364:-771e','DRAFT','OP','OP',9.00,'test','test','SI2b2d0c91:160b98ef364:-775e','op',11,18),
-('SI2b2d0c91:160b98ef364:-775e','DRAFT','MFO','MFO',10.00,'test','test','2017','mfo',10,19),
-('SI861c0b6:160b9a90d8e:-7be8','DRAFT','TSET','TEST',13.00,'test	test','test','SI861c0b6:160b9a90d8e:-7ccf','ip',5,6),
-('SI861c0b6:160b9a90d8e:-7ccf','DRAFT','TEST','TEST',13.00,'test	','test	','SI861c0b6:160b9a90d8e:-7d0d','dp',4,7),
-('SI861c0b6:160b9a90d8e:-7d0d','DRAFT','TSET','TEST',123.00,'tests	test','test	','SI861c0b6:160b9a90d8e:-7d39','op',3,8),
-('SI861c0b6:160b9a90d8e:-7d39','DRAFT','TEST','TEST',10.00,'test	test	','tsete','2017','mfo',2,9);
+('ROOT','SYSTEM','ROOT','ROOT',NULL,NULL,NULL,NULL,'root',1,4),
+('SI32730db3:160d0d14d7b:-7d74','DRAFT','2018','2018',NULL,NULL,'test','ROOT','pmis',2,3);
 
 /*Table structure for table `pmis_successindicators_org` */
 
@@ -264,6 +238,7 @@ CREATE TABLE `pmis_successindicators_org` (
 
 insert  into `pmis_successindicators_org`(`siid`,`orgid`) values 
 ('SI-1e2073bb:160b97187ba:-7c22','ff6936db-9692-4d0f-98a0-63c1ceda0f2f'),
+('SI-30abc040:160d860b47f:-7c17','99ab60a7-b694-4718-9f1e-567a6ede56d2'),
 ('SI-34c93280:160687210e5:-7d8e','c9de1d79-c083-49d1-a07a-386db92d26c4'),
 ('SI-39cfa1c8:1606841b22d:-7d0a','cf36ee99-c52b-4d20-92fd-e8f78f39f622'),
 ('SI-42ebcabd:1606d5f3615:-7d3b','a3315bc5-5559-4037-b389-b825857a591c'),
@@ -280,6 +255,7 @@ insert  into `pmis_successindicators_org`(`siid`,`orgid`) values
 ('SI2b2d0c91:160b98ef364:-7c5f','-7a96f3f7:160b961bda9:-7f00'),
 ('SI2b2d0c91:160b98ef364:-7ccc','99ab60a7-b694-4718-9f1e-567a6ede56d2'),
 ('SI2d9cf08e:1604d812fe9:-7dbe','3e9b0513-3406-4869-bd53-4c05c68a76c4'),
+('SI32730db3:160d0d14d7b:-7c52','99ab60a7-b694-4718-9f1e-567a6ede56d2'),
 ('SI44f86f56:160b984a3fe:-7d3c','99ab60a7-b694-4718-9f1e-567a6ede56d2'),
 ('SI6a70165e:1604ed9aa76:-7d3e','b69be8d2-54fa-45f8-a2b6-0ae4006e49a8'),
 ('SI861c0b6:160b9a90d8e:-7ccf','2673d2e1-0b6c-4c5a-904d-a63109bbfbc3'),
