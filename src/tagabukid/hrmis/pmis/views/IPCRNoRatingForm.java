@@ -212,7 +212,7 @@ public class IPCRNoRatingForm extends javax.swing.JPanel {
 
         xLookupField2.setCaption("Immediate Supervisor");
         xLookupField2.setHandler("lookupSupervisor");
-        xLookupField2.setName("entity.supervisior"); // NOI18N
+        xLookupField2.setName("entity.supervisor"); // NOI18N
         xLookupField2.setPreferredSize(new java.awt.Dimension(0, 20));
         xLookupField2.setRequired(true);
         xFormPanel1.add(xLookupField2);
