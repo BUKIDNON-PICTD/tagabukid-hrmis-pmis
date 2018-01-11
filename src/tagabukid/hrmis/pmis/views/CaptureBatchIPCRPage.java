@@ -15,12 +15,12 @@ import com.rameses.seti2.views.CrudFormPage;
  */
 @StyleSheet
 @Template(CrudFormPage.class)
-public class IPCRNoRatingForm extends javax.swing.JPanel {
+public class CaptureBatchIPCRPage extends javax.swing.JPanel {
 
     /**
      * Creates new form TransactionForm
      */
-    public IPCRNoRatingForm() {
+    public CaptureBatchIPCRPage() {
         initComponents();
     }
 
@@ -33,9 +33,6 @@ public class IPCRNoRatingForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        xDataTable1 = new com.rameses.rcp.control.XDataTable();
-        xDataTable2 = new com.rameses.rcp.control.XDataTable();
-        xDataTable3 = new com.rameses.rcp.control.XDataTable();
         xHorizontalPanel1 = new com.rameses.rcp.control.XHorizontalPanel();
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
         xLabel1 = new com.rameses.rcp.control.XLabel();
@@ -48,10 +45,101 @@ public class IPCRNoRatingForm extends javax.swing.JPanel {
         xLabel4 = new com.rameses.rcp.control.XLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         xTextArea2 = new com.rameses.rcp.control.XTextArea();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        xDataTable1 = new com.rameses.rcp.control.XDataTable();
+        xDataTable2 = new com.rameses.rcp.control.XDataTable();
+        xDataTable3 = new com.rameses.rcp.control.XDataTable();
+        jPanel2 = new javax.swing.JPanel();
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder1.setTitle("Employee Inforamtion");
-        xDataTable1.setBorder(xTitledBorder1);
+        xTitledBorder1.setTitle("IPCR Information");
+        xHorizontalPanel1.setBorder(xTitledBorder1);
+        xHorizontalPanel1.setBorderSeparator(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        xHorizontalPanel1.setPreferredSize(new java.awt.Dimension(1008, 165));
+
+        xFormPanel1.setCaptionWidth(130);
+        xFormPanel1.setName(""); // NOI18N
+        xFormPanel1.setPreferredSize(new java.awt.Dimension(500, 100));
+
+        xLabel1.setBorder(new com.rameses.rcp.control.border.XLineBorder());
+        xLabel1.setCaption("IPCR No.");
+        xLabel1.setDepends(new String[] {});
+        xLabel1.setEnabled(false);
+        xLabel1.setOpaque(true);
+        xLabel1.setPreferredSize(new java.awt.Dimension(0, 16));
+        xFormPanel1.add(xLabel1);
+
+        xLookupField1.setCaption("Reviewer");
+        xLookupField1.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField1.setHandler("lookupSignatory");
+        xLookupField1.setName("entity.reviewer"); // NOI18N
+        xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));
+        xLookupField1.setRequired(true);
+        xFormPanel1.add(xLookupField1);
+
+        xLookupField2.setCaption("Immediate Supervisor");
+        xLookupField2.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField2.setHandler("lookupSignatory");
+        xLookupField2.setName("entity.supervisior"); // NOI18N
+        xLookupField2.setPreferredSize(new java.awt.Dimension(0, 20));
+        xLookupField2.setRequired(true);
+        xFormPanel1.add(xLookupField2);
+
+        xLookupField3.setCaption("Approver");
+        xLookupField3.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField3.setHandler("lookupSignatory");
+        xLookupField3.setName("entity.approver"); // NOI18N
+        xLookupField3.setPreferredSize(new java.awt.Dimension(0, 20));
+        xLookupField3.setRequired(true);
+        xFormPanel1.add(xLookupField3);
+
+        xComboBox1.setCaption("Period");
+        xComboBox1.setItems("period");
+        xComboBox1.setName("entity.period"); // NOI18N
+        xComboBox1.setRequired(true);
+        xFormPanel1.add(xComboBox1);
+
+        xHorizontalPanel1.add(xFormPanel1);
+
+        xFormPanel2.setCaptionWidth(100);
+        xFormPanel2.setPreferredSize(new java.awt.Dimension(500, 100));
+
+        xLabel7.setBorder(new com.rameses.rcp.control.border.XLineBorder());
+        xLabel7.setCaption("Created By");
+        xLabel7.setExpression("#{entity.recordlog.createdbyuser}");
+        xLabel7.setFor("");
+        xLabel7.setName(""); // NOI18N
+        xLabel7.setOpaque(true);
+        xLabel7.setPreferredSize(new java.awt.Dimension(0, 16));
+        xFormPanel2.add(xLabel7);
+
+        xLabel4.setBorder(new com.rameses.rcp.control.border.XLineBorder());
+        xLabel4.setCaption("Date Created");
+        xLabel4.setExpression("#{entity.recordlog.datecreated}");
+        xLabel4.setFor("");
+        xLabel4.setOpaque(true);
+        xLabel4.setPreferredSize(new java.awt.Dimension(0, 16));
+        xFormPanel2.add(xLabel4);
+
+        jScrollPane2.setBorder(new com.rameses.rcp.control.border.XLineBorder());
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(0, 40));
+
+        xTextArea2.setEditable(false);
+        xTextArea2.setCaption("");
+        xTextArea2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        xTextArea2.setForeground(new java.awt.Color(204, 0, 0));
+        xTextArea2.setItemExpression("");
+        xTextArea2.setName("entity.state"); // NOI18N
+        jScrollPane2.setViewportView(xTextArea2);
+
+        xFormPanel2.add(jScrollPane2);
+
+        xHorizontalPanel1.add(xFormPanel2);
+
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder2 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder2.setTitle("Employee Inforamtion");
+        xDataTable1.setBorder(xTitledBorder2);
         xDataTable1.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "lastname"}
@@ -125,12 +213,12 @@ public class IPCRNoRatingForm extends javax.swing.JPanel {
         xDataTable1.setHandler("employeeListHandler");
         xDataTable1.setName("selectedEmployee"); // NOI18N
 
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder2 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder2.setTitle("DPCR");
-        xDataTable2.setBorder(xTitledBorder2);
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder3 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder3.setTitle("DPCR");
+        xDataTable2.setBorder(xTitledBorder3);
         xDataTable2.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "successindicator"}
+                new Object[]{"name", "dptitle"}
                 , new Object[]{"caption", "Success Indicator"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 0}
@@ -148,9 +236,9 @@ public class IPCRNoRatingForm extends javax.swing.JPanel {
         xDataTable2.setHandler("dpcrListHandler");
         xDataTable2.setName("selectedDPCR"); // NOI18N
 
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder3 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder3.setTitle("Success Indicator");
-        xDataTable3.setBorder(xTitledBorder3);
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder4 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder4.setTitle("Success Indicator");
+        xDataTable3.setBorder(xTitledBorder4);
         xDataTable3.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "successindicator"}
@@ -164,7 +252,7 @@ public class IPCRNoRatingForm extends javax.swing.JPanel {
                 , new Object[]{"editable", true}
                 , new Object[]{"editableWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.LookupColumnHandler("#{item.title}", "lookupIPCRSuccessIndicator")}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.LookupColumnHandler("#{item.successindicator.title}", "lookupIPCRSuccessIndicator")}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "remarks"}
@@ -186,87 +274,44 @@ public class IPCRNoRatingForm extends javax.swing.JPanel {
         xDataTable3.setHandler("ipcrListHandler");
         xDataTable3.setName("selectedIPCR"); // NOI18N
 
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder4 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder4.setTitle("IPCR Information");
-        xHorizontalPanel1.setBorder(xTitledBorder4);
-        xHorizontalPanel1.setBorderSeparator(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        xHorizontalPanel1.setPreferredSize(new java.awt.Dimension(1008, 165));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xDataTable3, javax.swing.GroupLayout.DEFAULT_SIZE, 1023, Short.MAX_VALUE)
+                    .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(xDataTable2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(xDataTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xDataTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xDataTable3, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        xFormPanel1.setCaptionWidth(130);
-        xFormPanel1.setName(""); // NOI18N
-        xFormPanel1.setPreferredSize(new java.awt.Dimension(500, 100));
+        jTabbedPane1.addTab("IPCR", jPanel1);
 
-        xLabel1.setBorder(new com.rameses.rcp.control.border.XLineBorder());
-        xLabel1.setCaption("IPCR No.");
-        xLabel1.setOpaque(true);
-        xLabel1.setPreferredSize(new java.awt.Dimension(0, 16));
-        xLabel1.setText("#{entity.ipcrno}");
-        xFormPanel1.add(xLabel1);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1043, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 435, Short.MAX_VALUE)
+        );
 
-        xLookupField1.setCaption("Reviewer");
-        xLookupField1.setHandler("lookupReviewer");
-        xLookupField1.setName("entity.reviewer"); // NOI18N
-        xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));
-        xLookupField1.setRequired(true);
-        xFormPanel1.add(xLookupField1);
-
-        xLookupField2.setCaption("Immediate Supervisor");
-        xLookupField2.setHandler("lookupSupervisor");
-        xLookupField2.setName("entity.supervisior"); // NOI18N
-        xLookupField2.setPreferredSize(new java.awt.Dimension(0, 20));
-        xLookupField2.setRequired(true);
-        xFormPanel1.add(xLookupField2);
-
-        xLookupField3.setCaption("Approver");
-        xLookupField3.setHandler("lookupApprover");
-        xLookupField3.setName("entity.approver"); // NOI18N
-        xLookupField3.setPreferredSize(new java.awt.Dimension(0, 20));
-        xLookupField3.setRequired(true);
-        xFormPanel1.add(xLookupField3);
-
-        xComboBox1.setCaption("Period");
-        xComboBox1.setItems("period");
-        xComboBox1.setName("entity.period"); // NOI18N
-        xComboBox1.setRequired(true);
-        xFormPanel1.add(xComboBox1);
-
-        xHorizontalPanel1.add(xFormPanel1);
-
-        xFormPanel2.setCaptionWidth(100);
-        xFormPanel2.setPreferredSize(new java.awt.Dimension(500, 100));
-
-        xLabel7.setBorder(new com.rameses.rcp.control.border.XLineBorder());
-        xLabel7.setCaption("Created By");
-        xLabel7.setExpression("#{entity.recordlog.createdbyuser}");
-        xLabel7.setFor("");
-        xLabel7.setName(""); // NOI18N
-        xLabel7.setOpaque(true);
-        xLabel7.setPreferredSize(new java.awt.Dimension(0, 16));
-        xFormPanel2.add(xLabel7);
-
-        xLabel4.setBorder(new com.rameses.rcp.control.border.XLineBorder());
-        xLabel4.setCaption("Date Created");
-        xLabel4.setExpression("#{entity.recordlog.datecreated}");
-        xLabel4.setFor("");
-        xLabel4.setOpaque(true);
-        xLabel4.setPreferredSize(new java.awt.Dimension(0, 16));
-        xFormPanel2.add(xLabel4);
-
-        jScrollPane2.setBorder(new com.rameses.rcp.control.border.XLineBorder());
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(0, 40));
-
-        xTextArea2.setEditable(false);
-        xTextArea2.setBackground(new java.awt.Color(240, 240, 240));
-        xTextArea2.setCaption("");
-        xTextArea2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        xTextArea2.setForeground(new java.awt.Color(204, 0, 0));
-        xTextArea2.setItemExpression("");
-        xTextArea2.setName("entity.statemessage"); // NOI18N
-        jScrollPane2.setViewportView(xTextArea2);
-
-        xFormPanel2.add(jScrollPane2);
-
-        xHorizontalPanel1.add(xFormPanel2);
+        jTabbedPane1.addTab("Behavioral Rater Form", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -275,10 +320,8 @@ public class IPCRNoRatingForm extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(xDataTable3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
-                    .addComponent(xDataTable2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(xHorizontalPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(xHorizontalPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -287,18 +330,16 @@ public class IPCRNoRatingForm extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(xHorizontalPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xDataTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xDataTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xDataTable3, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTabbedPane1))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private com.rameses.rcp.control.XComboBox xComboBox1;
     private com.rameses.rcp.control.XDataTable xDataTable1;
     private com.rameses.rcp.control.XDataTable xDataTable2;
