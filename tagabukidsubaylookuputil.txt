@@ -1,0 +1,95 @@
+import com.rameses.annotations.*;
+import com.rameses.eserver.*;
+import com.rameses.common.*;
+
+class TagabukidSubayLookupUtilService
+{
+	@PersistenceContext('tagabukid_subay')
+	def em
+
+	@PersistenceContext('tagabukid_hrmis')
+	def emhrmis
+
+	@PersistenceContext('main')
+	def emmain
+
+	@PersistenceContext('postgrehrmis')
+	def emposthrmis
+
+
+	@Env
+	def env;
+	
+	@ProxyMethod
+	public def lookup( namedsql, params, pagingKeys) {
+		if (! params) params = [:]
+		params.searchtext = (params.searchtext && params.searchtext.trim().length() > 0 ? params.searchtext : '') + '%'
+		
+		def qry = em.sqlContext.createNamedQuery(namedsql)
+		
+		if (pagingKeys){
+			qry.setPagingKeys(pagingKeys)
+		}
+		if (params._start != null){
+			qry.setFirstResult( params._start )
+			qry.setMaxResults(params._limit)
+		}
+		def filter = [filter:params?.filter];
+		return qry.setParameters(params).setVars(filter).resultList 
+	}
+
+		@ProxyMethod
+	public def lookuphrmis( namedsql, params, pagingKeys) {
+		if (! params) params = [:]
+		params.searchtext = (params.searchtext && params.searchtext.trim().length() > 0 ? params.searchtext : '') + '%'
+		
+		def qry = emhrmis.sqlContext.createNamedQuery(namedsql)
+		
+		if (pagingKeys){
+			qry.setPagingKeys(pagingKeys)
+		}
+		if (params._start != null){
+			qry.setFirstResult( params._start )
+			qry.setMaxResults(params._limit)
+		}
+		def filter = [filter:params?.filter];
+		return qry.setParameters(params).setVars(filter).resultList 
+	}
+
+	@ProxyMethod
+	public def lookupMain( namedsql, params, pagingKeys) {
+		if (! params) params = [:]
+		params.searchtext = (params.searchtext && params.searchtext.trim().length() > 0 ? params.searchtext : '') + '%'
+
+		def qry = emmain.sqlContext.createNamedQuery(namedsql)
+		
+		if (pagingKeys){
+			qry.setPagingKeys(pagingKeys)
+		}
+		if (params._start != null){
+			qry.setFirstResult( params._start )
+			qry.setMaxResults(params._limit)
+		}
+		
+		return qry.setParameters(params).resultList 
+	}
+
+
+	@ProxyMethod
+	public def lookupPostgreHrmis( namedsql, params, pagingKeys) {
+		if (! params) params = [:]
+		params.searchtext = (params.searchtext && params.searchtext.trim().length() > 0 ? params.searchtext : '') + '%'
+		
+		def qry = emposthrmis.sqlContext.createNamedQuery(namedsql)
+		
+		// if (pagingKeys){
+		// 	qry.setPagingKeys(pagingKeys)
+		// }
+		// if (params._start != null){
+		// 	qry.setFirstResult( params._start )
+		// 	qry.setMaxResults(params._limit)
+		// }
+		
+		return qry.setParameters(params).resultList 
+	}
+}
