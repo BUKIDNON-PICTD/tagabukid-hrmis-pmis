@@ -67,8 +67,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
 
         xLabel1.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel1.setCaption("IPCR No.");
-        xLabel1.setDepends(new String[] {});
-        xLabel1.setEnabled(false);
+        xLabel1.setExpression("#{entity.ipcrno}");
         xLabel1.setOpaque(true);
         xLabel1.setPreferredSize(new java.awt.Dimension(0, 16));
         xFormPanel1.add(xLabel1);
@@ -137,6 +136,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xTextArea2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         xTextArea2.setForeground(new java.awt.Color(204, 0, 0));
         xTextArea2.setName("entity.state"); // NOI18N
+        xTextArea2.setShowCaption(false);
         jScrollPane2.setViewportView(xTextArea2);
 
         xFormPanel2.add(jScrollPane2);
