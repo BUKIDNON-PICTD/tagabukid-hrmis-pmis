@@ -50,7 +50,13 @@ class CaptureIPCRController extends CrudFormModel{
         }
     }
     
-     public void afterOpen(o){
+     public void afterOpen(){
+        entity.employee = svc.findProfileById(entity.employee.PersonId);
+        entity.officeassigned = svc.findOrgById(entity.orgid).Entity.Name;
+        entity.employee.dpcrlist = svc.getSIByIPCRId(entity.objid);
+//        entity.employee.dpcrlist.each{
+//            
+//        }
         println entity
     }
     def getLookupSignatory(){
