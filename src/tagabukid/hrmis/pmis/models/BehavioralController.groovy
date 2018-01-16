@@ -18,7 +18,7 @@ class BehavioralController extends CrudFormModel{
         
            
     
-    void afterCreate(){
+     void afterCreate(){
       entity = bsvc.initCreate();
          println entity;
        
