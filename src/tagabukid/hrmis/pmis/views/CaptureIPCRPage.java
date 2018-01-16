@@ -104,7 +104,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xFormPanel1.add(xDateField1);
 
         xComboBox1.setCaption("Period");
-        xComboBox1.setItems("period");
+        xComboBox1.setItems("periods");
         xComboBox1.setName("entity.period"); // NOI18N
         xComboBox1.setRequired(true);
         xFormPanel1.add(xComboBox1);

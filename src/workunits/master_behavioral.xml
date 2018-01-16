@@ -1,7 +1,9 @@
-<workunit schemaName="pmis_behavioral">
+<workunit schemaName="pmis_ipcr_behavioral_masterfile">
     <invokers>
-        <invoker type="pmis_behavioral:create" caption="MasterFile Behavioral" action="create"/>
-        <invoker type="pmis_behavioral:open" caption="MasterFile Behavioral" action="open"/>
+        <invoker type="pmis_ipcr_behavioral_masterfile:create" caption="Behavioral" action="create"/>
+        <invoker type="pmis_ipcr_behavioral_masterfile:open" caption="Behavioral" action="open"/>
+        
+        
     </invokers>
     <code class="tagabukid.hrmis.pmis.models.BehavioralController"/>
     <pages>

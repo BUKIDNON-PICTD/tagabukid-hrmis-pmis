@@ -5,11 +5,18 @@
  */
 package tagabukid.hrmis.pmis.views;
 
+import com.rameses.rcp.ui.annotations.StyleSheet;
+import com.rameses.rcp.ui.annotations.Template;
+import com.rameses.seti2.views.CrudFormPage;
+
 /**
  *
  * @author User
  */
+@StyleSheet
+@Template(CrudFormPage.class)
 public class MasterBehavioralForm extends javax.swing.JPanel {
+
 
     /**
      * Creates new form MasterBehaviorForm
@@ -30,6 +37,7 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         xTextField1 = new com.rameses.rcp.control.XTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
+        xTextField3 = new com.rameses.rcp.control.XTextField();
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
         xTextField2 = new com.rameses.rcp.control.XTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -37,10 +45,15 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         xTextArea2 = new com.rameses.rcp.control.XTextArea();
         xComboBox1 = new com.rameses.rcp.control.XComboBox();
+        xIntegerField1 = new com.rameses.rcp.control.XIntegerField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        xTextArea3 = new com.rameses.rcp.control.XTextArea();
 
         xTextField1.setText("xTextField1");
 
         jScrollPane1.setViewportView(xTextArea1);
+
+        xTextField3.setText("xTextField3");
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
         xTitledBorder1.setTitle("Behavioral");
@@ -51,13 +64,15 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         xTextField2.setCaption("Behavior");
         xTextField2.setName("entity.behavior"); // NOI18N
         xTextField2.setPreferredSize(new java.awt.Dimension(0, 20));
+        xTextField2.setRequired(true);
         xFormPanel1.add(xTextField2);
 
         jScrollPane4.setPreferredSize(new java.awt.Dimension(0, 63));
 
         xTextArea4.setCaption("Definition");
         xTextArea4.setCaptionWidth(150);
-        xTextArea4.setName("entity.defintion"); // NOI18N
+        xTextArea4.setName("entity.definition"); // NOI18N
+        xTextArea4.setRequired(true);
         jScrollPane4.setViewportView(xTextArea4);
 
         xFormPanel1.add(jScrollPane4);
@@ -67,20 +82,37 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         xTextArea2.setCaption("Success Indicator");
         xTextArea2.setCaptionWidth(150);
         xTextArea2.setName("entity.successindicator"); // NOI18N
+        xTextArea2.setRequired(true);
         jScrollPane2.setViewportView(xTextArea2);
 
         xFormPanel1.add(jScrollPane2);
 
         xComboBox1.setCaption("Type");
-        xComboBox1.setItems("type");
+        xComboBox1.setItems("types");
         xComboBox1.setName("entity.type"); // NOI18N
+        xComboBox1.setRequired(true);
         xFormPanel1.add(xComboBox1);
+
+        xIntegerField1.setCaption("Order");
+        xIntegerField1.setName("entity.sortorder"); // NOI18N
+        xIntegerField1.setRequired(true);
+        xFormPanel1.add(xIntegerField1);
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(0, 63));
+
+        xTextArea3.setCaption("Remarks");
+        xTextArea3.setCaptionWidth(150);
+        xTextArea3.setName("entity.remarks"); // NOI18N
+        xTextArea3.setRequired(true);
+        jScrollPane3.setViewportView(xTextArea3);
+
+        xFormPanel1.add(jScrollPane3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
                 .addContainerGap())
@@ -88,9 +120,9 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -98,13 +130,17 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private com.rameses.rcp.control.XComboBox xComboBox1;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
+    private com.rameses.rcp.control.XIntegerField xIntegerField1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
     private com.rameses.rcp.control.XTextArea xTextArea2;
+    private com.rameses.rcp.control.XTextArea xTextArea3;
     private com.rameses.rcp.control.XTextArea xTextArea4;
     private com.rameses.rcp.control.XTextField xTextField1;
     private com.rameses.rcp.control.XTextField xTextField2;
+    private com.rameses.rcp.control.XTextField xTextField3;
     // End of variables declaration//GEN-END:variables
 }
