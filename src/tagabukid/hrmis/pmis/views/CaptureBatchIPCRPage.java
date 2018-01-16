@@ -274,6 +274,7 @@ public class CaptureBatchIPCRPage extends javax.swing.JPanel {
         xDataTable3.setHandler("ipcrListHandler");
         xDataTable3.setName("selectedIPCR"); // NOI18N
 
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -297,6 +298,7 @@ public class CaptureBatchIPCRPage extends javax.swing.JPanel {
                 .addComponent(xDataTable3, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
 
         jTabbedPane1.addTab("IPCR", jPanel1);
 

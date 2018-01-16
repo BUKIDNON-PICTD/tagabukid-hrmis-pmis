@@ -17,10 +17,12 @@ class CaptureIPCRController extends CrudFormModel{
     def selectedEmployee;
     def selectedDPCR;
     def selectedIPCR;
+    def selectedBehavrioral;
     
     def period = ['1st', '2nd'];
     void afterCreate(){
         entity = svc.initCreate();
+         def type = ['Client', 'Peer', 'Supervisor'];
         
     }
     
