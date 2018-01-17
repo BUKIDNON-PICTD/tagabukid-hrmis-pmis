@@ -16,6 +16,35 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`tagabukid_hrmis` /*!40100 DEFAULT CHARA
 
 USE `tagabukid_hrmis`;
 
+/*Table structure for table `pmis_ipcr_behavioral` */
+
+DROP TABLE IF EXISTS `pmis_ipcr_behavioral`;
+
+CREATE TABLE `pmis_ipcr_behavioral` (
+  `objid` varchar(200) NOT NULL,
+  `ipcrid` varchar(200) NOT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `commentandremarks` text,
+  PRIMARY KEY (`objid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `pmis_ipcr_behavioral` */
+
+/*Table structure for table `pmis_ipcr_behavioral_items` */
+
+DROP TABLE IF EXISTS `pmis_ipcr_behavioral_items`;
+
+CREATE TABLE `pmis_ipcr_behavioral_items` (
+  `objid` varchar(50) NOT NULL,
+  `parentid` varchar(50) NOT NULL,
+  `behavioralid` varchar(50) NOT NULL,
+  `ratings` int(10) DEFAULT NULL,
+  `remarks` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`objid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `pmis_ipcr_behavioral_items` */
+
 /*Table structure for table `pmis_ipcr_behavioral_masterfile` */
 
 DROP TABLE IF EXISTS `pmis_ipcr_behavioral_masterfile`;
