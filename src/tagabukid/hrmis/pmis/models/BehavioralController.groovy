@@ -13,6 +13,9 @@ class BehavioralController extends CrudFormModel{
     @Service("TagabukidBehavioralService")
     def bsvc
     
+    @Service("TagabukidClientService")
+    def csvc
+    
     
     def types = ['Client', 'Peer', 'Supervisor',];  
 
@@ -22,6 +25,9 @@ class BehavioralController extends CrudFormModel{
      void afterCreate(){
       entity = bsvc.initCreate();
          println entity;
+         
+      entity = csvc.initCreate();
+      
        
       
         

@@ -22,8 +22,9 @@ class CaptureIPCRController extends CrudFormModel{
     def selectedIPCR;
     def selectedBehavrioral;
     
-    def selectedType;
+//    def selectedType;
     def node;
+    def typelist;
     
               
     
@@ -84,7 +85,7 @@ class CaptureIPCRController extends CrudFormModel{
     }
     
      public void afterOpen(){
-         
+     
         entity.employee = svc.findProfileById(entity.employee.PersonId);
         entity.officeassigned = svc.findOrgById(entity.orgid).Entity.Name;
         entity.employee.dpcrlist = svc.getSIByIPCRId(entity.objid);
@@ -142,33 +143,50 @@ class CaptureIPCRController extends CrudFormModel{
     // wattatempura
     
     def listHandlertypes = [
-                  fetchList  : { 
-                  
-                    return entity.behavioralrating
+                 
+                 fetchList  : { 
+//                      return entity.behaviorallist?.typelist;
+  
                   },
-                  createItem : {return [objid:'TBR' + new java.rmi.server.UID(), 
-                                 ]},
+                  
+//         onRemoveItem : {
+//            if (MsgBox.confirm('Delete item?')){                
+//                entity.selecetedtypes.remove(it)
+//                listHandlertypes?.load();
+//                return true;
+//            }
+//            return false;
+//        },
+                      createItem : {
+                return[
+                behaviorallist : [],
+            ]
+        },      
                   onAddItem  : { 
-                         entity.selectedType      
+                     
+                         it.typelist = svc.getBehavioral(it)
+                   
                     },
-                    
+             
                onColumnUpdate: {item,column-> 
-//                if (!item.rating) { 
-//               // def o = entity.members.find{ it.member.objid == item.member.objid } 
-//                throw new Exception('Cannot add anymore.'); 
-//            } 
             },
              ] as EditorListModel  
-            
+
+    
+    
+    
         def behavioralRatingHandler = [
                   fetchList  : { 
-                    return entity.behavioralrating
-                  },
-                  createItem : { return [objid:'BR' + new java.rmi.server.UID(), ] },
-                  onAddItem : {
-                      
-                    },
                     
+                  },
+                  createItem : { return [objid:'BR' + new java.rmi.server.UID(),
+                                 rating:[]   
+            ]},
+                  onAddItem : {
+                      it.entity = svc.getbehvioralrating (it)
+                      entity.b << it
+                    },
+
                onColumnUpdate: {item,column-> 
 //                if (!item.rating) { 
 //               // def o = entity.members.find{ it.member.objid == item.member.objid } 
