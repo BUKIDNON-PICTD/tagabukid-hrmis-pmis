@@ -61,7 +61,7 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         xFormPanel1.setCaption("Success Indicator");
         xFormPanel1.setCaptionWidth(150);
 
-        xTextField2.setCaption("Behavior");
+        xTextField2.setCaption("Name");
         xTextField2.setName("entity.behavior"); // NOI18N
         xTextField2.setPreferredSize(new java.awt.Dimension(0, 20));
         xTextField2.setRequired(true);
@@ -69,10 +69,9 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
 
         jScrollPane4.setPreferredSize(new java.awt.Dimension(0, 63));
 
-        xTextArea4.setCaption("Definition");
+        xTextArea4.setCaption("Description");
         xTextArea4.setCaptionWidth(150);
         xTextArea4.setName("entity.definition"); // NOI18N
-        xTextArea4.setRequired(true);
         jScrollPane4.setViewportView(xTextArea4);
 
         xFormPanel1.add(jScrollPane4);
@@ -82,7 +81,6 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         xTextArea2.setCaption("Success Indicator");
         xTextArea2.setCaptionWidth(150);
         xTextArea2.setName("entity.successindicator"); // NOI18N
-        xTextArea2.setRequired(true);
         jScrollPane2.setViewportView(xTextArea2);
 
         xFormPanel1.add(jScrollPane2);
@@ -90,7 +88,6 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         xComboBox1.setCaption("Type");
         xComboBox1.setItems("types");
         xComboBox1.setName("entity.type"); // NOI18N
-        xComboBox1.setRequired(true);
         xFormPanel1.add(xComboBox1);
 
         xIntegerField1.setCaption("Order");
@@ -103,7 +100,6 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         xTextArea3.setCaption("Remarks");
         xTextArea3.setCaptionWidth(150);
         xTextArea3.setName("entity.remarks"); // NOI18N
-        xTextArea3.setRequired(true);
         jScrollPane3.setViewportView(xTextArea3);
 
         xFormPanel1.add(jScrollPane3);

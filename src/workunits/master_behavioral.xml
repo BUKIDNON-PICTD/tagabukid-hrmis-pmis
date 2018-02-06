@@ -1,7 +1,7 @@
-<workunit schemaName="pmis_ipcr_behavioral_masterfile">
+<workunit schemaName="pmis_behavioral">
     <invokers>
-        <invoker type="pmis_ipcr_behavioral_masterfile:create" caption="Behavioral" action="create"/>
-        <invoker type="pmis_ipcr_behavioral_masterfile:open" caption="Behavioral" action="open"/>
+        <invoker type="pmis_behavioral:create" caption="Behavioral" action="create"/>
+        <invoker type="pmis_behavioral:open" caption="Behavioral" action="open"/>
         
         
     </invokers>
