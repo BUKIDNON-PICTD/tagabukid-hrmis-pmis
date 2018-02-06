@@ -6,27 +6,38 @@ import com.rameses.osiris2.client.*
 import com.rameses.osiris2.common.*;
 import com.rameses.util.*;
 
-
 class BehavioralController extends CrudFormModel{
     @Binding
     def binding;
+   
+    @Service("TagabukidBehavioralService")
+    def bsvc
     
-    @Service("TagabukidSIMService")
-    def svc
+    @Service("TagabukidClientService")
+    def csvc
     
-    def selectedEmployee;
-    def selectedDPCR;
-    def selectedIPCR;
-    def selectedBehavrioral;
     
-    void afterCreate(){
-     //   entity = svc.initCreate();
+    def types = ['Client', 'Peer', 'Supervisor',];  
+
+        
+           
+    
+     void afterCreate(){
+      entity = bsvc.initCreate();
+         println entity;
          
+      entity = csvc.initCreate();
+      
+       
+      
         
     }
     
+    
     public void beforeSave(o){
-//        if(mode == 'create' ) {
+        if(mode == 'create' ) {
+            
+           
 //            entity.ipcrno = svc.getIPCRNo();
 //            entity.employee.PersonId = entity.employee.PersonId.toString();
 //            entity.reviewerid = entity.reviewer.PersonId.toString();
@@ -46,12 +57,26 @@ class BehavioralController extends CrudFormModel{
 //                }
 //            }
 //            
-//        }
+        }
     }
     
-     public void afterOpen(o){
-          def type = ['Client', 'Peer', 'Supervisor'];
+     public void afterOpen(){
+          
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    //    
+    
+    
+    
+    
+    
 //    def getLookupSignatory(){
 //        return Inv.lookupOpener('pmis:lookupPostgreHrmis',)
 //    }

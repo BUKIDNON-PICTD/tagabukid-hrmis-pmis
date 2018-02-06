@@ -14,17 +14,51 @@ class CaptureIPCRController extends CrudFormModel{
     @Service("TagabukidSIMService")
     def svc
     
+    @Service("TagabukidBehavioralService") 
+    def bsvc
+    
     def selectedEmployee;
     def selectedDPCR;
     def selectedIPCR;
     def selectedBehavrioral;
     
-    def period = ['1st', '2nd'];
+//    def selectedType;
+    def node;
+    def typelist;
+    
+              
+    
+    def selectedtypes = ['Client', 'Peer', 'Supervisor',];
+    def periods = ['1st', '2nd',];
+    
+            
+    
+   
     void afterCreate(){
+       
         entity = svc.initCreate();
-         def type = ['Client', 'Peer', 'Supervisor'];
+        
+//        entity.behavior = [:];
+//        entity.ratingbehavior = [];
+//        entity.definition = [];
+//        entity.ratingdefinition = [];
+//        entity.successindicator = [];
+//        entity.ratingsuccessidicicator = [];
         
     }
+    
+     Map createEntity() {
+                def m = [parentid:node.objid, type:selectedType,behavioralrating:[:],];
+//                m.parent = [code:node.code, title: node.title];
+                caller.refresh();
+                return m;
+            }
+            
+      
+            
+            
+           
+     
     
     public void beforeSave(o){
         if(mode == 'create' ) {
@@ -51,9 +85,12 @@ class CaptureIPCRController extends CrudFormModel{
     }
     
      public void afterOpen(){
+     
         entity.employee = svc.findProfileById(entity.employee.PersonId);
         entity.officeassigned = svc.findOrgById(entity.orgid).Entity.Name;
         entity.employee.dpcrlist = svc.getSIByIPCRId(entity.objid);
+
+        
 //        entity.employee.dpcrlist.each{
 //            
 //        }
@@ -100,6 +137,64 @@ class CaptureIPCRController extends CrudFormModel{
                    }
                ])
     }
+    
+     
+    
+    // wattatempura
+    
+    def listHandlertypes = [
+                 
+                 fetchList  : { 
+//                      return entity.behaviorallist?.typelist;
+  
+                  },
+                  
+//         onRemoveItem : {
+//            if (MsgBox.confirm('Delete item?')){                
+//                entity.selecetedtypes.remove(it)
+//                listHandlertypes?.load();
+//                return true;
+//            }
+//            return false;
+//        },
+                      createItem : {
+                return[
+                behaviorallist : [],
+            ]
+        },      
+                  onAddItem  : { 
+                     
+                         it.typelist = svc.getBehavioral(it)
+                   
+                    },
+             
+               onColumnUpdate: {item,column-> 
+            },
+             ] as EditorListModel  
+
+    
+    
+    
+        def behavioralRatingHandler = [
+                  fetchList  : { 
+                    
+                  },
+                  createItem : { return [objid:'BR' + new java.rmi.server.UID(),
+                                 rating:[]   
+            ]},
+                  onAddItem : {
+                      it.entity = svc.getbehvioralrating (it)
+                      entity.b << it
+                    },
+
+               onColumnUpdate: {item,column-> 
+//                if (!item.rating) { 
+//               // def o = entity.members.find{ it.member.objid == item.member.objid } 
+//                throw new Exception('Cannot add anymore.'); 
+//            } 
+            },
+           
+            ] as EditorListModel   
 
 //    def employeeListHandler = [
 ////        getRows : { entity.employees.size() + 1 },

@@ -104,7 +104,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xFormPanel1.add(xDateField1);
 
         xComboBox1.setCaption("Period");
-        xComboBox1.setItems("period");
+        xComboBox1.setItems("periods");
         xComboBox1.setName("entity.period"); // NOI18N
         xComboBox1.setRequired(true);
         xFormPanel1.add(xComboBox1);
@@ -328,13 +328,13 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         jTabbedPane1.addTab("IPCR", jPanel1);
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder4 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder4.setTitle("Rater");
+        xTitledBorder4.setTitle("Type");
         xDataTable1.setBorder(xTitledBorder4);
         xDataTable1.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "type"}
                 , new Object[]{"caption", "Type"}
-                , new Object[]{"width", 100}
+                , new Object[]{"width", 0}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", true}
@@ -343,12 +343,12 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"editable", true}
                 , new Object[]{"editableWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.ComboBoxColumnHandler(null, null, null)}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.ComboBoxColumnHandler("selectedtypes", null, null)}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "commentandremarks"}
                 , new Object[]{"caption", "Comment And Remarks"}
-                , new Object[]{"width", 100}
+                , new Object[]{"width", 800}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", false}
@@ -360,18 +360,19 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             })
         });
-        xDataTable1.setDynamic(true);
-        xDataTable1.setHandler("behaviorRaterHandler");
-        xDataTable1.setName("selectedbehavioral"); // NOI18N
+        xDataTable1.setEditable(true);
+        xDataTable1.setHandler("listHandlertypes");
+        xDataTable1.setId("listHandlertypes");
+        xDataTable1.setName("selectedType"); // NOI18N
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder5 = new com.rameses.rcp.control.border.XTitledBorder();
         xTitledBorder5.setTitle("Rating");
         xDataTable4.setBorder(xTitledBorder5);
         xDataTable4.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "Behavior"}
-                , new Object[]{"caption", "behavior"}
-                , new Object[]{"width", 100}
+                new Object[]{"name", "ratingbehavior"}
+                , new Object[]{"caption", "Behavior"}
+                , new Object[]{"width", 200}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", false}
@@ -382,9 +383,9 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "definition"}
+                new Object[]{"name", "ratingdefinition"}
                 , new Object[]{"caption", "Definition"}
-                , new Object[]{"width", 100}
+                , new Object[]{"width", 200}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", false}
@@ -395,9 +396,9 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "successindicator"}
+                new Object[]{"name", "ratingsuccessindicator"}
                 , new Object[]{"caption", "Success Indicator"}
-                , new Object[]{"width", 100}
+                , new Object[]{"width", 200}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", false}
@@ -410,20 +411,22 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "rating"}
                 , new Object[]{"caption", "Rating"}
-                , new Object[]{"width", 100}
+                , new Object[]{"width", 10}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
-                , new Object[]{"required", false}
+                , new Object[]{"required", true}
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
-                , new Object[]{"editable", false}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.IntegerColumnHandler(null, -1, -1)}
             })
         });
-        xDataTable4.setDepends(new String[] {"selectedBehavrioral"});
-        xDataTable4.setHandler("behaviorRatingHandler");
-        xDataTable4.setName("selectedRating"); // NOI18N
+        xDataTable4.setDepends(new String[] {"type"});
+        xDataTable4.setDynamic(true);
+        xDataTable4.setHandler("behavioralRatingHandler");
+        xDataTable4.setName("behavioralrating"); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -432,17 +435,17 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
-                    .addComponent(xDataTable4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(xDataTable4, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
+                    .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xDataTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(xDataTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(xDataTable4, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                .addComponent(xDataTable4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
