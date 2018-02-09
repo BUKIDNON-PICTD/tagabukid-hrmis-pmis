@@ -346,9 +346,9 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.ComboBoxColumnHandler("selectedtypes", null, null)}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "commentandremarks"}
+                new Object[]{"name", "remarks"}
                 , new Object[]{"caption", "Comment And Remarks"}
-                , new Object[]{"width", 800}
+                , new Object[]{"width", 200}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", false}
@@ -358,20 +358,75 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"editableWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "ratername"}
+                , new Object[]{"caption", "Name of Rater"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "address"}
+                , new Object[]{"caption", "Address/Office"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "ratercontactinfo"}
+                , new Object[]{"caption", "Contact/Office No."}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "ratingdate"}
+                , new Object[]{"caption", "Date of Rating"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.DateColumnHandler(null, null, null)}
             })
         });
-        xDataTable1.setEditable(true);
-        xDataTable1.setHandler("listHandlertypes");
-        xDataTable1.setId("listHandlertypes");
-        xDataTable1.setName("selectedType"); // NOI18N
+        xDataTable1.setHandler("behavioralTypeListHandler");
+        xDataTable1.setId("behavioralTypeListHandler");
+        xDataTable1.setName("selectedBehavioralType"); // NOI18N
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder5 = new com.rameses.rcp.control.border.XTitledBorder();
         xTitledBorder5.setTitle("Rating");
         xDataTable4.setBorder(xTitledBorder5);
         xDataTable4.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "ratingbehavior"}
-                , new Object[]{"caption", "Behavior"}
+                new Object[]{"name", "name"}
+                , new Object[]{"caption", "Behavior/Name"}
                 , new Object[]{"width", 200}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
@@ -383,8 +438,8 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "ratingdefinition"}
-                , new Object[]{"caption", "Definition"}
+                new Object[]{"name", "description"}
+                , new Object[]{"caption", "Definition/Description"}
                 , new Object[]{"width", 200}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
@@ -396,8 +451,8 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "ratingsuccessindicator"}
-                , new Object[]{"caption", "Success Indicator"}
+                new Object[]{"name", "successindicator"}
+                , new Object[]{"caption", "Success Indictator"}
                 , new Object[]{"width", 200}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
@@ -420,13 +475,13 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"editable", true}
                 , new Object[]{"editableWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.IntegerColumnHandler(null, -1, -1)}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.ComboBoxColumnHandler("ratinglist", null, null)}
             })
         });
-        xDataTable4.setDepends(new String[] {"type"});
+        xDataTable4.setDepends(new String[] {"selectedBehavioralType"});
         xDataTable4.setDynamic(true);
-        xDataTable4.setHandler("behavioralRatingHandler");
-        xDataTable4.setName("behavioralrating"); // NOI18N
+        xDataTable4.setHandler("behavioralRatingListHandler");
+        xDataTable4.setName("selectedBehavioralRating"); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
