@@ -62,7 +62,7 @@ public class MasterBehavioralForm extends javax.swing.JPanel {
         xFormPanel1.setCaptionWidth(150);
 
         xTextField2.setCaption("Name");
-        xTextField2.setName("entity.behavior"); // NOI18N
+        xTextField2.setName("entity.name"); // NOI18N
         xTextField2.setPreferredSize(new java.awt.Dimension(0, 20));
         xTextField2.setRequired(true);
         xFormPanel1.add(xTextField2);

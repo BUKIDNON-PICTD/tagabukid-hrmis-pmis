@@ -1,0 +1,56 @@
+warning: LF will be replaced by CRLF in src/tagabukid/hrmis/pmis/views/MasterBehavioralForm.form.
+The file will have its original line endings in your working directory.
+[1mdiff --git a/nbproject/project.properties b/nbproject/project.properties[m
+[1mindex c953b6c..093cb62 100644[m
+[1m--- a/nbproject/project.properties[m
+[1m+++ b/nbproject/project.properties[m
+[36m@@ -34,7 +34,7 @@[m [mjar.archive.disabled=${jnlp.enabled}[m
+ jar.compress=false[m
+ jar.index=${jnlp.enabled}[m
+ javac.classpath=\[m
+[31m-    ${libs.osirisui.classpath}[m
+[32m+[m[32m    ${libs.osairisui.classpath}[m[41m[m
+ # Space-separated list of extra javac options[m
+ javac.compilerargs=[m
+ javac.deprecation=false[m
+[1mdiff --git a/src/tagabukid/hrmis/pmis/views/MasterBehavioralForm.form b/src/tagabukid/hrmis/pmis/views/MasterBehavioralForm.form[m
+[1mindex 8cc90df..295061d 100644[m
+[1m--- a/src/tagabukid/hrmis/pmis/views/MasterBehavioralForm.form[m
+[1m+++ b/src/tagabukid/hrmis/pmis/views/MasterBehavioralForm.form[m
+[36m@@ -71,7 +71,7 @@[m
+         <Component class="com.rameses.rcp.control.XTextField" name="xTextField2">[m
+           <Properties>[m
+             <Property name="caption" type="java.lang.String" value="Name"/>[m
+[31m-            <Property name="name" type="java.lang.String" value="entity.behavior" noResource="true"/>[m
+[32m+[m[32m            <Property name="name" type="java.lang.String" value="entity.name" noResource="true"/>[m
+             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">[m
+               <Dimension value="[0, 20]"/>[m
+             </Property>[m
+[1mdiff --git a/src/tagabukid/hrmis/pmis/views/MasterBehavioralForm.java b/src/tagabukid/hrmis/pmis/views/MasterBehavioralForm.java[m
+[1mindex 6a4a742..e737656 100644[m
+[1m--- a/src/tagabukid/hrmis/pmis/views/MasterBehavioralForm.java[m
+[1m+++ b/src/tagabukid/hrmis/pmis/views/MasterBehavioralForm.java[m
+[36m@@ -62,7 +62,7 @@[m [mpublic class MasterBehavioralForm extends javax.swing.JPanel {[m
+         xFormPanel1.setCaptionWidth(150);[m
+ [m
+         xTextField2.setCaption("Name");[m
+[31m-        xTextField2.setName("entity.behavior"); // NOI18N[m
+[32m+[m[32m        xTextField2.setName("entity.name"); // NOI18N[m
+         xTextField2.setPreferredSize(new java.awt.Dimension(0, 20));[m
+         xTextField2.setRequired(true);[m
+         xFormPanel1.add(xTextField2);[m
+[1mdiff --git a/src/workunits/master_performance_category_list.xml b/src/workunits/master_performance_category_list.xml[m
+[1mindex 1e237bc..77da975 100644[m
+[1m--- a/src/workunits/master_performance_category_list.xml[m
+[1m+++ b/src/workunits/master_performance_category_list.xml[m
+[36m@@ -6,7 +6,7 @@[m
+         <invoker folderid="/explorer/master/hrmismaster" [m
+                  caption="Performance Category" [m
+                  target="window" index="2" />[m
+[31m-        <invoker folderid="/home/hrmis/hrmismaster" [m
+[32m+[m[32m        <invoker folderid="/home/hrmi2s/hrmismaster"[m[41m [m
+                  caption="Performance Category" [m
+                  target="window" index="2" />[m
+         [m
+warning: LF will be replaced by CRLF in src/workunits/master_performance_category_list.xml.
+The file will have its original line endings in your working directory.

@@ -1,6 +1,6 @@
 <workunit extends="rpt_wtemplates/ReportController.xml" >
     <invokers>
-        <invoker folderid="/explorer/report/hrmisreports" action="init" caption="Rating Standard for IPCR" target="window" index="1"/>
+        <invoker folderid="/explorer/report/hrmisreports" action="init" caption="Individual Performane Commitement and Review(IPCR)" target="window" index="1"/>
     </invokers>
     <code>
 
@@ -11,19 +11,19 @@ import com.rameses.rcp.annotations.*;
 import com.rameses.osiris2.client.*;
 import com.rameses.osiris2.reports.*;
 
-class TagabukidRatingStandardIPCRController extends tagabukid.common.models.AsyncReportController
+class TagabukidIPCRReportController extends tagabukid.common.models.AsyncReportController
 {
     @Service('TagabukidPMISReportService') 
     def svc
     
-    String title = 'Individual Performance Commitment and Review+'
+    String title = 'Rating Standard for IPCR'
     
-    String reportName = 'tagabukid/hrmis/pmis/reports/ratingstandardforipcr.jasper';
+    String reportName = 'tagabukid/hrmis/pmis/reports/ipcr.jasper';
     def data 
     
         
     void buildReportData(entity, asyncHandler){
-        svc.getRatingStandardforIPCR(entity, asyncHandler)
+        svc.getIPCRByEmployee(entity, asyncHandler)
     }
     
     Map getParameters(){
@@ -34,7 +34,11 @@ class TagabukidRatingStandardIPCRController extends tagabukid.common.models.Asyn
    def formControl = [
         getFormControls: {
             return [
+                
+                new FormControl( "integer", [caption:'Year', name:'entity.year', required:true, preferredSize:'100,19' , captionWidth:100]),
                 new FormControl( "combo", [caption:'Period', name:'entity.period', items:'period', preferredSize:'100,19', immediate:true  , captionWidth:100,required:true]),
+                new FormControl( "lookup", [caption:'Employee',name:'entity.employee',preferredSize:'0,21',handler:'pmis:lookupPostgreHrmis', captionWidth:100,expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}']),
+                //new FormControl( "combo", [caption:'Office', name:'entity.org',required:true, items:'orgs', expression:'#{item.Entity.Name}', preferredSize:'0,19', captionWidth:100 ,emptyText:'ALL']),
                 //new FormControl( "checkbox", [caption:'Rerport As of', name:'entity.asof', preferredSize:'100,19' , captionWidth:100]),
                 //new FormControl( "integer", [caption:'Year', name:'entity.year', required:true, preferredSize:'100,19' , captionWidth:100]),
                 //new FormControl( "combo", [caption:'Quarter', name:'entity.qtr', items:'quarters', preferredSize:'100,19', immediate:true  , captionWidth:100,required:true]),
@@ -52,7 +56,11 @@ class TagabukidRatingStandardIPCRController extends tagabukid.common.models.Asyn
    List getPeriod() {
         return ['1st','2nd']
    }
-
+   
+   
+   //List getOrgs() {
+        //return svc.getOrgOffice()
+ // } 
 }
 ]]>        
         

@@ -6,7 +6,7 @@
         <invoker folderid="/explorer/master/hrmismaster" 
                  caption="Performance Category" 
                  target="window" index="2" />
-        <invoker folderid="/home/hrmis/hrmismaster" 
+        <invoker folderid="/home/hrmi2s/hrmismaster" 
                  caption="Performance Category" 
                  target="window" index="2" />
         
