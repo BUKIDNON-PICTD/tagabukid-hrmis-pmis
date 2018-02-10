@@ -67,12 +67,12 @@ class CaptureIPCRController extends CrudFormModel{
                     entity.ipcritems.add(item);
                 }
             }
-            entity.behavioraltypelist.each{ dp ->
-                dp.bahavioralratinglist.each{
-                    println it
-                    it.behavioralid = it.objid
-                }
-            }
+//            entity.behavioraltypelist.each{ dp ->
+//                dp.bahavioralratinglist.each{
+//                    it.behavioralid = it.objid
+//                    it.objid = 'IPBI' + new java.rmi.server.UID()
+//                }
+//            }
         }
     }
     
@@ -258,11 +258,6 @@ class CaptureIPCRController extends CrudFormModel{
                 return true;
             }
             return false;
-        },
-        createItem : {
-            return[
-                objid : 'IPBI' + new java.rmi.server.UID()
-            ]
         },
         onAddItem : {
             selectedBehavioralType.bahavioralratinglist << it;
