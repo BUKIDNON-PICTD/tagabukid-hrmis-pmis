@@ -18,7 +18,7 @@ class TagabukidIPCRReportController extends tagabukid.common.models.AsyncReportC
     
     String title = 'Rating Standard for IPCR'
     
-    String reportName = 'tagabukid/hrmis/pmis/reports/ratingforIPCR.jasper';
+    String reportName = 'tagabukid/hrmis/pmis/reports/ipcr.jasper';
     def data 
     
         
@@ -37,7 +37,8 @@ class TagabukidIPCRReportController extends tagabukid.common.models.AsyncReportC
                 
                 new FormControl( "integer", [caption:'Year', name:'entity.year', required:true, preferredSize:'100,19' , captionWidth:100]),
                 new FormControl( "combo", [caption:'Period', name:'entity.period', items:'period', preferredSize:'100,19', immediate:true  , captionWidth:100,required:true]),
-                new FormControl( "combo", [caption:'Office', name:'entity.org',required:true, items:'orgs', expression:'#{item.Entity.Name}', preferredSize:'0,19', captionWidth:100 ,emptyText:'ALL']),
+                new FormControl( "lookup", [caption:'Employee',name:'entity.employee',preferredSize:'0,21',handler:'pmis:lookupPostgreHrmis', captionWidth:100,expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}']),
+                //new FormControl( "combo", [caption:'Office', name:'entity.org',required:true, items:'orgs', expression:'#{item.Entity.Name}', preferredSize:'0,19', captionWidth:100 ,emptyText:'ALL']),
                 //new FormControl( "checkbox", [caption:'Rerport As of', name:'entity.asof', preferredSize:'100,19' , captionWidth:100]),
                 //new FormControl( "integer", [caption:'Year', name:'entity.year', required:true, preferredSize:'100,19' , captionWidth:100]),
                 //new FormControl( "combo", [caption:'Quarter', name:'entity.qtr', items:'quarters', preferredSize:'100,19', immediate:true  , captionWidth:100,required:true]),
@@ -56,9 +57,10 @@ class TagabukidIPCRReportController extends tagabukid.common.models.AsyncReportC
         return ['1st','2nd']
    }
    
-   List getOrgs() {
-        return svc.getOrgOffice()
-  } 
+   
+   //List getOrgs() {
+        //return svc.getOrgOffice()
+ // } 
 }
 ]]>        
         

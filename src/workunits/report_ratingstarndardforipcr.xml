@@ -52,6 +52,7 @@ class TagabukidRatingStandardIPCRController extends tagabukid.common.models.Asyn
    List getPeriod() {
         return ['1st','2nd']
    }
+
 }
 ]]>        
         
