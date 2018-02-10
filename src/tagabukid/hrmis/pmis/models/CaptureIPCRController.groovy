@@ -14,8 +14,8 @@ class CaptureIPCRController extends CrudFormModel{
     @Service("TagabukidSIMService")
     def svc
     
-//    @Service("TagabukidBehavioralService") 
-//    def bsvc
+    //    @Service("TagabukidBehavioralService") 
+    //    def bsvc
     
     def selectedEmployee;
     def selectedDPCR;
@@ -163,14 +163,14 @@ class CaptureIPCRController extends CrudFormModel{
     def dpcrListHandler = [
         //        getRows : { entity.employees.size() + 1 },
         fetchList: { return entity?.dpcrlist},
-        onRemoveItem : {
-            if (MsgBox.confirm('Delete item?')){                
-                selectedDPCR.remove(it)
-                dpcrListHandler?.load();
-                return true;
-            }
-            return false;
-        }
+//        onRemoveItem : {
+//            if (MsgBox.confirm('Delete item?')){                
+//                selectedDPCR.remove(it)
+//                dpcrListHandler?.load();
+//                return true;
+//            }
+//            return false;
+//        }
         //        createItem : {
         //            return[
         //                objid : 'DPCR' + new java.rmi.server.UID(),
@@ -258,6 +258,11 @@ class CaptureIPCRController extends CrudFormModel{
                 return true;
             }
             return false;
+        },
+        createItem : {
+            return[
+                objid : 'IPBI' + new java.rmi.server.UID()
+            ]
         },
         onAddItem : {
             selectedBehavioralType.bahavioralratinglist << it;
