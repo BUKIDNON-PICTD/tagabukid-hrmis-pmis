@@ -33,7 +33,9 @@ public class MFOPage extends javax.swing.JPanel {
 
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
         xTextField1 = new com.rameses.rcp.control.XTextField();
-        xTextField2 = new com.rameses.rcp.control.XTextField();
+        xTextField3 = new com.rameses.rcp.control.XTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        xTextArea3 = new com.rameses.rcp.control.XTextArea();
         xDecimalField1 = new com.rameses.rcp.control.XDecimalField();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
@@ -45,14 +47,25 @@ public class MFOPage extends javax.swing.JPanel {
         xTextField1.setName("entity.code"); // NOI18N
         xTextField1.setPreferredSize(new java.awt.Dimension(150, 19));
         xTextField1.setRequired(true);
+        xTextField1.setSpaceChar('_');
         xFormPanel1.add(xTextField1);
 
-        xTextField2.setCaption("Success Indicator Title");
-        xTextField2.setCaptionWidth(150);
-        xTextField2.setName("entity.title"); // NOI18N
-        xTextField2.setPreferredSize(new java.awt.Dimension(200, 20));
-        xTextField2.setRequired(true);
-        xFormPanel1.add(xTextField2);
+        xTextField3.setCaption("Success Indicator Title");
+        xTextField3.setCaptionWidth(150);
+        xTextField3.setName("entity.title"); // NOI18N
+        xTextField3.setPreferredSize(new java.awt.Dimension(200, 20));
+        xTextField3.setRequired(true);
+        xFormPanel1.add(xTextField3);
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(0, 63));
+
+        xTextArea3.setCaption("Description");
+        xTextArea3.setCaptionWidth(150);
+        xTextArea3.setName("entity.description"); // NOI18N
+        xTextArea3.setRequired(true);
+        jScrollPane3.setViewportView(xTextArea3);
+
+        xFormPanel1.add(jScrollPane3);
 
         xDecimalField1.setCaption("Alloted Budget");
         xDecimalField1.setCaptionWidth(150);
@@ -98,12 +111,14 @@ public class MFOPage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private com.rameses.rcp.control.XDecimalField xDecimalField1;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
     private com.rameses.rcp.control.XTextArea xTextArea2;
+    private com.rameses.rcp.control.XTextArea xTextArea3;
     private com.rameses.rcp.control.XTextField xTextField1;
-    private com.rameses.rcp.control.XTextField xTextField2;
+    private com.rameses.rcp.control.XTextField xTextField3;
     // End of variables declaration//GEN-END:variables
 }
 

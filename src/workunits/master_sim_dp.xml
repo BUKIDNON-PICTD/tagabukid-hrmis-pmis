@@ -1,8 +1,8 @@
 <workunit>
         
     <invokers>
-         <invoker type="sim-dp:open" caption="DPCR" action="open"/>
-         <invoker type="sim-dp:create" caption="DPCR" action="create"/>
+         <invoker type="sim-dp:open" caption="DPCR" action="open" role="MASTER"/>
+         <invoker type="sim-dp:create" caption="DPCR" action="create" role="MASTER"/>
    </invokers>
    
    <code>
@@ -20,6 +20,9 @@
             
             @Service("TagabukidSIMService")
             def simsvc
+            
+            @Service("TagabukidPMISSuccessIndicatorTitleVerificationService")
+            def verifySvc
             
             String entityName = "sim";
             def node;
@@ -89,6 +92,15 @@
                 if (data)
                 throw new Exception("Duplicate item is not allowed.")
             }   
+            
+             void beforeSave( o ) {
+                def searchList  = verifySvc.getList(entity.title); 
+                if(searchList) {
+                     if( searchList.find{ it.weight == 100 } )
+                        throw new Exception("Exact Success Indicator exist.");
+                  
+                }
+            } 
         }      
        ]]>
    </code>

@@ -1,8 +1,8 @@
 <workunit schemaName="pmis_ipcr">
     <invokers>
-        <invoker folderid="/home/hrmis" caption="Capture IPCR" action="create" index="10" />
-        <invoker type="pmis_ipcr:create" caption="Create IPCR" action="create"/>
-        <invoker type="pmis_ipcr:open" caption="Open IPCR" action="open"/>
+        <invoker folderid="/home/hrmis" caption="Capture IPCR" action="create" index="10" role="ENCODER"/>
+        <invoker type="pmis_ipcr:create" caption="Create IPCR" action="create" role="ENCODER"/>
+        <invoker type="pmis_ipcr:open" caption="Open IPCR" action="open" role="ENCODER"/>
     </invokers>
     <code class="tagabukid.hrmis.pmis.models.CaptureIPCRController"/>
     <pages>

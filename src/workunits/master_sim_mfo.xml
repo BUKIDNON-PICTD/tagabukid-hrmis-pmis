@@ -1,8 +1,8 @@
 <workunit>
         
     <invokers>
-        <invoker type="sim-mfo:open" caption="Major Final Output" action="open"/>
-         <invoker type="sim-mfo:create" caption="Major Final Output" action="create"/>
+        <invoker type="sim-mfo:open" caption="Major Final Output" action="open" role="MASTER"/>
+         <invoker type="sim-mfo:create" caption="Major Final Output" action="create" role="MASTER"/>
     </invokers>
    
     <code>
@@ -14,17 +14,23 @@
         import java.rmi.server.*;
           
         class TagabukidSIMMFOController extends CRUDController {
-        
+            
+            @Binding
+            def binding;
+    
             @Caller
             def caller;
             
             @Service("TagabukidSIMService")
             def simsvc
+            
+            @Service("TagabukidPMISSuccessIndicatorTitleVerificationService")
+            def verifySvc
     
             String entityName = "sim";
             def node;
             boolean showConfirmOnSave = false;
-
+            
             public String getServiceName() {
                 return caller.getServiceName();
             }
@@ -49,11 +55,23 @@
                 return m;
             }
             
+            void beforeSave( o ) {
+                def searchList  = verifySvc.getList(entity.title); 
+                if(searchList) {
+                     if( searchList.find{ it.weight == 100 } )
+                        throw new Exception("Exact Success Indicator exist.");
+                  
+                }
+            } 
+            
+        
+            
         }      
        ]]>
    </code>
    
    <pages>
+       <!--<page template="tagabukid.hrmis.pmis.views.PMISSuccessIndicatorTitleVerificationPage"/>-->    
        <page template="tagabukid.hrmis.pmis.views.MFOPage"/>
    </pages>
    

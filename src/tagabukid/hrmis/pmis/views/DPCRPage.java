@@ -34,6 +34,8 @@ public class DPCRPage extends javax.swing.JPanel {
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
         xTextField1 = new com.rameses.rcp.control.XTextField();
         xTextField2 = new com.rameses.rcp.control.XTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        xTextArea3 = new com.rameses.rcp.control.XTextArea();
         xDecimalField1 = new com.rameses.rcp.control.XDecimalField();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
@@ -55,6 +57,16 @@ public class DPCRPage extends javax.swing.JPanel {
         xTextField2.setPreferredSize(new java.awt.Dimension(200, 20));
         xTextField2.setRequired(true);
         xFormPanel1.add(xTextField2);
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(0, 63));
+
+        xTextArea3.setCaption("Description");
+        xTextArea3.setCaptionWidth(150);
+        xTextArea3.setName("entity.description"); // NOI18N
+        xTextArea3.setRequired(true);
+        jScrollPane3.setViewportView(xTextArea3);
+
+        xFormPanel1.add(jScrollPane3);
 
         xDecimalField1.setCaption("Alloted Budget");
         xDecimalField1.setCaptionWidth(150);
@@ -131,7 +143,7 @@ public class DPCRPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+                .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -139,11 +151,13 @@ public class DPCRPage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private com.rameses.rcp.control.XDataTable xDataTable1;
     private com.rameses.rcp.control.XDecimalField xDecimalField1;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
     private com.rameses.rcp.control.XTextArea xTextArea2;
+    private com.rameses.rcp.control.XTextArea xTextArea3;
     private com.rameses.rcp.control.XTextField xTextField1;
     private com.rameses.rcp.control.XTextField xTextField2;
     // End of variables declaration//GEN-END:variables

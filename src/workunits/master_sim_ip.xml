@@ -1,8 +1,8 @@
 <workunit>
         
     <invokers>
-        <invoker type="sim-ip:open" caption="IPCR" action="open"/>
-         <invoker type="sim-ip:create" caption="IPCR" action="create"/>
+        <invoker type="sim-ip:open" caption="IPCR" action="open" role="MASTER"/>
+         <invoker type="sim-ip:create" caption="IPCR" action="create" role="MASTER"/>
     </invokers>
    
     <code class="tagabukid.hrmis.pmis.models.TagabukidSIMIPCRController" />  

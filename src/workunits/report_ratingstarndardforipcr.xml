@@ -1,6 +1,6 @@
 <workunit extends="rpt_wtemplates/ReportController.xml" >
     <invokers>
-        <invoker folderid="/explorer/report/hrmisreports" action="init" caption="Rating Standard for IPCR" target="window" index="1"/>
+        <invoker folderid="/explorer/report/hrmisreports" action="init" caption="Rating Standard for IPCR" target="window" index="1" role="REPORT"/>
     </invokers>
     <code>
 

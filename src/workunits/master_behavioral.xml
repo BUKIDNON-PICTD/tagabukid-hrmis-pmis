@@ -1,7 +1,7 @@
 <workunit schemaName="pmis_behavioral">
     <invokers>
-        <invoker type="pmis_behavioral:create" caption="Behavioral" action="create"/>
-        <invoker type="pmis_behavioral:open" caption="Behavioral" action="open"/>
+        <invoker type="pmis_behavioral:create" caption="Behavioral" action="create" role="MASTER"/>
+        <invoker type="pmis_behavioral:open" caption="Behavioral" action="open" role="MASTER"/>
         
         
     </invokers>

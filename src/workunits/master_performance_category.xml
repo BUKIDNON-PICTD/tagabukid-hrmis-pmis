@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workunit>
     <invokers>
-        <invoker type="performancecategory:create" action="init" caption="Performance Category" />
-        <invoker type="performancecategory:open" action="open" caption="Performance Category" />
+        <invoker type="performancecategory:create" action="init" caption="Performance Category" role="MASTER"/>
+        <invoker type="performancecategory:open" action="open" caption="Performance Category" role="MASTER"/>
     </invokers>
         
     <code class="tagabukid.hrmis.pmis.models.PerformanceCategoryController" />  
