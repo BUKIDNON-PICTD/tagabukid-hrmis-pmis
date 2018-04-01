@@ -28,9 +28,9 @@
 
             List fetchList( Map params ) {
                 //println params
-                //if(!params.searchtext){
-                //    params.searchtext = searchtext;
-                //}
+                if(!params.searchtext){
+                    params.searchtext = searchtext;
+                }
                 return svc.lookupOrgUnit(params)
             }
         }  

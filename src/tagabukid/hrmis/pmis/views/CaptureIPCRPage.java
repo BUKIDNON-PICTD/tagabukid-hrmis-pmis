@@ -40,8 +40,9 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xLookupField2 = new com.rameses.rcp.control.XLookupField();
         xLookupField3 = new com.rameses.rcp.control.XLookupField();
         xDateField1 = new com.rameses.rcp.control.XDateField();
-        xComboBox1 = new com.rameses.rcp.control.XComboBox();
         xFormPanel2 = new com.rameses.rcp.control.XFormPanel();
+        xIntegerField1 = new com.rameses.rcp.control.XIntegerField();
+        xComboBox1 = new com.rameses.rcp.control.XComboBox();
         xLabel7 = new com.rameses.rcp.control.XLabel();
         xLabel4 = new com.rameses.rcp.control.XLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -105,16 +106,20 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xDateField1.setRequired(true);
         xFormPanel1.add(xDateField1);
 
-        xComboBox1.setCaption("Period");
-        xComboBox1.setItems("periods");
-        xComboBox1.setName("entity.period"); // NOI18N
-        xComboBox1.setRequired(true);
-        xFormPanel1.add(xComboBox1);
-
         xHorizontalPanel1.add(xFormPanel1);
 
         xFormPanel2.setCaptionWidth(100);
         xFormPanel2.setPreferredSize(new java.awt.Dimension(500, 100));
+
+        xIntegerField1.setCaption("Year");
+        xIntegerField1.setName("entity.year"); // NOI18N
+        xFormPanel2.add(xIntegerField1);
+
+        xComboBox1.setCaption("Period");
+        xComboBox1.setItems("periods");
+        xComboBox1.setName("entity.period"); // NOI18N
+        xComboBox1.setRequired(true);
+        xFormPanel2.add(xComboBox1);
 
         xLabel7.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel7.setCaption("Created By");
@@ -149,7 +154,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
 
         xLookupField4.setCaption("Employee");
         xLookupField4.setCaptionWidth(100);
-        xLookupField4.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName + \" | \" + item.Entity.Name}");
+        xLookupField4.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
         xLookupField4.setHandler("lookupEmployee");
         xLookupField4.setName("entity.employee"); // NOI18N
         xLookupField4.setPreferredSize(new java.awt.Dimension(0, 20));
@@ -159,7 +164,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xActionTextField1.setActionCommand("searchDPCR");
         xActionTextField1.setCaption("Office Assigned");
         xActionTextField1.setCaptionWidth(100);
-        xActionTextField1.setName("entity.officeassigned"); // NOI18N
+        xActionTextField1.setName("entity.org.name"); // NOI18N
         xActionTextField1.setPreferredSize(new java.awt.Dimension(400, 20));
         xActionTextField1.setRequired(true);
         xFormPanel3.add(xActionTextField1);
@@ -406,8 +411,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"required", true}
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
-                , new Object[]{"editable", true}
-                , new Object[]{"editableWhen", null}
+                , new Object[]{"editable", false}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
@@ -420,7 +424,8 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"required", false}
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
-                , new Object[]{"editable", false}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             })
@@ -489,6 +494,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XFormPanel xFormPanel2;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XHorizontalPanel xHorizontalPanel1;
+    private com.rameses.rcp.control.XIntegerField xIntegerField1;
     private com.rameses.rcp.control.XLabel xLabel1;
     private com.rameses.rcp.control.XLabel xLabel4;
     private com.rameses.rcp.control.XLabel xLabel7;
