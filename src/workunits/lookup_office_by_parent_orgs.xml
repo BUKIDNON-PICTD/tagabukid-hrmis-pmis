@@ -27,6 +27,9 @@
             }
 
             List fetchList( Map params ) { 
+                if(!orgs){
+                    throw new Exception("No office where assigned for the parent DPCR.");
+                }
                 params.filter = "AND ParentOrgUnitId IN ('" + orgs.orgid.join("','") + "')"
                 return svc.lookupOrgUnitByParents(params)
             }
