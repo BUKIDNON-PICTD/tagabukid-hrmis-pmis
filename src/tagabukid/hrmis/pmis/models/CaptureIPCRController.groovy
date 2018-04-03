@@ -114,7 +114,7 @@ class CaptureIPCRController extends CrudFormModel{
                     entity.org.code = it.Entity.AcronymAbbreviation
                     entity.dpcrlist = svc.getSIByEmployeeOffice(it)
 //                    entity.officeassigned = it.Entity.Name
-                    binding.refresh('entity.org');
+                    binding.refresh('entity.org.name');
                     dpcrListHandler.reload();
                 }
             ])

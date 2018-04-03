@@ -94,7 +94,7 @@
             }   
             
              void beforeSave( o ) {
-                def searchList  = verifySvc.getList(entity.title); 
+                def searchList  = verifySvc.getList(entity); 
                 if(searchList) {
                      if( searchList.find{ it.weight == 100 } )
                         throw new Exception("Exact Success Indicator exist.");

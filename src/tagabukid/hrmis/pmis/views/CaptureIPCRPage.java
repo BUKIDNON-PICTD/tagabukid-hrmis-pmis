@@ -174,6 +174,19 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xDataTable2.setBorder(xTitledBorder2);
         xDataTable2.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "dpcode"}
+                , new Object[]{"caption", "Code"}
+                , new Object[]{"width", 20}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "dptitle"}
                 , new Object[]{"caption", "Success Indicator"}
                 , new Object[]{"width", 100}
@@ -195,6 +208,19 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xTitledBorder3.setTitle("Success Indicator");
         xDataTable3.setBorder(xTitledBorder3);
         xDataTable3.setColumns(new com.rameses.rcp.common.Column[]{
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "successindicator.code"}
+                , new Object[]{"caption", "Code"}
+                , new Object[]{"width", 50}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "successindicator"}
                 , new Object[]{"caption", "Success Indicator"}

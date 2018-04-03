@@ -1,6 +1,6 @@
 <workunit extends="rpt_wtemplates/ReportController.xml" >
     <invokers>
-        <invoker folderid="/explorer/report/hrmisreports" action="init" caption="Rating Standard for IPCR" target="window" index="1" role="REPORT"/>
+        <invoker folderid="/explorer/report/hrmisreports" action="init" caption="Rating Standard for IPCR" target="window" index="1" />
     </invokers>
     <code>
 
@@ -16,9 +16,12 @@ class TagabukidRatingStandardIPCRController extends tagabukid.common.models.Asyn
     @Service('TagabukidPMISReportService') 
     def svc
     
-    String title = 'Individual Performance Commitment and Review+'
+    @Service("TagabukidSubayLookupService")
+    def subaylookupsvc
     
-    String reportName = 'tagabukid/hrmis/pmis/reports/ratingstandardforipcr.jasper';
+    String title = 'Rating Standard for IPCR'
+    String reportPath = 'tagabukid/hrmis/pmis/reports/'
+    String reportName = reportPath + 'ratingstandardforipcr.jasper';
     def data 
     
         
@@ -35,6 +38,7 @@ class TagabukidRatingStandardIPCRController extends tagabukid.common.models.Asyn
         getFormControls: {
             return [
                 new FormControl( "combo", [caption:'Period', name:'entity.period', items:'period', preferredSize:'100,19', immediate:true  , captionWidth:100,required:true]),
+                new FormControl( "combo", [caption:'Office', name:'entity.org', items:'orgs', expression:'#{item.org.name}', preferredSize:'0,19', captionWidth:100 ,emptyText:'ALL']),
                 //new FormControl( "checkbox", [caption:'Rerport As of', name:'entity.asof', preferredSize:'100,19' , captionWidth:100]),
                 //new FormControl( "integer", [caption:'Year', name:'entity.year', required:true, preferredSize:'100,19' , captionWidth:100]),
                 //new FormControl( "combo", [caption:'Quarter', name:'entity.qtr', items:'quarters', preferredSize:'100,19', immediate:true  , captionWidth:100,required:true]),
@@ -51,6 +55,23 @@ class TagabukidRatingStandardIPCRController extends tagabukid.common.models.Asyn
    
    List getPeriod() {
         return ['1st','2nd']
+   }
+   
+    List getOrgs() {
+        return subaylookupsvc.lookupUserOrg([:]);
+    }
+    
+    SubReport[] getSubReports() {
+        return [ 
+               new SubReport("CollectionType", reportpath + "collectiontype.jasper"),
+               new SubReport("CollectionSummary", reportpath + "collectionsummary.jasper"),
+               new SubReport("RemittedForms", reportpath + "remittedforms.jasper"),
+               new SubReport("NonSerialRemittances", reportpath + "nonserialremittances.jasper"),
+               new SubReport("NonSerialSummary", reportpath + "nonserialsummary.jasper"),
+               new SubReport("OtherPayments", reportpath + "otherpayments.jasper"),
+               new SubReport("Denomination", reportpath + "denomination.jasper"),
+               new SubReport("CancelSeries", reportpath + "cancelseries.jasper"),
+           ] as SubReport[];    
    }
 
 }
