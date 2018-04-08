@@ -6,7 +6,7 @@ import com.rameses.osiris2.common.*;
 import com.rameses.util.*;
 
 
-class CaptureIPCRController extends CrudFormModel{
+class CaptureIPCRCRUDController extends CRUDController{
     @Binding
     def binding;
     
@@ -38,13 +38,13 @@ class CaptureIPCRController extends CrudFormModel{
     
     
     public void beforeSave(o){
-         entity.ipcritems = [];
         if(mode == 'create' ) {
             entity.ipcrno = svc.getIPCRNo();
             entity.employee.PersonId = entity.employee.PersonId.toString();
             entity.reviewerid = entity.reviewer.PersonId.toString();
             entity.supervisorid = entity.supervisor.PersonId.toString();
             entity.approverid = entity.approver.PersonId.toString();
+          
             entity.dpcrlist.each{ dp ->
                 if (dp.ipcrlist.size() == 0){
                     throw new Exception("Please add at least one Success Indicator")
@@ -66,39 +66,17 @@ class CaptureIPCRController extends CrudFormModel{
 //                    it.objid = 'IPBI' + new java.rmi.server.UID()
 //                }
 //            }
-        }else{
-//            entity.ipcrno = svc.getIPCRNo();
-            entity.employee.PersonId = entity.employee.PersonId.toString();
-            entity.reviewerid = entity.reviewer.PersonId.toString();
-            entity.supervisorid = entity.supervisor.PersonId.toString();
-            entity.approverid = entity.approver.PersonId.toString();
-          
-            entity.dpcrlist.each{ dp ->
-                if (dp.ipcrlist.size() == 0){
-                    throw new Exception("Please add at least one Success Indicator")
-                }
-                
-                dp.ipcrlist.each{
-                    it.successindicatorid = it.successindicator.objid
-                    it.qid = it.q?.objid
-                    it.eid = it.e?.objid
-                    it.tid = it.t?.objid
-                    entity.ipcritems.add(it);
-                }
-            }
-            
-            
         }
     }
     
     public void afterOpen(){
-        entity.dpcrlist = svc.getDPCRByIPCRId(entity.objid);
-        entity.behavioraltypelist.each{ 
-           it.bahavioralratinglist = svc.getBehavioralRatingList(it.objid);
-        }.sort{it.type}
-//        println entity
-        behavioralTypeListHandler.reload();
-        dpcrListHandler.reload();
+//        entity.dpcrlist = svc.getDPCRByIPCRId(entity.objid);
+//        entity.behavioraltypelist.each{ 
+//           it.bahavioralratinglist = svc.getBehavioralRatingList(it.objid);
+//        }
+//        println entity.behavioraltypelist
+//        behavioralTypeListHandler.reload();
+//        dpcrListHandler.reload();
     }
     def getLookupSignatory(){
         return Inv.lookupOpener('pmis:lookupPostgreHrmis',)
@@ -111,16 +89,6 @@ class CaptureIPCRController extends CrudFormModel{
     //    def getLookupOfficeAssigned(){
     //        return InvokerUtil.lookupOpener('pmis:lookuporg');
     //    }
-    
-    def getLookupDPCRSuccessIndicator(){
-        return InvokerUtil.lookupOpener('pmis:lookupDPCR',[orgid:entity.orgid,
-            onselect :{
-                entity.dpcrlist << it
-                checkDuplicateDPCR(entity.dpcrlist,it)
-                dpcrListHandler.reload();
-            }
-            ]);
-    }
     
     def getLookupIPCRSuccessIndicator(){
         return InvokerUtil.lookupOpener('pmis:lookupIPCR',[dpid:selectedDPCR.dpid]);
@@ -185,10 +153,6 @@ class CaptureIPCRController extends CrudFormModel{
     def dpcrListHandler = [
         //        getRows : { entity.employees.size() + 1 },
         fetchList: { return entity?.dpcrlist},
-//        validate:{li->
-//            def item=li.item;
-//            checkDuplicateDPCR(entity.dpcrlist,item);
-//        }
 //        onRemoveItem : {
 //            if (MsgBox.confirm('Delete item?')){                
 //                selectedDPCR.remove(it)
@@ -229,7 +193,6 @@ class CaptureIPCRController extends CrudFormModel{
         onRemoveItem : {
             if (MsgBox.confirm('Delete item?')){                
                 selectedDPCR.ipcrlist.remove(it)
-                svc.removeIPCRItem(it);
                 ipcrListHandler?.load();
                 return true;
             }
@@ -247,15 +210,6 @@ class CaptureIPCRController extends CrudFormModel{
             checkDuplicateIPCR(selectedDPCR.ipcrlist,item);
         }
     ] as EditorListModel
-    
-    void checkDuplicateDPCR(listtofilter,item){
-        println listtofilter
-        println item
-        def data = listtofilter.find{it.objid == item.objid && it.objid != selectedDPCR.objid}
-        if (data){
-        throw new Exception("Duplicate item is not allowed.")
-        }
-    }   
     
     void checkDuplicateIPCR(listtofilter,item){
         def data = listtofilter.find{it.successindicator.objid == item.successindicator.objid && it.objid != selectedIPCR.objid}

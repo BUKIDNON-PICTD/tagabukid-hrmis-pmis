@@ -176,7 +176,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "dpcode"}
                 , new Object[]{"caption", "Code"}
-                , new Object[]{"width", 20}
+                , new Object[]{"width", 2}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", false}
@@ -195,9 +195,10 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"required", false}
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
-                , new Object[]{"editable", false}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.LookupColumnHandler("#{item.dptitle}", "lookupDPCRSuccessIndicator")}
             })
         });
         xDataTable2.setHandler("dpcrListHandler");
@@ -211,7 +212,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "successindicator.code"}
                 , new Object[]{"caption", "Code"}
-                , new Object[]{"width", 50}
+                , new Object[]{"width", 60}
                 , new Object[]{"minWidth", 0}
                 , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", false}

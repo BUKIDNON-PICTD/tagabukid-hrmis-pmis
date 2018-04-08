@@ -166,6 +166,26 @@ class TagabukidSIMIPCRController extends CRUDController {
 
         }
     } 
-           
+    
+    def transferParent() {
+                return InvokerUtil.lookupOpener( "pmisdp:lookup", [
+                    onselect: { o->
+                    
+                        if (o.objid == entity.objid){
+                             throw new Exception("Cannot Transfer " + entity.title  + " to " + entity.title);
+                        }
+                        else if(o.type != 'mfo'){
+                             throw new Exception("Cannot transfer to different parent type");
+                        }
+                        if( MsgBox.confirm('You are about to transfer this success indicator to another dp?') ) {
+                            simsvc.changeParent( [parentid:o.objid, objid:entity.objid] );
+                            entity.parentid = o.objid;
+                            entity.parent = o;
+                            caller.refresh();
+                            binding.refresh();
+                        }
+                    }
+                ]);
+            }     
 
 }  

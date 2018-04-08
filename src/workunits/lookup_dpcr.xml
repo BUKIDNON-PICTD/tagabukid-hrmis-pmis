@@ -1,0 +1,5 @@
+<workunit extends="wtemplates/BasicLookupController.xml" serviceName="TagabukidSIMService" tag='dp'>
+    <invokers>
+        <invoker type="pmisdp:lookup" caption="Lookup DP" target="popup"/>
+    </invokers>
+</workunit>

@@ -1,0 +1,6 @@
+"selectedDPCR|selectedIPCR|selectedBehavioralRating" [mode == 'read'] {
+    enabled:false;
+}
+"selectedDPCR|selectedIPCR|selectedBehavioralRating" [mode != 'read'] {
+    enabled:true;
+}

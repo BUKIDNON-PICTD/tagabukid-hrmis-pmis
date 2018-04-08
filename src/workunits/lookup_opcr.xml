@@ -1,0 +1,5 @@
+<workunit extends="wtemplates/BasicLookupController.xml" serviceName="TagabukidSIMService" tag='op'>
+    <invokers>
+        <invoker type="pmisop:lookup" caption="Lookup MFO" target="popup"/>
+    </invokers>
+</workunit>
