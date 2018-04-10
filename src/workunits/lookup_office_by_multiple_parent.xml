@@ -2,7 +2,7 @@
     
     <invokers>
         
-        <invoker type="pmisorgs:lookup" caption="Organization Lookup" target="popup" > </invoker>
+        <invoker type="pmisorgbymultipleparent:lookup" caption="Organization Lookup" target="popup" > </invoker>
         
     </invokers>
      <code>

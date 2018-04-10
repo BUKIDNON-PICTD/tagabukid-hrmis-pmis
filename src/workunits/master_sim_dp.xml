@@ -54,7 +54,7 @@
             }
             
             def getLookupOrg(){
-                return Inv.lookupOpener('pmisorgs:lookup',[
+                return Inv.lookupOpener('pmisorgbymultipleparent:lookup',[
                        orgs:node.orgs,
                             onselect :{
                             selectedItem.objid = it.OrgUnitId;

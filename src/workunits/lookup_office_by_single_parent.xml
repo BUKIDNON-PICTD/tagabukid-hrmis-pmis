@@ -2,7 +2,7 @@
     
     <invokers>
         
-        <invoker type="pmisorg:lookup" caption="Organization Lookup" target="popup" > </invoker>
+        <invoker type="pmisorgbyparent:lookup" caption="Organization Lookup" target="popup" > </invoker>
         
     </invokers>
      <code>
@@ -12,7 +12,7 @@
         import com.rameses.osiris2.client.*
         import com.rameses.osiris2.common.*
 
-        class HrisOrgLookupController extends LookupController
+        class HrisOrgOfficeOnlyLookupController extends LookupController
         {
             @Service("TagabukidPMISLookupService")
             def svc
