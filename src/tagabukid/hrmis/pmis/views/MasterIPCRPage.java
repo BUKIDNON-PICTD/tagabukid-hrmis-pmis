@@ -13,12 +13,12 @@ import com.rameses.rcp.ui.annotations.Template;
  * @author rufino
  */
 @Template({FormPage.class})
-public class IPCRPage extends javax.swing.JPanel {
+public class MasterIPCRPage extends javax.swing.JPanel {
 
     /**
      * Creates new form CabinetPage
      */
-    public IPCRPage() {
+    public MasterIPCRPage() {
         initComponents();
     }
 

@@ -15,13 +15,13 @@ import com.rameses.seti2.views.CrudFormPage;
  */
 @StyleSheet
 @Template(CrudFormPage.class)
-public class MasterBehavioralForm extends javax.swing.JPanel {
+public class MasterBehavioralPage extends javax.swing.JPanel {
 
 
     /**
      * Creates new form MasterBehaviorForm
      */
-    public MasterBehavioralForm() {
+    public MasterBehavioralPage() {
         initComponents();
     }
 

@@ -1,6 +1,7 @@
 <workunit extends="wtemplates/ExplorerViewController.xml" >
     <invokers>
-        <invoker folderid="/home/hrmis/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>
+        <invoker folderid="/home/hrmis/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>        <invoker folderid="/home/hrmis/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>
+        <invoker folderid="/explorer/master/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>        <invoker folderid="/home/hrmis/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>
     </invokers>
     <code>
         import com.rameses.rcp.common.*;
@@ -9,7 +10,7 @@
         import com.rameses.osiris2.common.*;
         import tagabukid.hrmis.pmis.models.*;
        
-        class TagabukidSIMController extends SIMController {
+        class MasterSIMController extends SIMController {
        
         String serviceName = 'TagabukidSIMService'
          
@@ -33,6 +34,6 @@
         }
     </code>
     <pages>
-        <page name="queryform" template="tagabukid.hrmis.pmis.views.TagabukidSuccessIndicatorListQueryForm"/>
+        <page name="queryform" template="tagabukid.hrmis.pmis.views.MasterSuccessIndicatorListQueryForm"/>
     </pages>
 </workunit>

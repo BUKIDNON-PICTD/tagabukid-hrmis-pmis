@@ -13,12 +13,12 @@ import com.rameses.rcp.ui.annotations.Template;
  * @author rufino
  */
 @Template({FormPage.class})
-public class MFOPage extends javax.swing.JPanel {
+public class MasterMFOPage extends javax.swing.JPanel {
 
     /**
      * Creates new form CabinetPage
      */
-    public MFOPage() {
+    public MasterMFOPage() {
         initComponents();
     }
 

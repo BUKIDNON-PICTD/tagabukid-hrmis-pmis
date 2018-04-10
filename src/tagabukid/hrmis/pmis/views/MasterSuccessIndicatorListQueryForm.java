@@ -9,12 +9,12 @@ package tagabukid.hrmis.pmis.views;
  *
  * @author rufino
  */
-public class TagabukidSuccessIndicatorListQueryForm extends javax.swing.JPanel {
+public class MasterSuccessIndicatorListQueryForm extends javax.swing.JPanel {
 
     /**
      * Creates new form TagabukidSubayListQueryForm
      */
-    public TagabukidSuccessIndicatorListQueryForm() {
+    public MasterSuccessIndicatorListQueryForm() {
         initComponents();
     }
 

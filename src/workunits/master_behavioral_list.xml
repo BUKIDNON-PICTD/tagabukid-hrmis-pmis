@@ -1,6 +1,6 @@
 <workunit extends="com/rameses/seti2/templates/CrudList.xml" schemaName="pmis_behavioral">
     <invokers>
        <invoker folderid="/home/hrmis/hrmismaster" caption="Behavioral" action="init" index="10" role="MASTER"/>
-       <invoker folderid="/explorer/txn/pictdservicestransaction" action="init" caption="Behavioral" index="20" role="MASTER"/>   
+       <invoker folderid="/explorer/master/hrmismaster" action="init" caption="Behavioral" index="20" role="MASTER"/>   
     </invokers> 
 </workunit>
