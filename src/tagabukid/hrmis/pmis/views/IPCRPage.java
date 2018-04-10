@@ -32,10 +32,7 @@ public class IPCRPage extends javax.swing.JPanel {
     private void initComponents() {
 
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
-        xTextField1 = new com.rameses.rcp.control.XTextField();
-        xTextField2 = new com.rameses.rcp.control.XTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        xTextArea3 = new com.rameses.rcp.control.XTextArea();
+        xSuggest1 = new com.rameses.rcp.control.XSuggest();
         xDecimalField1 = new com.rameses.rcp.control.XDecimalField();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
@@ -59,30 +56,14 @@ public class IPCRPage extends javax.swing.JPanel {
         xLabel2 = new com.rameses.rcp.control.XLabel();
         xButton1 = new com.rameses.rcp.control.XButton();
 
-        xTextField1.setCaption("Success Indicator Code");
-        xTextField1.setCaptionWidth(150);
-        xTextField1.setName("entity.code"); // NOI18N
-        xTextField1.setPreferredSize(new java.awt.Dimension(150, 19));
-        xTextField1.setRequired(true);
-        xTextField1.setSpaceChar('_');
-        xFormPanel1.add(xTextField1);
-
-        xTextField2.setCaption("Success Indicator Title");
-        xTextField2.setCaptionWidth(150);
-        xTextField2.setName("entity.title"); // NOI18N
-        xTextField2.setPreferredSize(new java.awt.Dimension(0, 20));
-        xTextField2.setRequired(true);
-        xFormPanel1.add(xTextField2);
-
-        jScrollPane3.setPreferredSize(new java.awt.Dimension(0, 63));
-
-        xTextArea3.setCaption("Description");
-        xTextArea3.setCaptionWidth(150);
-        xTextArea3.setName("entity.description"); // NOI18N
-        xTextArea3.setRequired(true);
-        jScrollPane3.setViewportView(xTextArea3);
-
-        xFormPanel1.add(jScrollPane3);
+        xSuggest1.setCaption("Success Indicator Title");
+        xSuggest1.setCaptionWidth(150);
+        xSuggest1.setExpression("#{item.title}");
+        xSuggest1.setHandler("titleLookup");
+        xSuggest1.setName("entity.title"); // NOI18N
+        xSuggest1.setPreferredSize(new java.awt.Dimension(0, 20));
+        xSuggest1.setRequired(true);
+        xFormPanel1.add(xSuggest1);
 
         xDecimalField1.setCaption("Alloted Budget");
         xDecimalField1.setCaptionWidth(150);
@@ -171,7 +152,7 @@ public class IPCRPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(xFormPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -237,7 +218,7 @@ public class IPCRPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xDataTable4, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addComponent(xDataTable4, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -301,7 +282,7 @@ public class IPCRPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(xFormPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xDataTable6, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addComponent(xDataTable6, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -362,7 +343,6 @@ public class IPCRPage extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private com.rameses.rcp.control.XButton xButton1;
     private com.rameses.rcp.control.XDataTable xDataTable1;
@@ -379,10 +359,8 @@ public class IPCRPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLookupField xLookupField1;
     private com.rameses.rcp.control.XLookupField xLookupField2;
     private com.rameses.rcp.control.XLookupField xLookupField3;
+    private com.rameses.rcp.control.XSuggest xSuggest1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
     private com.rameses.rcp.control.XTextArea xTextArea2;
-    private com.rameses.rcp.control.XTextArea xTextArea3;
-    private com.rameses.rcp.control.XTextField xTextField1;
-    private com.rameses.rcp.control.XTextField xTextField2;
     // End of variables declaration//GEN-END:variables
 }

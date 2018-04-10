@@ -23,37 +23,9 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="TOP" isForPrompting="false" class="java.lang.Integer"/>
-	<parameter name="TITLE" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="PERIOD" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="OFFICE" isForPrompting="false" class="java.lang.String"/>
 
-	<field name="farmerobjid" class="java.lang.String"/>
-	<field name="farmerid" class="java.lang.String"/>
-	<field name="farmer_objid" class="java.lang.String"/>
-	<field name="farmer.name" class="java.lang.String"/>
-	<field name="farmer_address_text" class="java.lang.String"/>
-	<field name="spouse_objid" class="java.lang.String"/>
-	<field name="spouse_name" class="java.lang.String"/>
-	<field name="farmeritemobjid" class="java.lang.String"/>
-	<field name="farmeritemaddress" class="java.lang.String"/>
-	<field name="farmeritembarangay" class="java.lang.String"/>
-	<field name="farmeritembarangayname" class="java.lang.String"/>
-	<field name="faremeritemmunicipality" class="java.lang.String"/>
-	<field name="faremeritemmunicipalityname" class="java.lang.String"/>
-	<field name="commodityname" class="java.lang.String"/>
-	<field name="commoditycode" class="java.lang.String"/>
-	<field name="commoditytypename" class="java.lang.String"/>
-	<field name="commoditytypecode" class="java.lang.String"/>
-	<field name="commoditytypeunit" class="java.lang.String"/>
-	<field name="commoditysubtypename" class="java.lang.String"/>
-	<field name="commoditysubtypecode" class="java.lang.String"/>
-	<field name="tenurialstatus" class="java.lang.String"/>
-	<field name="qty" class="java.lang.String"/>
-	<field name="maintainer" class="java.lang.String"/>
-	<field name="remarks" class="java.lang.String"/>
-	<field name="phf_name" class="java.lang.String"/>
-	<field name="phfnumber" class="java.lang.Integer"/>
+	<field name="TITLE" class="java.lang.String"/>
+	<field name="PERIOD" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -215,19 +187,6 @@
 						key="line-2"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
-				<staticText>
-					<reportElement
-						x="2"
-						y="21"
-						width="862"
-						height="18"
-						key="staticText-50"/>
-					<box></box>
-					<textElement>
-						<font/>
-					</textElement>
-				<text><![CDATA[Static Text]]></text>
-				</staticText>
 				<staticText>
 					<reportElement
 						x="289"

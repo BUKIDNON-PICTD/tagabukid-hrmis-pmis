@@ -32,8 +32,7 @@ public class DPCRPage extends javax.swing.JPanel {
     private void initComponents() {
 
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
-        xTextField1 = new com.rameses.rcp.control.XTextField();
-        xTextField2 = new com.rameses.rcp.control.XTextField();
+        xSuggest1 = new com.rameses.rcp.control.XSuggest();
         jScrollPane3 = new javax.swing.JScrollPane();
         xTextArea3 = new com.rameses.rcp.control.XTextArea();
         xDecimalField1 = new com.rameses.rcp.control.XDecimalField();
@@ -46,27 +45,20 @@ public class DPCRPage extends javax.swing.JPanel {
         xLabel2 = new com.rameses.rcp.control.XLabel();
         xButton1 = new com.rameses.rcp.control.XButton();
 
-        xTextField1.setCaption("Success Indicator Code");
-        xTextField1.setCaptionWidth(150);
-        xTextField1.setName("entity.code"); // NOI18N
-        xTextField1.setPreferredSize(new java.awt.Dimension(150, 19));
-        xTextField1.setRequired(true);
-        xTextField1.setSpaceChar('_');
-        xFormPanel1.add(xTextField1);
-
-        xTextField2.setCaption("Success Indicator Title");
-        xTextField2.setCaptionWidth(150);
-        xTextField2.setName("entity.title"); // NOI18N
-        xTextField2.setPreferredSize(new java.awt.Dimension(200, 20));
-        xTextField2.setRequired(true);
-        xFormPanel1.add(xTextField2);
+        xSuggest1.setCaption("Success Indicator Title");
+        xSuggest1.setCaptionWidth(150);
+        xSuggest1.setExpression("#{item.title}");
+        xSuggest1.setHandler("titleLookup");
+        xSuggest1.setName("entity.title"); // NOI18N
+        xSuggest1.setPreferredSize(new java.awt.Dimension(0, 20));
+        xSuggest1.setRequired(true);
+        xFormPanel1.add(xSuggest1);
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(0, 63));
 
         xTextArea3.setCaption("Description");
         xTextArea3.setCaptionWidth(150);
         xTextArea3.setName("entity.description"); // NOI18N
-        xTextArea3.setRequired(true);
         jScrollPane3.setViewportView(xTextArea3);
 
         xFormPanel1.add(jScrollPane3);
@@ -185,10 +177,9 @@ public class DPCRPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel2;
     private com.rameses.rcp.control.XLabel xLabel2;
+    private com.rameses.rcp.control.XSuggest xSuggest1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
     private com.rameses.rcp.control.XTextArea xTextArea2;
     private com.rameses.rcp.control.XTextArea xTextArea3;
-    private com.rameses.rcp.control.XTextField xTextField1;
-    private com.rameses.rcp.control.XTextField xTextField2;
     // End of variables declaration//GEN-END:variables
 }

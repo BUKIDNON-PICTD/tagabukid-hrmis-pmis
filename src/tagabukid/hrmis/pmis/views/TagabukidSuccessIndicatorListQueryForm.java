@@ -48,7 +48,7 @@ public class TagabukidSuccessIndicatorListQueryForm extends javax.swing.JPanel {
         xLookupField1.setHandler("lookupOrg");
         xLookupField1.setHint("Select Org/Office");
         xLookupField1.setName("params.org"); // NOI18N
-        xLookupField1.setPreferredSize(new java.awt.Dimension(500, 22));
+        xLookupField1.setPreferredSize(new java.awt.Dimension(300, 22));
         xFormPanel1.add(xLookupField1);
 
         xActionTextField2.setActionName("search");

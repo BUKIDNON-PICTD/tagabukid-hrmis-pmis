@@ -64,6 +64,21 @@
                 }
             } 
             
+            def titleLookup = [
+                fetchList: { o->
+                    o._tag = 'mfo';
+                    return simsvc.getList(o).title;
+                }
+            ] as SuggestModel;
+
+            //public String getReligion() {
+            //    return getValue(); 
+            //}
+
+            //public void setReligion(String s) {
+            //    setValue( s ); 
+            //}
+            
         
             
         }      

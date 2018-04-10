@@ -99,7 +99,12 @@
                   
                 }
             } 
-            
+            def titleLookup = [
+                fetchList: { o->
+                    o._tag = 'dp';
+                    return simsvc.getList(o).title;
+                }
+            ] as SuggestModel;
              def transferParent() {
                 return InvokerUtil.lookupOpener( "pmisop:lookup", [
                     onselect: { o->

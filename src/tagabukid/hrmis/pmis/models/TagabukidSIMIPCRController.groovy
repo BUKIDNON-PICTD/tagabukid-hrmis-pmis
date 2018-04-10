@@ -55,7 +55,7 @@ class TagabukidSIMIPCRController extends CRUDController {
             
     def qualityHandler = [
         fetchList  : { 
-//            println entity.qualities
+            //            println entity.qualities
             return entity.qualities
         },
         //createItem : { return [objid:'PPI' + new java.rmi.server.UID(), parentid:entity.objid] },
@@ -161,31 +161,36 @@ class TagabukidSIMIPCRController extends CRUDController {
     void beforeSave( o ) {
         def searchList  = verifySvc.getList(entity); 
         if(searchList) {
-             if( searchList.find{ it.weight == 100 } )
-                throw new Exception("Exact Success Indicator exist.");
+            if( searchList.find{ it.weight == 100 } )
+            throw new Exception("Exact Success Indicator exist.");
 
         }
     } 
-    
+    def titleLookup = [
+        fetchList: { o->
+            o._tag = 'ip';
+            return simsvc.getList(o).title;
+        }
+    ] as SuggestModel;
     def transferParent() {
-                return InvokerUtil.lookupOpener( "pmisdp:lookup", [
-                    onselect: { o->
+        return InvokerUtil.lookupOpener( "pmisdp:lookup", [
+                onselect: { o->
                     
-                        if (o.objid == entity.objid){
-                             throw new Exception("Cannot Transfer " + entity.title  + " to " + entity.title);
-                        }
-                        else if(o.type != 'mfo'){
-                             throw new Exception("Cannot transfer to different parent type");
-                        }
-                        if( MsgBox.confirm('You are about to transfer this success indicator to another dp?') ) {
-                            simsvc.changeParent( [parentid:o.objid, objid:entity.objid] );
-                            entity.parentid = o.objid;
-                            entity.parent = o;
-                            caller.refresh();
-                            binding.refresh();
-                        }
+                    if (o.objid == entity.objid){
+                        throw new Exception("Cannot Transfer " + entity.title  + " to " + entity.title);
                     }
-                ]);
-            }     
+                    else if(o.type != 'mfo'){
+                        throw new Exception("Cannot transfer to different parent type");
+                    }
+                    if( MsgBox.confirm('You are about to transfer this success indicator to another dp?') ) {
+                        simsvc.changeParent( [parentid:o.objid, objid:entity.objid] );
+                        entity.parentid = o.objid;
+                        entity.parent = o;
+                        caller.refresh();
+                        binding.refresh();
+                    }
+                }
+            ]);
+    }     
 
 }  
