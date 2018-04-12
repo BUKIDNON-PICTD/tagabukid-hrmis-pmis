@@ -38,7 +38,7 @@ class CaptureIPCRController extends CrudFormModel{
     
     
     public void beforeSave(o){
-         entity.ipcritems = [];
+        entity.ipcritems = [];
         if(mode == 'create' ) {
             entity.ipcrno = svc.getIPCRNo();
             entity.employee.PersonId = entity.employee.PersonId.toString();
@@ -100,6 +100,8 @@ class CaptureIPCRController extends CrudFormModel{
         behavioralTypeListHandler.reload();
         dpcrListHandler.reload();
     }
+    
+    
     def getLookupSignatory(){
         return Inv.lookupOpener('pmis:lookupPostgreHrmis',)
     }
@@ -127,15 +129,15 @@ class CaptureIPCRController extends CrudFormModel{
     }
     
     def getLookupRatingQ(){
-        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'Q']);
+        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'QUALITY']);
     }
     
     def getLookupRatingT(){
-        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'T']);
+        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'TIMELINESS']);
     }
     
     def getLookupRatingE(){
-        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'E']);
+        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'EFFICIENCY']);
     }
     public def searchDPCR(){
         return Inv.lookupOpener('pmis:lookuporg',[

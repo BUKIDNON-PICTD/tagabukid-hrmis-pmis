@@ -1,0 +1,12 @@
+<workunit schemaName="pmis_rating">
+    <invokers>
+        <invoker type="pmis_rating:create" action="create" caption="Success Indicator Rating" role="MASTER"/>
+        <invoker type="pmis_rating:open" action="open" caption="Success Indicator Rating" role="MASTER"/>
+    </invokers>
+        
+    <code class="tagabukid.hrmis.pmis.models.MasterSuccessIndicatorRatingController" />  
+    
+    <pages>
+        <page template="tagabukid.hrmis.pmis.views.MasterSuccessIndicatorRatingPage" />
+    </pages>
+</workunit>

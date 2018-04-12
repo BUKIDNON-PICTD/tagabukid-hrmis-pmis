@@ -1,0 +1,34 @@
+<workunit extends="wtemplates/LookupController.xml">
+    <invokers>
+        <invoker type="pmisratingbaselinemasterfile:lookup" caption="Select Rating Baseline" target="popup" > </invoker>
+    </invokers>
+     <code>
+
+        import com.rameses.rcp.common.*
+        import com.rameses.rcp.annotations.*
+        import com.rameses.osiris2.client.*
+        import com.rameses.osiris2.common.*
+
+        class RatingBaselineLookupController extends LookupController
+        {
+            @Service("TagabukidPMISLookupService")
+            def svc
+
+            def state;
+            def ipid;
+            def type;
+            Column[] getColumns() {
+                return [
+                    new Column(name:"code", caption:"Code", width:50),
+                    new Column(name:"name", caption:"Name", width:250),
+                ]
+            }
+
+            List fetchList( Map params ) { 
+                params.type = type;
+                return svc.lookupRatingBaselineMaster(params)
+            }
+        }  
+
+    </code>
+</workunit>

@@ -4,7 +4,7 @@ import com.rameses.rcp.annotations.*;
 import com.rameses.osiris2.client.*;
 import java.rmi.server.*;
           
-class TagabukidSIMIPCRController extends CRUDController {
+class MasterSIMIPCRController extends CRUDController {
         
     @Caller
     def caller;
@@ -21,6 +21,9 @@ class TagabukidSIMIPCRController extends CRUDController {
     
     @Service("TagabukidPMISSuccessIndicatorTitleVerificationService")
     def verifySvc
+    
+    @Service("PersistenceService")
+    def persistenceSvc;
     
     String entityName = "sim";
     def node;
@@ -45,9 +48,9 @@ class TagabukidSIMIPCRController extends CRUDController {
     Map createEntity() {
         def m = [parentid:node.objid, type:'ip',qualities:[],timeliness:[],efficiency:[],];
         m.parent = [code:node.code, title: node.title];
-        m.qualities  = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
-        m.timeliness = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
-        m.efficiency = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
+        //        m.qualities  = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
+        //        m.timeliness = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
+        //        m.efficiency = [[rating:5],[rating:4],[rating:3],[rating:2],[rating:1]]
         caller.refresh();
         return m;
     }
@@ -120,44 +123,70 @@ class TagabukidSIMIPCRController extends CRUDController {
     ] as EditorListModel
     
     def getLookupqualitybaseline(){
-        return InvokerUtil.lookupOpener('pmis:lookupratingbaseline',[
-                type:'Q',
+        //        return InvokerUtil.lookupOpener('pmis:lookupratingbaseline',[
+        //                type:'Q',
+        //                onselect :{
+        //                    def q = simsvc.getSuccessIndicatorRatingByBaseline(it)
+        //                    entity.qualities.each{ itq ->
+        //                        itq.title = q.find{it.rating == itq.rating}.title
+        //                    }
+        //                    binding.refresh('entity');
+        //                    qualityHandler.reload();
+        //                }
+        //            ]);
+
+        return InvokerUtil.lookupOpener('pmisratingbaselinemasterfile:lookup',[
+                type:'QUALITY',
                 onselect :{
-                    def q = simsvc.getSuccessIndicatorRatingByBaseline(it)
-                    entity.qualities.each{ itq ->
-                        itq.title = q.find{it.rating == itq.rating}.title
-                    }
+                    entity.qualities = persistenceSvc.read([ _schemaname: 'pmis_rating', objid:it.objid]).items.sort{-it.rating}
                     binding.refresh('entity');
                     qualityHandler.reload();
                 }
             ]);
     }       
     def getLookuptimelinessbaseline(){
-        return InvokerUtil.lookupOpener('pmis:lookupratingbaseline',[
-                type:'T',
+        //        return InvokerUtil.lookupOpener('pmis:lookupratingbaseline',[
+        //                type:'T',
+        //                onselect :{
+        //                    def t = simsvc.getSuccessIndicatorRatingByBaseline(it)
+        //                    entity.timeliness.each{ itt ->
+        //                        itt.title = t.find{it.rating == itt.rating}.title
+        //                    }
+        //                    binding.refresh('entity');
+        //                    timelinessHandler.reload();
+        //                }
+        //            ]);
+        return InvokerUtil.lookupOpener('pmisratingbaselinemasterfile:lookup',[
+                type:'TIMELINESS',
                 onselect :{
-                    def t = simsvc.getSuccessIndicatorRatingByBaseline(it)
-                    entity.timeliness.each{ itt ->
-                        itt.title = t.find{it.rating == itt.rating}.title
-                    }
+                    entity.timeliness = persistenceSvc.read([ _schemaname: 'pmis_rating', objid:it.objid]).items.sort{-it.rating}
                     binding.refresh('entity');
                     timelinessHandler.reload();
                 }
             ]);
     }    
     def getLookupefficiencybaseline(){
-        return InvokerUtil.lookupOpener('pmis:lookupratingbaseline',[
-                type:'E',
+        //        return InvokerUtil.lookupOpener('pmis:lookupratingbaseline',[
+        //                type:'E',
+        //                onselect :{
+        //                    def e = simsvc.getSuccessIndicatorRatingByBaseline(it)
+        //                    entity.efficiency.each{ ite ->
+        //                        ite.title = t.find{it.rating == ite.rating}.title
+        //                    }
+        //                    binding.refresh('entity');
+        //                    efficiencyHandler.reload();
+        //                }
+        //            ]);
+        return InvokerUtil.lookupOpener('pmisratingbaselinemasterfile:lookup',[
+                type:'EFFICIENCY',
                 onselect :{
-                    def e = simsvc.getSuccessIndicatorRatingByBaseline(it)
-                    entity.efficiency.each{ ite ->
-                        ite.title = t.find{it.rating == ite.rating}.title
-                    }
+                    entity.efficiency = persistenceSvc.read([ _schemaname: 'pmis_rating', objid:it.objid]).items.sort{-it.rating}
                     binding.refresh('entity');
                     efficiencyHandler.reload();
                 }
             ]);
-    }    
+    }
+    
     void beforeSave( o ) {
         def searchList  = verifySvc.getList(entity); 
         if(searchList) {
