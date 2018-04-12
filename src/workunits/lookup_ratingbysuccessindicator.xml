@@ -1,6 +1,9 @@
 <workunit extends="wtemplates/LookupController.xml">
+    
     <invokers>
-        <invoker type="pmisratingbaselinemasterfile:lookup" caption="Select Rating Baseline" target="popup" > </invoker>
+        
+        <invoker type="pmissuccessindicatorratingtype:lookup" caption="Rating Lookup" target="popup" > </invoker>
+        
     </invokers>
      <code>
 
@@ -9,7 +12,7 @@
         import com.rameses.osiris2.client.*
         import com.rameses.osiris2.common.*
 
-        class RatingBaselineLookupController extends LookupController
+        class SuccessIndicatorRatingTypeLookupController extends LookupController
         {
             @Service("TagabukidPMISLookupService")
             def svc
@@ -19,14 +22,15 @@
             def type;
             Column[] getColumns() {
                 return [
-                    new Column(name:"code", caption:"Code", width:10),
-                    new Column(name:"name", caption:"Name", width:250),
+                    new Column(name:"title", caption:"Title", width:250),
+                    new Column(name:"rating", caption:"Rating", width:10),
                 ]
             }
 
             List fetchList( Map params ) { 
+                params.ipid = ipid;
                 params.type = type;
-                return svc.lookupRatingBaselineMaster(params)
+                return svc.lookupSuccessIndicatorRatingByType(params)
             }
         }  
 

@@ -13,6 +13,8 @@ class CaptureIPCRController extends CrudFormModel{
     @Service("TagabukidIPCRService")
     def svc
     
+    @Service("PersistenceService")
+    def persistenceSvc;
     //    @Service("TagabukidBehavioralService") 
     //    def bsvc
     
@@ -25,13 +27,13 @@ class CaptureIPCRController extends CrudFormModel{
     //    def selectedType;
     def node;
     
-//    def selectedtypes = ['Client', 'Peer', 'Supervisor',];
-//    def ratinglist = [1,2,3,4,5];
+    //    def selectedtypes = ['Client', 'Peer', 'Supervisor',];
+    //    def ratinglist = [1,2,3,4,5];
     def periods = ['1st', '2nd',];
     
-            
     
-   
+    
+    
     void afterCreate(){
         entity = svc.initCreate();
     }
@@ -60,25 +62,28 @@ class CaptureIPCRController extends CrudFormModel{
                     entity.ipcritems.add(item);
                 }
             }
-//            entity.behavioraltypelist.each{ dp ->
-//                dp.bahavioralratinglist.each{
-//                    it.behavioralid = it.objid
-//                    it.objid = 'IPBI' + new java.rmi.server.UID()
-//                }
-//            }
+            //            entity.behavioraltypelist.each{ dp ->
+            //                dp.bahavioralratinglist.each{
+            //                    it.behavioralid = it.objid
+            //                    it.objid = 'IPBI' + new java.rmi.server.UID()
+            //                }
+            //            }
         }else{
-//            entity.ipcrno = svc.getIPCRNo();
+            //            entity.ipcrno = svc.getIPCRNo();
             entity.employee.PersonId = entity.employee.PersonId.toString();
             entity.reviewerid = entity.reviewer.PersonId.toString();
             entity.supervisorid = entity.supervisor.PersonId.toString();
             entity.approverid = entity.approver.PersonId.toString();
-          
+            
             entity.dpcrlist.each{ dp ->
                 if (dp.ipcrlist.size() == 0){
                     throw new Exception("Please add at least one Success Indicator")
                 }
-                
+                def z = [_schemaname:'pmis_ipcr_items',findBy: [:]]
+                z.findBy.ipcrid = entity.objid
+                persistenceSvc.removeEntity(z)
                 dp.ipcrlist.each{
+                    
                     it.successindicatorid = it.successindicator.objid
                     it.qid = it.q?.objid
                     it.eid = it.e?.objid
@@ -94,9 +99,9 @@ class CaptureIPCRController extends CrudFormModel{
     public void afterOpen(){
         entity.dpcrlist = svc.getDPCRByIPCRId(entity.objid);
         entity.behavioraltypelist.each{ 
-           it.bahavioralratinglist = svc.getBehavioralRatingList(it.objid);
+            it.bahavioralratinglist = svc.getBehavioralRatingList(it.objid);
         }.sort{it.type}
-//        println entity
+        //        println entity
         behavioralTypeListHandler.reload();
         dpcrListHandler.reload();
     }
@@ -116,11 +121,11 @@ class CaptureIPCRController extends CrudFormModel{
     
     def getLookupDPCRSuccessIndicator(){
         return InvokerUtil.lookupOpener('pmis:lookupDPCR',[orgid:entity.orgid,
-            onselect :{
-                entity.dpcrlist << it
-                checkDuplicateDPCR(entity.dpcrlist,it)
-                dpcrListHandler.reload();
-            }
+                onselect :{
+                    entity.dpcrlist << it
+                    checkDuplicateDPCR(entity.dpcrlist,it)
+                    dpcrListHandler.reload();
+                }
             ]);
     }
     
@@ -128,16 +133,28 @@ class CaptureIPCRController extends CrudFormModel{
         return InvokerUtil.lookupOpener('pmis:lookupIPCR',[dpid:selectedDPCR.dpid]);
     }
     
+    //    def getLookupRatingQ(){
+    //        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'QUALITY']);
+    //    }
+    //    
+    //    def getLookupRatingT(){
+    //        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'TIMELINESS']);
+    //    }
+    //    
+    //    def getLookupRatingE(){
+    //        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'EFFICIENCY']);
+    //    }
+    
     def getLookupRatingQ(){
-        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'QUALITY']);
+        return InvokerUtil.lookupOpener('pmissuccessindicatorratingtype:lookup',[ipid:selectedIPCR.successindicator.objid,type:'QUALITY']);
     }
     
     def getLookupRatingT(){
-        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'TIMELINESS']);
+        return InvokerUtil.lookupOpener('pmissuccessindicatorratingtype:lookup',[ipid:selectedIPCR.successindicator.objid,type:'TIMELINESS']);
     }
     
     def getLookupRatingE(){
-        return InvokerUtil.lookupOpener('pmis:lookupRating',[ipid:selectedIPCR.successindicator.objid,type:'EFFICIENCY']);
+        return InvokerUtil.lookupOpener('pmissuccessindicatorratingtype:lookup',[ipid:selectedIPCR.successindicator.objid,type:'EFFICIENCY']);
     }
     public def searchDPCR(){
         return Inv.lookupOpener('pmis:lookuporg',[
@@ -147,7 +164,7 @@ class CaptureIPCRController extends CrudFormModel{
                     entity.org.name = it.Entity.Name
                     entity.org.code = it.Entity.AcronymAbbreviation
                     entity.dpcrlist = svc.getSIByEmployeeOffice(it)
-//                    entity.officeassigned = it.Entity.Name
+                    //                    entity.officeassigned = it.Entity.Name
                     binding.refresh('entity.org.name');
                     dpcrListHandler.reload();
                 }
@@ -187,25 +204,25 @@ class CaptureIPCRController extends CrudFormModel{
     def dpcrListHandler = [
         //        getRows : { entity.employees.size() + 1 },
         fetchList: { return entity?.dpcrlist},
-//        validate:{li->
-//            def item=li.item;
-//            checkDuplicateDPCR(entity.dpcrlist,item);
-//        }
-//        onRemoveItem : {
-//            if (MsgBox.confirm('Delete item?')){                
-//                selectedDPCR.remove(it)
-//                dpcrListHandler?.load();
-//                return true;
-//            }
-//            return false;
-//        }
+        //        validate:{li->
+        //            def item=li.item;
+        //            checkDuplicateDPCR(entity.dpcrlist,item);
+        //        }
+        //        onRemoveItem : {
+        //            if (MsgBox.confirm('Delete item?')){                
+        //                selectedDPCR.remove(it)
+        //                dpcrListHandler?.load();
+        //                return true;
+        //            }
+        //            return false;
+        //        }
         //        createItem : {
         //            return[
         //                objid : 'DPCR' + new java.rmi.server.UID(),
         //                ipcrlist : [],
         //            ]
         //        },
-      
+        
     ] as EditorListModel
     
     //    def dpcrListHandler = [
@@ -255,14 +272,14 @@ class CaptureIPCRController extends CrudFormModel{
         println item
         def data = listtofilter.find{it.objid == item.objid && it.objid != selectedDPCR.objid}
         if (data){
-        throw new Exception("Duplicate item is not allowed.")
+            throw new Exception("Duplicate item is not allowed.")
         }
     }   
     
     void checkDuplicateIPCR(listtofilter,item){
         def data = listtofilter.find{it.successindicator.objid == item.successindicator.objid && it.objid != selectedIPCR.objid}
         if (data){
-        throw new Exception("Duplicate item is not allowed.")
+            throw new Exception("Duplicate item is not allowed.")
         }
     }   
     
@@ -278,18 +295,18 @@ class CaptureIPCRController extends CrudFormModel{
             }
             return false;
         }
-//        ,
-//        createItem : {
-//            return[
-//                bahavioralratinglist : [],
-//            ]
-//        },
-//        onAddItem : {
-//            it.bahavioralratinglist = svc.getBahavioralRating(it.type)
-//            entity.behavioraltypelist << it
-//        }
+        //        ,
+        //        createItem : {
+        //            return[
+        //                bahavioralratinglist : [],
+        //            ]
+        //        },
+        //        onAddItem : {
+        //            it.bahavioralratinglist = svc.getBahavioralRating(it.type)
+        //            entity.behavioraltypelist << it
+        //        }
     ] as EditorListModel  
-
+    
     
     
     
@@ -303,14 +320,14 @@ class CaptureIPCRController extends CrudFormModel{
             }
             return false;
         }
-//        ,
-//        onAddItem : {
-//            selectedBehavioralType.bahavioralratinglist << it;
-//        },
+        //        ,
+        //        onAddItem : {
+        //            selectedBehavioralType.bahavioralratinglist << it;
+        //        },
     ] as EditorListModel 
 }     
-        
 
-        
-   
+
+
+
 
