@@ -39,6 +39,7 @@ class TagabukidRatingStandardIPCRController extends tagabukid.common.models.Asyn
             return [
                 new FormControl( "combo", [caption:'Period', name:'entity.period', items:'periods', preferredSize:'100,19', immediate:true  , captionWidth:100,required:true,allowNull:false]),
                 new FormControl( "combo", [caption:'Office', name:'entity.org', items:'orgs', expression:'#{item.Entity.Name}', preferredSize:'0,19', captionWidth:100 ,allowNull:false]),
+                //new FormControl( "lookup", [caption:' By', name:'entity.approver', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[], expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:100]),
                 //new FormControl( "checkbox", [caption:'Rerport As of', name:'entity.asof', preferredSize:'100,19' , captionWidth:100]),
                 //new FormControl( "integer", [caption:'Year', name:'entity.year', required:true, preferredSize:'100,19' , captionWidth:100]),
                 //new FormControl( "combo", [caption:'Quarter', name:'entity.qtr', items:'quarters', preferredSize:'100,19', immediate:true  , captionWidth:100,required:true]),

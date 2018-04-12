@@ -23,9 +23,14 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-
-	<field name="TITLE" class="java.lang.String"/>
-	<field name="PERIOD" class="java.lang.String"/>
+	<parameter name="TITLE" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="PERIOD" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="OWNERNAME" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="OWNERTITLE" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="PMTSECRETARIAT" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="PMTSECRITARIATTITLE" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="PMTCHAIR" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="PMTCHAIRTITLE" isForPrompting="false" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -187,19 +192,6 @@
 						key="line-2"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
-				<staticText>
-					<reportElement
-						x="289"
-						y="48"
-						width="273"
-						height="32"
-						key="staticText-51"/>
-					<box></box>
-					<textElement>
-						<font/>
-					</textElement>
-				<text><![CDATA[Static Text]]></text>
-				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
@@ -211,7 +203,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["commit to deliver and agree to be rated on the attainment of the following targets in accordane with the indicated measure for the period "+$P{PERIOD}+"."]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["I " + $P{OWNERNAME} +", " + $P{OWNERTITLE} + "commit to deliver and agree to be rated on the attainment of the following targets in accordane with the indicated measure for the period "+$P{PERIOD}+"."]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
