@@ -2,14 +2,14 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="ratingitems"
+		 name="dpcritems"
 
 		 language="groovy"		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="510"
-		 pageHeight="792"
-		 columnWidth="510"
+		 orientation="Landscape"
+		 pageWidth="770"
+		 pageHeight="595"
+		 columnWidth="770"
 		 columnSpacing="0"
 		 leftMargin="0"
 		 rightMargin="0"
@@ -25,6 +25,8 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
+	<field name="dptitle" class="java.lang.String"/>
+
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -38,63 +40,37 @@
 			</band>
 		</pageHeader>
 		<columnHeader>
-			<band height="13"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="10"
-						y="0"
-						width="59"
-						height="13"
-						key="staticText-1"/>
-					<box></box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Tahoma"/>
-					</textElement>
-				<text><![CDATA[Rate]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="69"
-						y="0"
-						width="98"
-						height="13"
-						key="staticText-2"/>
-					<box></box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Tahoma"/>
-					</textElement>
-				<text><![CDATA[Quality]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="167"
-						y="0"
-						width="98"
-						height="13"
-						key="staticText-3"/>
-					<box></box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Tahoma"/>
-					</textElement>
-				<text><![CDATA[Efficiency]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="265"
-						y="0"
-						width="98"
-						height="13"
-						key="staticText-4"/>
-					<box></box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Tahoma"/>
-					</textElement>
-				<text><![CDATA[Timeliness]]></text>
-				</staticText>
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</columnHeader>
 		<detail>
 			<band height="26"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="0"
+						width="770"
+						height="13"
+						key="textField"/>
+					<box leftPadding="5">					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{dptitle}]]></textFieldExpression>
+				</textField>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="0"
+						y="13"
+						width="770"
+						height="13"
+						key="subreport-1"/>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>

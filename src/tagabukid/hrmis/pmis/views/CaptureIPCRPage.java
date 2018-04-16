@@ -36,36 +36,43 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xHorizontalPanel1 = new com.rameses.rcp.control.XHorizontalPanel();
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
         xLabel1 = new com.rameses.rcp.control.XLabel();
-        xLookupField1 = new com.rameses.rcp.control.XLookupField();
-        xLookupField2 = new com.rameses.rcp.control.XLookupField();
-        xLookupField3 = new com.rameses.rcp.control.XLookupField();
-        xDateField1 = new com.rameses.rcp.control.XDateField();
-        xFormPanel2 = new com.rameses.rcp.control.XFormPanel();
         xIntegerField1 = new com.rameses.rcp.control.XIntegerField();
         xComboBox1 = new com.rameses.rcp.control.XComboBox();
+        xLookupField4 = new com.rameses.rcp.control.XLookupField();
+        xLookupField8 = new com.rameses.rcp.control.XLookupField();
+        xActionTextField1 = new com.rameses.rcp.control.XActionTextField();
+        xDateField1 = new com.rameses.rcp.control.XDateField();
+        jPanel3 = new javax.swing.JPanel();
+        xFormPanel2 = new com.rameses.rcp.control.XFormPanel();
+        xLookupField1 = new com.rameses.rcp.control.XLookupField();
+        xLookupField5 = new com.rameses.rcp.control.XLookupField();
+        xFormPanel3 = new com.rameses.rcp.control.XFormPanel();
+        xLookupField2 = new com.rameses.rcp.control.XLookupField();
+        xLookupField6 = new com.rameses.rcp.control.XLookupField();
+        xFormPanel4 = new com.rameses.rcp.control.XFormPanel();
+        xLookupField3 = new com.rameses.rcp.control.XLookupField();
+        xLookupField7 = new com.rameses.rcp.control.XLookupField();
+        xFormPanel5 = new com.rameses.rcp.control.XFormPanel();
         xLabel7 = new com.rameses.rcp.control.XLabel();
         xLabel4 = new com.rameses.rcp.control.XLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         xTextArea2 = new com.rameses.rcp.control.XTextArea();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        xFormPanel3 = new com.rameses.rcp.control.XFormPanel();
-        xLookupField4 = new com.rameses.rcp.control.XLookupField();
-        xActionTextField1 = new com.rameses.rcp.control.XActionTextField();
         jSplitPane1 = new javax.swing.JSplitPane();
         xDataTable2 = new com.rameses.rcp.control.XDataTable();
         xDataTable3 = new com.rameses.rcp.control.XDataTable();
         jPanel2 = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
-        xDataTable4 = new com.rameses.rcp.control.XDataTable();
         xDataTable1 = new com.rameses.rcp.control.XDataTable();
+        xDataTable4 = new com.rameses.rcp.control.XDataTable();
 
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder1.setTitle("IPCR Information");
-        xHorizontalPanel1.setBorder(xTitledBorder1);
         xHorizontalPanel1.setBorderSeparator(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         xHorizontalPanel1.setPreferredSize(new java.awt.Dimension(1008, 165));
 
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder1.setTitle("IPCR Info");
+        xFormPanel1.setBorder(xTitledBorder1);
         xFormPanel1.setCaptionWidth(130);
         xFormPanel1.setName(""); // NOI18N
         xFormPanel1.setPreferredSize(new java.awt.Dimension(500, 100));
@@ -77,29 +84,41 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xLabel1.setPreferredSize(new java.awt.Dimension(0, 16));
         xFormPanel1.add(xLabel1);
 
-        xLookupField1.setCaption("Reviewer");
-        xLookupField1.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
-        xLookupField1.setHandler("lookupSignatory");
-        xLookupField1.setName("entity.reviewer"); // NOI18N
-        xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));
-        xLookupField1.setRequired(true);
-        xFormPanel1.add(xLookupField1);
+        xIntegerField1.setCaption("Year");
+        xIntegerField1.setName("entity.year"); // NOI18N
+        xIntegerField1.setRequired(true);
+        xFormPanel1.add(xIntegerField1);
 
-        xLookupField2.setCaption("Immediate Supervisor");
-        xLookupField2.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
-        xLookupField2.setHandler("lookupSignatory");
-        xLookupField2.setName("entity.supervisor"); // NOI18N
-        xLookupField2.setPreferredSize(new java.awt.Dimension(0, 20));
-        xLookupField2.setRequired(true);
-        xFormPanel1.add(xLookupField2);
+        xComboBox1.setCaption("Period");
+        xComboBox1.setItems("periods");
+        xComboBox1.setName("entity.period"); // NOI18N
+        xComboBox1.setPreferredSize(new java.awt.Dimension(100, 20));
+        xComboBox1.setRequired(true);
+        xFormPanel1.add(xComboBox1);
 
-        xLookupField3.setCaption("Approver");
-        xLookupField3.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
-        xLookupField3.setHandler("lookupSignatory");
-        xLookupField3.setName("entity.approver"); // NOI18N
-        xLookupField3.setPreferredSize(new java.awt.Dimension(0, 20));
-        xLookupField3.setRequired(true);
-        xFormPanel1.add(xLookupField3);
+        xLookupField4.setCaption("Employee");
+        xLookupField4.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField4.setHandler("lookupEmployee");
+        xLookupField4.setName("entity.employee"); // NOI18N
+        xLookupField4.setPreferredSize(new java.awt.Dimension(0, 20));
+        xLookupField4.setRequired(true);
+        xFormPanel1.add(xLookupField4);
+
+        xLookupField8.setCaption("Position/ Job Title");
+        xLookupField8.setExpression("#{item.name}");
+        xLookupField8.setHandler("lookupPosition");
+        xLookupField8.setHint("Position/ Job Title");
+        xLookupField8.setName("entity.employee.position"); // NOI18N
+        xLookupField8.setPreferredSize(new java.awt.Dimension(0, 20));
+        xLookupField8.setRequired(true);
+        xFormPanel1.add(xLookupField8);
+
+        xActionTextField1.setActionCommand("searchDPCR");
+        xActionTextField1.setCaption("Office Assigned");
+        xActionTextField1.setName("entity.org.name"); // NOI18N
+        xActionTextField1.setPreferredSize(new java.awt.Dimension(0, 20));
+        xActionTextField1.setRequired(true);
+        xFormPanel1.add(xActionTextField1);
 
         xDateField1.setCaption("Date Filed");
         xDateField1.setName("entity.dtfiled"); // NOI18N
@@ -108,18 +127,72 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
 
         xHorizontalPanel1.add(xFormPanel1);
 
-        xFormPanel2.setCaptionWidth(100);
-        xFormPanel2.setPreferredSize(new java.awt.Dimension(500, 100));
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder2 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder2.setTitle("Signatories");
+        jPanel3.setBorder(xTitledBorder2);
+        jPanel3.setPreferredSize(new java.awt.Dimension(500, 232));
 
-        xIntegerField1.setCaption("Year");
-        xIntegerField1.setName("entity.year"); // NOI18N
-        xFormPanel2.add(xIntegerField1);
+        xFormPanel2.setOrientation(com.rameses.rcp.constant.UIConstants.HORIZONTAL);
+        xFormPanel2.setPreferredSize(new java.awt.Dimension(0, 20));
 
-        xComboBox1.setCaption("Period");
-        xComboBox1.setItems("periods");
-        xComboBox1.setName("entity.period"); // NOI18N
-        xComboBox1.setRequired(true);
-        xFormPanel2.add(xComboBox1);
+        xLookupField1.setCaption("Reviewer");
+        xLookupField1.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField1.setHandler("lookupEmployee");
+        xLookupField1.setName("entity.reviewer"); // NOI18N
+        xLookupField1.setPreferredSize(new java.awt.Dimension(300, 20));
+        xLookupField1.setRequired(true);
+        xFormPanel2.add(xLookupField1);
+
+        xLookupField5.setExpression("#{item.name}");
+        xLookupField5.setHandler("lookupPosition");
+        xLookupField5.setHint("Position/ Job Title");
+        xLookupField5.setName("entity.reviewer.position"); // NOI18N
+        xLookupField5.setPreferredSize(new java.awt.Dimension(160, 20));
+        xLookupField5.setRequired(true);
+        xLookupField5.setShowCaption(false);
+        xFormPanel2.add(xLookupField5);
+
+        xFormPanel3.setOrientation(com.rameses.rcp.constant.UIConstants.HORIZONTAL);
+        xFormPanel3.setPreferredSize(new java.awt.Dimension(0, 20));
+
+        xLookupField2.setCaption("Approver");
+        xLookupField2.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField2.setHandler("lookupEmployee");
+        xLookupField2.setName("entity.approver"); // NOI18N
+        xLookupField2.setPreferredSize(new java.awt.Dimension(300, 20));
+        xLookupField2.setRequired(true);
+        xFormPanel3.add(xLookupField2);
+
+        xLookupField6.setExpression("#{item.name}");
+        xLookupField6.setHandler("lookupPosition");
+        xLookupField6.setHint("Position/ Job Title");
+        xLookupField6.setName("entity.approver.position"); // NOI18N
+        xLookupField6.setPreferredSize(new java.awt.Dimension(160, 20));
+        xLookupField6.setRequired(true);
+        xLookupField6.setShowCaption(false);
+        xFormPanel3.add(xLookupField6);
+
+        xFormPanel4.setOrientation(com.rameses.rcp.constant.UIConstants.HORIZONTAL);
+        xFormPanel4.setPreferredSize(new java.awt.Dimension(0, 20));
+
+        xLookupField3.setCaption("Dept Head");
+        xLookupField3.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField3.setHandler("lookupEmployee");
+        xLookupField3.setName("entity.depthead"); // NOI18N
+        xLookupField3.setPreferredSize(new java.awt.Dimension(300, 20));
+        xLookupField3.setRequired(true);
+        xFormPanel4.add(xLookupField3);
+
+        xLookupField7.setExpression("#{item.name}");
+        xLookupField7.setHandler("lookupPosition");
+        xLookupField7.setHint("Position/ Job Title");
+        xLookupField7.setName("entity.depthead.position"); // NOI18N
+        xLookupField7.setPreferredSize(new java.awt.Dimension(160, 20));
+        xLookupField7.setRequired(true);
+        xLookupField7.setShowCaption(false);
+        xFormPanel4.add(xLookupField7);
+
+        xFormPanel5.setPreferredSize(new java.awt.Dimension(500, 100));
 
         xLabel7.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel7.setCaption("Created By");
@@ -128,7 +201,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xLabel7.setName(""); // NOI18N
         xLabel7.setOpaque(true);
         xLabel7.setPreferredSize(new java.awt.Dimension(0, 16));
-        xFormPanel2.add(xLabel7);
+        xFormPanel5.add(xLabel7);
 
         xLabel4.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel4.setCaption("Date Created");
@@ -136,7 +209,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xLabel4.setFor("");
         xLabel4.setOpaque(true);
         xLabel4.setPreferredSize(new java.awt.Dimension(0, 16));
-        xFormPanel2.add(xLabel4);
+        xFormPanel5.add(xLabel4);
 
         jScrollPane2.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         jScrollPane2.setPreferredSize(new java.awt.Dimension(0, 40));
@@ -148,30 +221,39 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xTextArea2.setShowCaption(false);
         jScrollPane2.setViewportView(xTextArea2);
 
-        xFormPanel2.add(jScrollPane2);
+        xFormPanel5.add(jScrollPane2);
 
-        xHorizontalPanel1.add(xFormPanel2);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+                        .addComponent(xFormPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(xFormPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(xFormPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(xFormPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xFormPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        xLookupField4.setCaption("Employee");
-        xLookupField4.setCaptionWidth(100);
-        xLookupField4.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
-        xLookupField4.setHandler("lookupEmployee");
-        xLookupField4.setName("entity.employee"); // NOI18N
-        xLookupField4.setPreferredSize(new java.awt.Dimension(0, 20));
-        xLookupField4.setRequired(true);
-        xFormPanel3.add(xLookupField4);
+        xHorizontalPanel1.add(jPanel3);
 
-        xActionTextField1.setActionCommand("searchDPCR");
-        xActionTextField1.setCaption("Office Assigned");
-        xActionTextField1.setCaptionWidth(100);
-        xActionTextField1.setName("entity.org.name"); // NOI18N
-        xActionTextField1.setPreferredSize(new java.awt.Dimension(400, 20));
-        xActionTextField1.setRequired(true);
-        xFormPanel3.add(xActionTextField1);
-
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder2 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder2.setTitle("DPCR");
-        xDataTable2.setBorder(xTitledBorder2);
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder3 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder3.setTitle("DPCR");
+        xDataTable2.setBorder(xTitledBorder3);
         xDataTable2.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "dptitle"}
@@ -190,11 +272,12 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         });
         xDataTable2.setHandler("dpcrListHandler");
         xDataTable2.setName("selectedDPCR"); // NOI18N
+        xDataTable2.setPreferredSize(new java.awt.Dimension(300, 80));
         jSplitPane1.setLeftComponent(xDataTable2);
 
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder3 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder3.setTitle("Success Indicator");
-        xDataTable3.setBorder(xTitledBorder3);
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder4 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder4.setTitle("Success Indicator");
+        xDataTable3.setBorder(xTitledBorder4);
         xDataTable3.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "successindicator"}
@@ -318,26 +401,59 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(xFormPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1217, Short.MAX_VALUE)
-                    .addComponent(jSplitPane1))
+                .addComponent(jSplitPane1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSplitPane1)
                 .addGap(16, 16, 16))
         );
 
         jTabbedPane1.addTab("IPCR", jPanel1);
 
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder4 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder4.setTitle("Rating");
-        xDataTable4.setBorder(xTitledBorder4);
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder5 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder5.setTitle("Type");
+        xDataTable1.setBorder(xTitledBorder5);
+        xDataTable1.setColumns(new com.rameses.rcp.common.Column[]{
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "type"}
+                , new Object[]{"caption", "Type"}
+                , new Object[]{"width", 0}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", true}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "remraks"}
+                , new Object[]{"caption", "Comment/Remarks"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            })
+        });
+        xDataTable1.setHandler("behavioralTypeListHandler");
+        xDataTable1.setName("selectedBehavioralType"); // NOI18N
+        xDataTable1.setPreferredSize(new java.awt.Dimension(300, 80));
+        jSplitPane2.setLeftComponent(xDataTable1);
+
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder6 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder6.setTitle("Rating");
+        xDataTable4.setBorder(xTitledBorder6);
         xDataTable4.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "name"}
@@ -399,49 +515,13 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xDataTable4.setName("selectedBehavioralRating"); // NOI18N
         jSplitPane2.setRightComponent(xDataTable4);
 
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder5 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder5.setTitle("Type");
-        xDataTable1.setBorder(xTitledBorder5);
-        xDataTable1.setColumns(new com.rameses.rcp.common.Column[]{
-            new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "type"}
-                , new Object[]{"caption", "Type"}
-                , new Object[]{"width", 0}
-                , new Object[]{"minWidth", 0}
-                , new Object[]{"maxWidth", 0}
-                , new Object[]{"required", true}
-                , new Object[]{"resizable", true}
-                , new Object[]{"nullWhenEmpty", true}
-                , new Object[]{"editable", false}
-                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
-            }),
-            new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "remraks"}
-                , new Object[]{"caption", "Comment/Remarks"}
-                , new Object[]{"width", 100}
-                , new Object[]{"minWidth", 0}
-                , new Object[]{"maxWidth", 0}
-                , new Object[]{"required", false}
-                , new Object[]{"resizable", true}
-                , new Object[]{"nullWhenEmpty", true}
-                , new Object[]{"editable", true}
-                , new Object[]{"editableWhen", null}
-                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
-            })
-        });
-        xDataTable1.setHandler("behavioralTypeListHandler");
-        xDataTable1.setName("selectedBehavioralType"); // NOI18N
-        jSplitPane2.setLeftComponent(xDataTable1);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1217, Short.MAX_VALUE)
+                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -462,17 +542,17 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(xHorizontalPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xHorizontalPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(xHorizontalPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -480,6 +560,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
@@ -494,6 +575,8 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel2;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
+    private com.rameses.rcp.control.XFormPanel xFormPanel4;
+    private com.rameses.rcp.control.XFormPanel xFormPanel5;
     private com.rameses.rcp.control.XHorizontalPanel xHorizontalPanel1;
     private com.rameses.rcp.control.XIntegerField xIntegerField1;
     private com.rameses.rcp.control.XLabel xLabel1;
@@ -503,6 +586,10 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLookupField xLookupField2;
     private com.rameses.rcp.control.XLookupField xLookupField3;
     private com.rameses.rcp.control.XLookupField xLookupField4;
+    private com.rameses.rcp.control.XLookupField xLookupField5;
+    private com.rameses.rcp.control.XLookupField xLookupField6;
+    private com.rameses.rcp.control.XLookupField xLookupField7;
+    private com.rameses.rcp.control.XLookupField xLookupField8;
     private com.rameses.rcp.control.XTextArea xTextArea2;
     // End of variables declaration//GEN-END:variables
 }

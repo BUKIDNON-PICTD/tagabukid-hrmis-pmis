@@ -23,21 +23,15 @@ class CaptureIPCRController extends CrudFormModel{
     def selectedIPCR;
     def selectedBehavioralType;
     def selectedBehavioralRating;
-    
     //    def selectedType;
     def node;
-    
     //    def selectedtypes = ['Client', 'Peer', 'Supervisor',];
     //    def ratinglist = [1,2,3,4,5];
     def periods = ['1st', '2nd',];
     
-    
-    
-    
     void afterCreate(){
         entity = svc.initCreate();
     }
-    
     
     public void beforeSave(o){
         entity.ipcritems = [];
@@ -45,7 +39,7 @@ class CaptureIPCRController extends CrudFormModel{
             entity.ipcrno = svc.getIPCRNo();
             entity.employee.PersonId = entity.employee.PersonId.toString();
             entity.reviewerid = entity.reviewer.PersonId.toString();
-            entity.supervisorid = entity.supervisor.PersonId.toString();
+            entity.deptheadid = entity.depthead.PersonId.toString();
             entity.approverid = entity.approver.PersonId.toString();
             entity.dpcrlist.each{ dp ->
                 if (dp.ipcrlist.size() == 0){
@@ -69,10 +63,11 @@ class CaptureIPCRController extends CrudFormModel{
             //                }
             //            }
         }else{
+//            println entity
             //            entity.ipcrno = svc.getIPCRNo();
             entity.employee.PersonId = entity.employee.PersonId.toString();
             entity.reviewerid = entity.reviewer.PersonId.toString();
-            entity.supervisorid = entity.supervisor.PersonId.toString();
+            entity.deptheadid = entity.depthead.PersonId.toString();
             entity.approverid = entity.approver.PersonId.toString();
             
             entity.dpcrlist.each{ dp ->
@@ -113,6 +108,10 @@ class CaptureIPCRController extends CrudFormModel{
     
     def getLookupEmployee(){
         return Inv.lookupOpener('pmis:lookupPostgreHrmis',)
+    }
+    
+    def getLookupPosition(){
+        return Inv.lookupOpener('pmisposition:lookup',)
     }
     
     //    def getLookupOfficeAssigned(){
@@ -325,6 +324,12 @@ class CaptureIPCRController extends CrudFormModel{
         //            selectedBehavioralType.bahavioralratinglist << it;
         //        },
     ] as EditorListModel 
+    
+    def preview() {
+        def op = Inv.lookupOpener( "pmisipcrpreview:report", [entity: entity] );
+        op.target = 'self';
+        return op;
+    }
 }     
 
 
