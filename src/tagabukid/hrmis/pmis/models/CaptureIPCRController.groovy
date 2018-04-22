@@ -23,10 +23,13 @@ class CaptureIPCRController extends CrudFormModel{
     def selectedIPCR;
     def selectedBehavioralType;
     def selectedBehavioralRating;
-    //    def selectedType;
+        def selectedType;
     def node;
-    //    def selectedtypes = ['Client', 'Peer', 'Supervisor',];
-    //    def ratinglist = [1,2,3,4,5];
+        def selectedtypes = ['Client', 'Peer', 'Supervisor',];
+        def ratinglist = [1,2,3,4,5];
+    
+    boolean viewReportAllowed = false;
+
     def periods = ['1st', '2nd',];
     
     void afterCreate(){
@@ -287,23 +290,22 @@ class CaptureIPCRController extends CrudFormModel{
             return entity?.behavioraltypelist;
         },
         onRemoveItem : {
-            if (MsgBox.confirm('Delete item?')){                
+            if (MsgBox.confirm('Delete item?') && entity.behavioraltypelist.findAll{it.type=='Client'}.size() == 6 && entity.behavioraltypelist.findAll{it.type=='Peer'}.size() == 3 && entity.behavioraltypelist.findAll{it.type=='Supervisor'}.size() == 1 ){                
                 selectedBehavioralType.remove(it)
                 behavioralTypeListHandler?.load();
                 return true;
             }
             return false;
+        },
+        createItem : {
+            return[
+                bahavioralratinglist : [],
+            ]
+        },
+        onAddItem : {
+            it.bahavioralratinglist = svc.getBahavioralRating(it.type)
+            entity.behavioraltypelist << it
         }
-        //        ,
-        //        createItem : {
-        //            return[
-        //                bahavioralratinglist : [],
-        //            ]
-        //        },
-        //        onAddItem : {
-        //            it.bahavioralratinglist = svc.getBahavioralRating(it.type)
-        //            entity.behavioraltypelist << it
-        //        }
     ] as EditorListModel  
     
     
@@ -327,6 +329,11 @@ class CaptureIPCRController extends CrudFormModel{
     
     def preview() {
         def op = Inv.lookupOpener( "pmisipcrpreview:report", [entity: entity] );
+        op.target = 'self';
+        return op;
+    }
+    def viewReport() {
+        def op = Inv.lookupOpener( "pmisipcrprint:report", [entity: entity] );
         op.target = 'self';
         return op;
     }

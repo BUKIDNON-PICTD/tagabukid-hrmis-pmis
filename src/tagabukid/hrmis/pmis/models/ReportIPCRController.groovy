@@ -4,7 +4,7 @@ import com.rameses.osiris2.client.*;
 import com.rameses.osiris2.common.*;
 import com.rameses.osiris2.reports.*;
 
-class IPCRReportController extends ReportController {
+class ReportIPCRController extends ReportController {
     
     @Service("TagabukidPMISReportService")
     def svc;
@@ -16,7 +16,7 @@ class IPCRReportController extends ReportController {
     
     def getReportData() { 
         data = svc.getSIByIPCRId(entity);
-        return data.reportdata
+        return data.reportdata.ipcrlist
     } 
 
 //    void buildReportData(entity, asyncHandler){
@@ -27,10 +27,10 @@ class IPCRReportController extends ReportController {
         return data.parameters;
     }
     
-    SubReport[] getSubReports() {
-        return [ 
-           new SubReport("DPCRItems", REPORT_PATH + "dpcritems.jasper"),
-           new SubReport("IPCRitems", REPORT_PATH + "ipcritems.jasper"),
-        ] as SubReport[];    
-    }
+//    SubReport[] getSubReports() {
+//        return [ 
+//           new SubReport("BEHAVIORAL", REPORT_PATH + "behavioral.jasper"),
+//           new SubReport("IPCRITEMS", REPORT_PATH + "ipcritems.jasper"),
+//        ] as SubReport[];    
+//    }
 } 

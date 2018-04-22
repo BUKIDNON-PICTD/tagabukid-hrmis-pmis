@@ -1,0 +1,6 @@
+<workunit extends="wtemplates/SimpleReportController.xml" >
+    <invokers>
+        <invoker type="pmis_ipcr:form:formActions" caption="Preview Behaioral" action="preview" index="2"/>        
+    </invokers>
+    <code class="tagabukid.hrmis.pmis.models.ReportBehavioralController" />
+</workunit>

@@ -1,7 +1,6 @@
 <workunit extends="wtemplates/SimpleReportController.xml" >
     <invokers>
-        <invoker type="pmisipcrpreview:report" caption="Preview IPCR" action="preview" index="1"/>        
-        <invoker type="pmisipcrprint:report" caption="Print IPCR" action="print" index="1"/>
+        <invoker type="pmis_ipcr:form:formActions" caption="Preview IPCR" action="preview" index="1"/>        
     </invokers>
-    <code class="tagabukid.hrmis.pmis.models.IPCRReportController" />
+    <code class="tagabukid.hrmis.pmis.models.ReportIPCRController" />
 </workunit>

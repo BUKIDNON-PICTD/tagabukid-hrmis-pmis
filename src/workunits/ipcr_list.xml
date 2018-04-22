@@ -1,4 +1,4 @@
-<workunit extends="com/rameses/seti2/templates/CrudList.xml" schemaName="pmis_ipcr">
+<workunit extends="com/rameses/seti2/templates/CrudList.xml" schemaName="pmis_ipcr" allowPrint="false" >
     <invokers>
        <invoker folderid="/home/hrmis" caption="Capture IPCR List" action="init" index="10"  role="ENCODER"/>
        <invoker folderid="/explorer/txn/hrmistransaction" action="init" caption="Capture IPCR List" index="20" role="ENCODER"/>   

@@ -1,4 +1,4 @@
-<workunit schemaName="pmis_ipcr">
+<workunit schemaName="pmis_ipcr" >
     <invokers>
         <invoker folderid="/home/hrmis" caption="Capture IPCR" action="create" index="10" role="ENCODER"/>
         <invoker type="pmis_ipcr:create" caption="Create IPCR" action="create" role="ENCODER"/>

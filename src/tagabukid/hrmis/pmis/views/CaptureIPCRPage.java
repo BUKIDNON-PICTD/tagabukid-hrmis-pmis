@@ -49,6 +49,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xFormPanel3 = new com.rameses.rcp.control.XFormPanel();
         xLookupField2 = new com.rameses.rcp.control.XLookupField();
         xLookupField6 = new com.rameses.rcp.control.XLookupField();
+        xDecimalField1 = new com.rameses.rcp.control.XDecimalField();
         xFormPanel4 = new com.rameses.rcp.control.XFormPanel();
         xLookupField3 = new com.rameses.rcp.control.XLookupField();
         xLookupField7 = new com.rameses.rcp.control.XLookupField();
@@ -172,6 +173,12 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xLookupField6.setShowCaption(false);
         xFormPanel3.add(xLookupField6);
 
+        xDecimalField1.setCaption("Intervening Task");
+        xDecimalField1.setCaptionWidth(100);
+        xDecimalField1.setMaxValue(0.5);
+        xDecimalField1.setName("entity.approver.interveningtask"); // NOI18N
+        xFormPanel3.add(xDecimalField1);
+
         xFormPanel4.setOrientation(com.rameses.rcp.constant.UIConstants.HORIZONTAL);
         xFormPanel4.setPreferredSize(new java.awt.Dimension(0, 20));
 
@@ -230,11 +237,11 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+                        .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
                         .addComponent(xFormPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(xFormPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,9 +434,10 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 , new Object[]{"required", true}
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
-                , new Object[]{"editable", false}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.ComboBoxColumnHandler("selectedtypes", null, null)}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "remraks"}
@@ -572,6 +580,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XDataTable xDataTable3;
     private com.rameses.rcp.control.XDataTable xDataTable4;
     private com.rameses.rcp.control.XDateField xDateField1;
+    private com.rameses.rcp.control.XDecimalField xDecimalField1;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel2;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
