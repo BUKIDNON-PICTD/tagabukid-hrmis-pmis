@@ -21,8 +21,8 @@ class TagabukidPCRReportController extends tagabukid.common.models.AsyncReportCo
     
     String title = 'Performane Commitement and Review Form (Target)'
     
-    String reportPath = 'tagabukid/hrmis/pmis/reports/'
-    String reportName = reportPath + 'pcrf.jasper';
+    String reportPath = 'tagabukid/hrmis/pmis/reports/ipcr/'
+    String reportName = reportPath + 'opcrmain.jasper';
     def data
 
     void doInit( invoker ) {
@@ -70,7 +70,7 @@ class TagabukidPCRReportController extends tagabukid.common.models.AsyncReportCo
     }
    
     List getTypes() {
-        return ['MFO','OPCR','DPCR','IPCR']
+        return ['OPCR','DPCR']
     }
    
     List getOrgs() {

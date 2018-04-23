@@ -16,7 +16,7 @@ class ReportBehavioralController extends ReportController {
     
     def getReportData() { 
         data = svc.getSIByIPCRId(entity);
-        return data.reportdata
+        return data.reportdata.behaviorallist
     } 
 
 //    void buildReportData(entity, asyncHandler){
