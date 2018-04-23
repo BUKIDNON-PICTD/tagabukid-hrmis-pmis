@@ -27,11 +27,20 @@ class TagabukidPCRReportController extends tagabukid.common.models.AsyncReportCo
 
     void doInit( invoker ) {
         init();
-        
-        entity.type = 'MFO';  
+        entity.type = 'OPCR';
+        entity.employee = [:] 
+        entity.reviewer = [:]  
+        entity.approver = [:]  
+        entity.finalrater = [:]  
     } 
                     
     void buildReportData(entity, asyncHandler){
+        if(entity.type =='OPCR'){
+            reportName = reportPath + 'opcrmain.jasper';
+        }else{
+            reportName = reportPath + 'dpcrmain.jasper';
+        }
+        
         svc.getPCRF(entity, asyncHandler)
     }
     
@@ -47,20 +56,36 @@ class TagabukidPCRReportController extends tagabukid.common.models.AsyncReportCo
                 new FormControl( "integer", [caption:'Year', name:'entity.year', required:true, preferredSize:'100,19' , captionWidth:150]),
                 new FormControl( "combo", [caption:'Period', name:'entity.period', items:'periods', preferredSize:'100,19', immediate:true  , captionWidth:150,required:true,allowNull:false]),
                 new FormControl( "combo", [caption:'Type', name:'entity.type', items:'types', preferredSize:'100,19', immediate:true  , captionWidth:150,required:true,allowNull:false]),
-                new FormControl( "combo", [caption:'Office', name:'entity.org', items:'orgs', depends:['entity.type'] as String[], expression:'#{item.Entity.Name}', visibleWhen:"#{!entity.type.matches('MFO|IPCR')}", dynamic:true, preferredSize:'0,19',immediate:true, captionWidth:150 ,allowNull:false]),
-                
+                new FormControl( "combo", [caption:'Office', name:'entity.org', items:'orgs', depends:['entity.type'] as String[], expression:'#{item.Entity.Name}', visibleWhen:"#{entity.type.matches('DPCR')}", dynamic:true, preferredSize:'0,19',immediate:true, captionWidth:150 ,allowNull:false]),
+                new FormControl( "date", [captionWidth:150, caption:'Date Filed', name:'entity.dtfiled', required:true]),
                 //signatory MFO
                 //signatory OPCR
-                new FormControl( "lookup", [caption:'Organization Head', name:'entity.owner', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'OPCR'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
+                //new FormControl( "lookup", [caption:'Local Chief Executive', name:'entity.employee', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'OPCR'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
+                //new FormControl( "lookup", [caption:'Organization Position', name:'entity.employee.position', preferredSize:'[0,21]', handler:'pmisposition:lookup',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'OPCR'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
+                new FormControl( "text", [caption:'Local Chief Executive', name:'entity.employee.name', preferredSize:'[0,21]',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'OPCR'}", captionWidth:150]),
+                new FormControl( "text", [caption:'Local Chief Executive Position', name:'entity.employee.title', preferredSize:'[0,21]',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'OPCR'}", captionWidth:150]),
+                
                 //signatory DPCR
-                new FormControl( "lookup", [caption:'Department Head', name:'entity.owner', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'DPCR'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
+                new FormControl( "text", [caption:'Department Head', name:'entity.employee.name', preferredSize:'[0,21]',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'DPCR'}", captionWidth:150]),
+                new FormControl( "text", [caption:'Department Head Position', name:'entity.employee.title', preferredSize:'[0,21]',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'DPCR'}", captionWidth:150]),
+                
+                //COMMON SIGNATORY
+                new FormControl( "text", [caption:'PMT Secretariat', name:'entity.reviewer.name', preferredSize:'[0,21]', captionWidth:150]),
+                new FormControl( "text", [caption:'PMT Secretariat Position', name:'entity.reviewer.title', preferredSize:'[0,21]', captionWidth:150]),
+                
+                new FormControl( "text", [caption:'PMT Chairman', name:'entity.approver.name', preferredSize:'[0,21]', captionWidth:150]),
+                new FormControl( "text", [caption:'PMT Chairman Position', name:'entity.approver.title', preferredSize:'[0,21]', captionWidth:150]),
+                
+                new FormControl( "text", [caption:'Final Rater', name:'entity.finalrater.name', preferredSize:'[0,21]', captionWidth:150]),
+                new FormControl( "text", [caption:'Final Rater Position', name:'entity.finalrater.title', preferredSize:'[0,21]', captionWidth:150]),
+                
                 //signatory IPCR
-                new FormControl( "lookup", [caption:'Employee', name:'entity.owner', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'IPCR'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
-                new FormControl( "lookup", [caption:'Immediate Supervisor', name:'entity.owner', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'IPCR'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
+                //new FormControl( "lookup", [caption:'Employee', name:'entity.owner', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'IPCR'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
+                //new FormControl( "lookup", [caption:'Immediate Supervisor', name:'entity.owner', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type == 'IPCR'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
                 //signatory COMMON
-                new FormControl( "lookup", [caption:'Reviewed By', name:'entity.reviewer', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type != 'MFO'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
-                new FormControl( "lookup", [caption:'Approved By', name:'entity.approver', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type != 'MFO'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
-                new FormControl( "lookup", [caption:'Final Rating By', name:'entity.fainalrater', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type != 'MFO'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
+                //new FormControl( "lookup", [caption:'Reviewed By', name:'entity.reviewer', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type != 'MFO'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
+                //new FormControl( "lookup", [caption:'Approved By', name:'entity.approver', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type != 'MFO'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
+                //new FormControl( "lookup", [caption:'Final Rating By', name:'entity.fainalrater', preferredSize:'[0,21]', handler:'pmis:lookupPostgreHrmis',depends:['entity.type'] as String[],visibleWhen:"#{entity.type != 'MFO'}", expression:'#{item.Name.LastName +", "+item.Name.FirstName + " " + item.Name.MiddleName}', captionWidth:150]),
             ]    
         },
    ] as FormPanelModel;
@@ -76,7 +101,11 @@ class TagabukidPCRReportController extends tagabukid.common.models.AsyncReportCo
     List getOrgs() {
         return subaylookupsvc.lookupOrgUnit([:]);
     }
-}
+    
+    def getLookupPosition(){
+        return Inv.lookupOpener('pmisposition:lookup',)
+    }
+}   
 ]]>        
         
     </code>
