@@ -19,8 +19,8 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="xFormPanel1" pref="472" max="32767" attributes="0"/>
-                  <Component id="xDataTable1" alignment="0" pref="472" max="32767" attributes="0"/>
+                  <Component id="xFormPanel1" pref="680" max="32767" attributes="0"/>
+                  <Component id="xDataTable1" alignment="0" pref="680" max="32767" attributes="0"/>
                   <Component id="xFormPanel2" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>

@@ -86,7 +86,7 @@ public class MasterBehavioralPage extends javax.swing.JPanel {
         xFormPanel1.add(jScrollPane2);
 
         xComboBox1.setCaption("Type");
-        xComboBox1.setItems("types");
+        xComboBox1.setItems("['Client', 'Peer', 'Supervisor']");
         xComboBox1.setName("entity.type"); // NOI18N
         xFormPanel1.add(xComboBox1);
 

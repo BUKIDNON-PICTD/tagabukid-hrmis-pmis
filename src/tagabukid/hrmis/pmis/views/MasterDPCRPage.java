@@ -31,6 +31,10 @@ public class MasterDPCRPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        xDataTable1 = new com.rameses.rcp.control.XDataTable();
+        xFormPanel2 = new com.rameses.rcp.control.XFormPanel();
+        xLabel2 = new com.rameses.rcp.control.XLabel();
+        xButton1 = new com.rameses.rcp.control.XButton();
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
         xSuggest1 = new com.rameses.rcp.control.XSuggest();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -40,51 +44,6 @@ public class MasterDPCRPage extends javax.swing.JPanel {
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         xTextArea2 = new com.rameses.rcp.control.XTextArea();
-        xDataTable1 = new com.rameses.rcp.control.XDataTable();
-        xFormPanel2 = new com.rameses.rcp.control.XFormPanel();
-        xLabel2 = new com.rameses.rcp.control.XLabel();
-        xButton1 = new com.rameses.rcp.control.XButton();
-
-        xSuggest1.setCaption("Success Indicator Title");
-        xSuggest1.setCaptionWidth(150);
-        xSuggest1.setExpression("#{item.title}");
-        xSuggest1.setHandler("titleLookup");
-        xSuggest1.setName("entity.title"); // NOI18N
-        xSuggest1.setPreferredSize(new java.awt.Dimension(0, 20));
-        xSuggest1.setRequired(true);
-        xFormPanel1.add(xSuggest1);
-
-        jScrollPane3.setPreferredSize(new java.awt.Dimension(0, 63));
-
-        xTextArea3.setCaption("Description");
-        xTextArea3.setCaptionWidth(150);
-        xTextArea3.setName("entity.description"); // NOI18N
-        jScrollPane3.setViewportView(xTextArea3);
-
-        xFormPanel1.add(jScrollPane3);
-
-        xDecimalField1.setCaption("Alloted Budget");
-        xDecimalField1.setCaptionWidth(150);
-        xDecimalField1.setName("entity.allotedbudget"); // NOI18N
-        xFormPanel1.add(xDecimalField1);
-
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(0, 63));
-
-        xTextArea1.setCaption("Actual Accomplishment");
-        xTextArea1.setCaptionWidth(150);
-        xTextArea1.setName("entity.actualaccomplishment"); // NOI18N
-        jScrollPane1.setViewportView(xTextArea1);
-
-        xFormPanel1.add(jScrollPane1);
-
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(0, 63));
-
-        xTextArea2.setCaption("Remarks");
-        xTextArea2.setCaptionWidth(150);
-        xTextArea2.setName("entity.remarks"); // NOI18N
-        jScrollPane2.setViewportView(xTextArea2);
-
-        xFormPanel1.add(jScrollPane2);
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
         xTitledBorder1.setTitle("Assign Division");
@@ -141,16 +100,57 @@ public class MasterDPCRPage extends javax.swing.JPanel {
         xButton1.setText("Transfer");
         xFormPanel2.add(xButton1);
 
+        xSuggest1.setCaption("Success Indicator Title");
+        xSuggest1.setCaptionWidth(150);
+        xSuggest1.setExpression("#{item.title}");
+        xSuggest1.setHandler("titleLookup");
+        xSuggest1.setName("entity.title"); // NOI18N
+        xSuggest1.setPreferredSize(new java.awt.Dimension(0, 20));
+        xSuggest1.setRequired(true);
+        xFormPanel1.add(xSuggest1);
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(0, 63));
+
+        xTextArea3.setCaption("Description");
+        xTextArea3.setCaptionWidth(150);
+        xTextArea3.setName("entity.description"); // NOI18N
+        jScrollPane3.setViewportView(xTextArea3);
+
+        xFormPanel1.add(jScrollPane3);
+
+        xDecimalField1.setCaption("Alloted Budget");
+        xDecimalField1.setCaptionWidth(150);
+        xDecimalField1.setName("entity.allotedbudget"); // NOI18N
+        xFormPanel1.add(xDecimalField1);
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(0, 63));
+
+        xTextArea1.setCaption("Actual Accomplishment");
+        xTextArea1.setCaptionWidth(150);
+        xTextArea1.setName("entity.actualaccomplishment"); // NOI18N
+        jScrollPane1.setViewportView(xTextArea1);
+
+        xFormPanel1.add(jScrollPane1);
+
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(0, 63));
+
+        xTextArea2.setCaption("Remarks");
+        xTextArea2.setCaptionWidth(150);
+        xTextArea2.setName("entity.remarks"); // NOI18N
+        jScrollPane2.setViewportView(xTextArea2);
+
+        xFormPanel1.add(jScrollPane2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(xDataTable1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                    .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(xDataTable1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                    .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(xFormPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

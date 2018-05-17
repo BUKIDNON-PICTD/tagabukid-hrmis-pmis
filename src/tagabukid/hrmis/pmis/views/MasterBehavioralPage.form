@@ -123,7 +123,7 @@
         <Component class="com.rameses.rcp.control.XComboBox" name="xComboBox1">
           <Properties>
             <Property name="caption" type="java.lang.String" value="Type"/>
-            <Property name="items" type="java.lang.String" value="types"/>
+            <Property name="items" type="java.lang.String" value="[&apos;Client&apos;, &apos;Peer&apos;, &apos;Supervisor&apos;]"/>
             <Property name="name" type="java.lang.String" value="entity.type" noResource="true"/>
           </Properties>
         </Component>
