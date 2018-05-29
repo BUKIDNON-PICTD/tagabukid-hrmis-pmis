@@ -25,13 +25,13 @@ class CaptureIPCRCRUDController extends CRUDController{
     //    def selectedType;
     def node;
     
-//    def selectedtypes = ['Client', 'Peer', 'Supervisor',];
-//    def ratinglist = [1,2,3,4,5];
+    //    def selectedtypes = ['Client', 'Peer', 'Supervisor',];
+    //    def ratinglist = [1,2,3,4,5];
     def periods = ['1st', '2nd',];
     
-            
     
-   
+    
+    
     void afterCreate(){
         entity = svc.initCreate();
     }
@@ -44,7 +44,7 @@ class CaptureIPCRCRUDController extends CRUDController{
             entity.reviewerid = entity.reviewer.PersonId.toString();
             entity.supervisorid = entity.supervisor.PersonId.toString();
             entity.approverid = entity.approver.PersonId.toString();
-          
+            
             entity.dpcrlist.each{ dp ->
                 if (dp.ipcrlist.size() == 0){
                     throw new Exception("Please add at least one Success Indicator")
@@ -60,23 +60,23 @@ class CaptureIPCRCRUDController extends CRUDController{
                     entity.ipcritems.add(item);
                 }
             }
-//            entity.behavioraltypelist.each{ dp ->
-//                dp.bahavioralratinglist.each{
-//                    it.behavioralid = it.objid
-//                    it.objid = 'IPBI' + new java.rmi.server.UID()
-//                }
-//            }
+            //            entity.behavioraltypelist.each{ dp ->
+            //                dp.bahavioralratinglist.each{
+            //                    it.behavioralid = it.objid
+            //                    it.objid = 'IPBI' + new java.rmi.server.UID()
+            //                }
+            //            }
         }
     }
     
     public void afterOpen(){
-//        entity.dpcrlist = svc.getDPCRByIPCRId(entity.objid);
-//        entity.behavioraltypelist.each{ 
-//           it.bahavioralratinglist = svc.getBehavioralRatingList(it.objid);
-//        }
-//        println entity.behavioraltypelist
-//        behavioralTypeListHandler.reload();
-//        dpcrListHandler.reload();
+        //        entity.dpcrlist = svc.getDPCRByIPCRId(entity.objid);
+        //        entity.behavioraltypelist.each{ 
+        //           it.bahavioralratinglist = svc.getBehavioralRatingList(it.objid);
+        //        }
+        //        println entity.behavioraltypelist
+        //        behavioralTypeListHandler.reload();
+        //        dpcrListHandler.reload();
     }
     def getLookupSignatory(){
         return Inv.lookupOpener('pmis:lookupPostgreHrmis',)
@@ -113,7 +113,7 @@ class CaptureIPCRCRUDController extends CRUDController{
                     entity.org.name = it.Entity.Name
                     entity.org.code = it.Entity.AcronymAbbreviation
                     entity.dpcrlist = svc.getSIByEmployeeOffice(it)
-//                    entity.officeassigned = it.Entity.Name
+                    //                    entity.officeassigned = it.Entity.Name
                     binding.refresh('entity.org.name');
                     dpcrListHandler.reload();
                 }
@@ -153,21 +153,21 @@ class CaptureIPCRCRUDController extends CRUDController{
     def dpcrListHandler = [
         //        getRows : { entity.employees.size() + 1 },
         fetchList: { return entity?.dpcrlist},
-//        onRemoveItem : {
-//            if (MsgBox.confirm('Delete item?')){                
-//                selectedDPCR.remove(it)
-//                dpcrListHandler?.load();
-//                return true;
-//            }
-//            return false;
-//        }
+        //        onRemoveItem : {
+        //            if (MsgBox.confirm('Delete item?')){                
+        //                selectedDPCR.remove(it)
+        //                dpcrListHandler?.load();
+        //                return true;
+        //            }
+        //            return false;
+        //        }
         //        createItem : {
         //            return[
         //                objid : 'DPCR' + new java.rmi.server.UID(),
         //                ipcrlist : [],
         //            ]
         //        },
-      
+        
     ] as EditorListModel
     
     //    def dpcrListHandler = [
@@ -214,7 +214,7 @@ class CaptureIPCRCRUDController extends CRUDController{
     void checkDuplicateIPCR(listtofilter,item){
         def data = listtofilter.find{it.successindicator.objid == item.successindicator.objid && it.objid != selectedIPCR.objid}
         if (data){
-        throw new Exception("Duplicate item is not allowed.")
+            throw new Exception("Duplicate item is not allowed.")
         }
     }   
     
@@ -230,18 +230,18 @@ class CaptureIPCRCRUDController extends CRUDController{
             }
             return false;
         }
-//        ,
-//        createItem : {
-//            return[
-//                bahavioralratinglist : [],
-//            ]
-//        },
-//        onAddItem : {
-//            it.bahavioralratinglist = svc.getBahavioralRating(it.type)
-//            entity.behavioraltypelist << it
-//        }
+        //        ,
+        //        createItem : {
+        //            return[
+        //                bahavioralratinglist : [],
+        //            ]
+        //        },
+        //        onAddItem : {
+        //            it.bahavioralratinglist = svc.getBahavioralRating(it.type)
+        //            entity.behavioraltypelist << it
+        //        }
     ] as EditorListModel  
-
+    
     
     
     
@@ -255,14 +255,14 @@ class CaptureIPCRCRUDController extends CRUDController{
             }
             return false;
         }
-//        ,
-//        onAddItem : {
-//            selectedBehavioralType.bahavioralratinglist << it;
-//        },
+        //        ,
+        //        onAddItem : {
+        //            selectedBehavioralType.bahavioralratinglist << it;
+        //        },
     ] as EditorListModel 
 }     
-        
 
-        
-   
+
+
+
 

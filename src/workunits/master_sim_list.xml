@@ -1,7 +1,7 @@
 <workunit extends="wtemplates/ExplorerViewController.xml" >
     <invokers>
-        <invoker folderid="/home/hrmis/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>        <invoker folderid="/home/hrmis/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>
-        <invoker folderid="/explorer/master/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>        <invoker folderid="/home/hrmis/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>
+        <invoker folderid="/home/hrmis/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/> 
+        <invoker folderid="/explorer/master/hrmismaster" caption="Success Indicators" index="10" action="init" role="MASTER"/>  
     </invokers>
     <code>
         import com.rameses.rcp.common.*;
