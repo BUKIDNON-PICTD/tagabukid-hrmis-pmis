@@ -10,7 +10,7 @@
         import com.rameses.osiris2.common.*;
         import tagabukid.hrmis.pmis.models.*;
        
-        class MasterSIMController extends SIMController {
+        class MasterSIMController extends SIMListController {
        
         String serviceName = 'TagabukidSIMService'
          
@@ -28,8 +28,6 @@
         void refresh(){
             listHandler.reload();
         }
-       
-
        
         }
     </code>

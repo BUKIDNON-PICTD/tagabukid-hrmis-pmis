@@ -6,12 +6,9 @@
 package tagabukid.hrmis.pmis.models
 
 import com.rameses.osiris2.common.ExplorerViewController;
-import com.rameses.rcp.common.*;
-import com.rameses.rcp.annotations.*;
-import com.rameses.osiris2.client.*;
-import com.rameses.osiris2.common.*;
 
-public abstract class SIMController extends ExplorerViewController {
+
+public abstract class SIMListController extends ExplorerViewController {
     
     public abstract String getServiceName();
     public abstract Object getSimService();

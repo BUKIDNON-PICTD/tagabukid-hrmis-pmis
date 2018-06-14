@@ -98,7 +98,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xFormPanel1.add(xComboBox1);
 
         xLookupField4.setCaption("Employee");
-        xLookupField4.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField4.setExpression("#{(item.Name.PreNameTitle==\"\"? item.Name.FirstName + \" \" + item.Name.MiddleName.substring(0,1) +\". \" + item.Name.LastName : item.Name.PreNameTitle + \" \" + item.Name.FirstName + \" \" + item.Name.MiddleName.substring(0,1) +\". \" + item.Name.LastName)}");
         xLookupField4.setHandler("lookupEmployee");
         xLookupField4.setName("entity.employee"); // NOI18N
         xLookupField4.setPreferredSize(new java.awt.Dimension(0, 20));
@@ -137,13 +137,15 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xFormPanel2.setPreferredSize(new java.awt.Dimension(0, 20));
 
         xLookupField1.setCaption("Reviewer");
-        xLookupField1.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField1.setCaptionWidth(90);
+        xLookupField1.setExpression("#{(item.Name.PreNameTitle==\"\"? item.Name.FirstName + \" \" + item.Name.MiddleName.substring(0,1) +\". \" + item.Name.LastName : item.Name.PreNameTitle + \" \" + item.Name.FirstName + \" \" + item.Name.MiddleName.substring(0,1) +\". \" + item.Name.LastName)}");
         xLookupField1.setHandler("lookupEmployee");
         xLookupField1.setName("entity.reviewer"); // NOI18N
         xLookupField1.setPreferredSize(new java.awt.Dimension(300, 20));
         xLookupField1.setRequired(true);
         xFormPanel2.add(xLookupField1);
 
+        xLookupField5.setCaption("Reviewer Job Title");
         xLookupField5.setExpression("#{item.name}");
         xLookupField5.setHandler("lookupPosition");
         xLookupField5.setHint("Position/ Job Title");
@@ -157,13 +159,15 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xFormPanel3.setPreferredSize(new java.awt.Dimension(0, 20));
 
         xLookupField2.setCaption("Approver");
-        xLookupField2.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField2.setCaptionWidth(90);
+        xLookupField2.setExpression("#{(item.Name.PreNameTitle==\"\"? item.Name.FirstName + \" \" + item.Name.MiddleName.substring(0,1) +\". \" + item.Name.LastName : item.Name.PreNameTitle + \" \" + item.Name.FirstName + \" \" + item.Name.MiddleName.substring(0,1) +\". \" + item.Name.LastName)}");
         xLookupField2.setHandler("lookupEmployee");
         xLookupField2.setName("entity.approver"); // NOI18N
         xLookupField2.setPreferredSize(new java.awt.Dimension(300, 20));
         xLookupField2.setRequired(true);
         xFormPanel3.add(xLookupField2);
 
+        xLookupField6.setCaption("Approver Job Title");
         xLookupField6.setExpression("#{item.name}");
         xLookupField6.setHandler("lookupPosition");
         xLookupField6.setHint("Position/ Job Title");
@@ -183,13 +187,15 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
         xFormPanel4.setPreferredSize(new java.awt.Dimension(0, 20));
 
         xLookupField3.setCaption("Dept Head");
-        xLookupField3.setExpression("#{item.Name.LastName +\", \"+item.Name.FirstName + \" \" + item.Name.MiddleName}");
+        xLookupField3.setCaptionWidth(90);
+        xLookupField3.setExpression("#{(item.Name.PreNameTitle==\"\"? item.Name.FirstName + \" \" + item.Name.MiddleName.substring(0,1) +\". \" + item.Name.LastName : item.Name.PreNameTitle + \" \" + item.Name.FirstName + \" \" + item.Name.MiddleName.substring(0,1) +\". \" + item.Name.LastName)}");
         xLookupField3.setHandler("lookupEmployee");
         xLookupField3.setName("entity.depthead"); // NOI18N
         xLookupField3.setPreferredSize(new java.awt.Dimension(300, 20));
         xLookupField3.setRequired(true);
         xFormPanel4.add(xLookupField3);
 
+        xLookupField7.setCaption("Dept. Head Job Title");
         xLookupField7.setExpression("#{item.name}");
         xLookupField7.setHandler("lookupPosition");
         xLookupField7.setHint("Position/ Job Title");
@@ -203,6 +209,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
 
         xLabel7.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel7.setCaption("Created By");
+        xLabel7.setCaptionWidth(90);
         xLabel7.setExpression("#{entity.recordlog.createdbyuser}");
         xLabel7.setFor("");
         xLabel7.setName(""); // NOI18N
@@ -212,6 +219,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
 
         xLabel4.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel4.setCaption("Date Created");
+        xLabel4.setCaptionWidth(90);
         xLabel4.setExpression("#{entity.recordlog.datecreated}");
         xLabel4.setFor("");
         xLabel4.setOpaque(true);
@@ -237,11 +245,11 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+                        .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
                         .addComponent(xFormPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(xFormPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +260,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(xFormPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xFormPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
