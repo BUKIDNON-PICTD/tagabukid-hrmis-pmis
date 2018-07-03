@@ -107,7 +107,7 @@ public class CaptureIPCRPage extends javax.swing.JPanel {
 
         xLookupField8.setCaption("Position/ Job Title");
         xLookupField8.setExpression("#{item.name}");
-        xLookupField8.setHandler("lookupPosition");
+        xLookupField8.setHandler("lookup:tagabukid_hrmis_jobposition");
         xLookupField8.setHint("Position/ Job Title");
         xLookupField8.setName("entity.employee.position"); // NOI18N
         xLookupField8.setPreferredSize(new java.awt.Dimension(0, 20));

@@ -159,12 +159,12 @@ class CaptureIPCRController extends CrudFormModel{
         return InvokerUtil.lookupOpener('pmissuccessindicatorratingtype:lookup',[ipid:selectedIPCR.successindicator.objid,type:'EFFICIENCY']);
     }
     public def searchDPCR(){
-        return Inv.lookupOpener('pmis:lookuporg',[
+        return Inv.lookupOpener('lookup:tagabukid_hrmis_org',[
                 searchtext :entity.org.name,
                 onselect :{
-                    entity.orgid = it.OrgUnitId
-                    entity.org.name = it.Entity.Name
-                    entity.org.code = it.Entity.AcronymAbbreviation
+                    entity.orgid = it.orgunitid
+                    entity.org.name = it.name
+                    entity.org.code = it.code
                     entity.dpcrlist = svc.getSIByEmployeeOffice(it)
                     //                    entity.officeassigned = it.Entity.Name
                     binding.refresh('entity.org.name');
