@@ -63,6 +63,7 @@ public class MasterIPCRPage extends javax.swing.JPanel {
         xSuggest1.setName("entity.title"); // NOI18N
         xSuggest1.setPreferredSize(new java.awt.Dimension(0, 20));
         xSuggest1.setRequired(true);
+        xSuggest1.setTextCase(com.rameses.rcp.constant.TextCase.UPPER);
         xFormPanel1.add(xSuggest1);
 
         xDecimalField1.setCaption("Alloted Budget");
@@ -281,7 +282,7 @@ public class MasterIPCRPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(xFormPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                    .addComponent(xFormPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );

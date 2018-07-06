@@ -23,10 +23,10 @@ class CaptureIPCRController extends CrudFormModel{
     def selectedIPCR;
     def selectedBehavioralType;
     def selectedBehavioralRating;
-        def selectedType;
+    def selectedType;
     def node;
-        def selectedtypes = ['Client', 'Peer', 'Supervisor',];
-        def ratinglist = [1,2,3,4,5];
+    def selectedtypes = ['Client', 'Peer', 'Supervisor',];
+    def ratinglist = [1,2,3,4,5];
     
     boolean viewReportAllowed = false;
 
@@ -66,7 +66,7 @@ class CaptureIPCRController extends CrudFormModel{
             //                }
             //            }
         }else{
-//            println entity
+            //            println entity
             //            entity.ipcrno = svc.getIPCRNo();
             entity.employee.PersonId = entity.employee.PersonId.toString();
             entity.reviewerid = entity.reviewer.PersonId.toString();
@@ -124,8 +124,8 @@ class CaptureIPCRController extends CrudFormModel{
     def getLookupDPCRSuccessIndicator(){
         return InvokerUtil.lookupOpener('pmis:lookupDPCR',[orgid:entity.orgid,
                 onselect :{
-                    entity.dpcrlist << it
                     checkDuplicateDPCR(entity.dpcrlist,it)
+                    entity.dpcrlist << it
                     dpcrListHandler.reload();
                 }
             ]);
@@ -210,14 +210,14 @@ class CaptureIPCRController extends CrudFormModel{
         //            def item=li.item;
         //            checkDuplicateDPCR(entity.dpcrlist,item);
         //        }
-        //        onRemoveItem : {
-        //            if (MsgBox.confirm('Delete item?')){                
-        //                selectedDPCR.remove(it)
-        //                dpcrListHandler?.load();
-        //                return true;
-        //            }
-        //            return false;
-        //        }
+        onRemoveItem : {
+            if (MsgBox.confirm('Delete item?')){                
+                entity.dpcrlist.remove(it)
+                dpcrListHandler?.load();
+                return true;
+            }
+            return false;
+        }
         //        createItem : {
         //            return[
         //                objid : 'DPCR' + new java.rmi.server.UID(),

@@ -28,7 +28,7 @@
             }
 
             List fetchList( Map params ) { 
-                params.OrgUnitId = orgid
+                params.orgunitid = orgid
                 return svc.getSIByEmployeeOffice(params)
             }
         }  

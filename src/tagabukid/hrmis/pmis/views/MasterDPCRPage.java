@@ -107,6 +107,7 @@ public class MasterDPCRPage extends javax.swing.JPanel {
         xSuggest1.setName("entity.title"); // NOI18N
         xSuggest1.setPreferredSize(new java.awt.Dimension(0, 20));
         xSuggest1.setRequired(true);
+        xSuggest1.setTextCase(com.rameses.rcp.constant.TextCase.UPPER);
         xFormPanel1.add(xSuggest1);
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(0, 63));
