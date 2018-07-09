@@ -139,6 +139,7 @@ class MasterSIMIPCRController extends CRUDController {
                 type:'QUALITY',
                 onselect :{
                     entity.qualities = persistenceSvc.read([ _schemaname: 'pmis_rating', objid:it.objid]).items.sort{-it.rating}
+                    println entity.qualities
                     binding.refresh('entity');
                     qualityHandler.reload();
                 }
